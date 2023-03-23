@@ -48,7 +48,7 @@ defmodule AwesomeElixirWeb.MixProject do
       {:gettext, "~> 0.20"},
       {:awesome_elixir, in_umbrella: true},
       {:jason, "~> 1.2"},
-      {:bandit, ">= 0.7.3"},
+      {:plug_cowboy, "~> 2.6"},
 
       # dev and test
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}

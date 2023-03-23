@@ -19,7 +19,6 @@ config :awesome_elixir_web,
 
 # Configures the endpoint
 config :awesome_elixir_web, AwesomeElixirWeb.Endpoint,
-  adapter: Bandit.PhoenixAdapter,
   url: [host: "localhost"],
   render_errors: [
     formats: [html: AwesomeElixirWeb.ErrorHTML, json: AwesomeElixirWeb.ErrorJSON],
