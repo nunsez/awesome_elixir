@@ -1,14 +1,29 @@
 defmodule AwesomeElixirWeb.Router do
   use AwesomeElixirWeb, :router
 
+  pipeline :browser do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, {AwesomeElixirWeb.Layouts, :root}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
+  scope "/", AwesomeElixirWeb do
+    pipe_through :browser
+
+    get "/", PageController, :home
+    get "/health", HealthController, :index
+  end
+
+  # Other scopes may use custom stacks.
   scope "/api", AwesomeElixirWeb do
     pipe_through :api
-
-    get "/health", HealthController, :index
   end
 
   # Enable LiveDashboard in development
@@ -21,7 +36,7 @@ defmodule AwesomeElixirWeb.Router do
     import Phoenix.LiveDashboard.Router
 
     scope "/dev" do
-      pipe_through [:fetch_session, :protect_from_forgery]
+      pipe_through :browser
 
       live_dashboard "/dashboard", metrics: AwesomeElixirWeb.Telemetry
     end

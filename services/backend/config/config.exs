@@ -22,7 +22,7 @@ config :awesome_elixir_web, AwesomeElixirWeb.Endpoint,
   adapter: Bandit.PhoenixAdapter,
   url: [host: "localhost"],
   render_errors: [
-    formats: [json: AwesomeElixirWeb.ErrorJSON],
+    formats: [html: AwesomeElixirWeb.ErrorHTML, json: AwesomeElixirWeb.ErrorJSON],
     layout: false
   ],
   pubsub_server: AwesomeElixir.PubSub,

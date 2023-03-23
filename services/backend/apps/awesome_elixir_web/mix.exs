@@ -38,6 +38,10 @@ defmodule AwesomeElixirWeb.MixProject do
     [
       {:phoenix, "~> 1.7.2"},
       {:phoenix_ecto, "~> 4.4"},
+      {:phoenix_html, "~> 3.3"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_live_view, "~> 0.18.16"},
+      {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.7.2"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
@@ -45,7 +49,6 @@ defmodule AwesomeElixirWeb.MixProject do
       {:awesome_elixir, in_umbrella: true},
       {:jason, "~> 1.2"},
       {:bandit, ">= 0.7.3"},
-      # {:plug_cowboy, "~> 2.5"}
 
       # dev and test
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
