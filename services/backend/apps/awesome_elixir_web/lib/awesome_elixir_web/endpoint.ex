@@ -17,11 +17,25 @@ defmodule AwesomeElixirWeb.Endpoint do
   #
   # You should set gzip to true if you are running phx.digest
   # when deploying your static files in production.
-  plug Plug.Static,
+  # plug Plug.Static,
+  #   at: "/",
+  #   from: :awesome_elixir_web,
+  #   gzip: false,
+  #   only: AwesomeElixirWeb.static_paths()
+
+  if Mix.env() == :dev do
+    # Serve the static files for vite dev
+    plug Plug.Static,
+    at: "/",
+    from: Path.expand("../../assets/static", __DIR__),
+    gzip: false
+  else
+    plug Plug.Static,
     at: "/",
     from: :awesome_elixir_web,
     gzip: false,
     only: AwesomeElixirWeb.static_paths()
+  end
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

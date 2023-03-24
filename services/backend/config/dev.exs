@@ -21,7 +21,9 @@ config :awesome_elixir_web, AwesomeElixirWeb.Endpoint,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "jIarlg2KOMMiZPPr9ALDc8KHWUlYuiaVGQKnq2JIIXwSbBduTxebo4QUn07jSDPQ",
-  watchers: []
+  watchers: [
+    npm: ["run", "dev", cd: Path.expand("../apps/awesome_elixir_web/", __DIR__)]
+  ]
 
 # ## SSL Support
 #
