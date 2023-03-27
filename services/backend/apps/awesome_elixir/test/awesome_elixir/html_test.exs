@@ -5,7 +5,6 @@ defmodule AwesomeElixir.HtmlTest do
   doctest AwesomeElixir.Html
 
   alias AwesomeElixir.Html
-  alias AwesomeElixir.TestHelper, as: H
 
   setup_all context do
     doc = """
@@ -116,6 +115,32 @@ defmodule AwesomeElixir.HtmlTest do
       new_doc = Html.attr(doc, selector, attribute, fn _ -> value end)
 
       assert Html.attribute(new_doc, selector, attribute) == value
+    end
+  end
+
+  describe "text/2" do
+    test "with deep opt (default) and exsisting text" do
+      result = Html.text({"div", [], [{"span", [], ["hello"]}, " world"]})
+
+      assert result == "hello world"
+    end
+
+    test "without deep opt and exsisting text" do
+      result = Html.text({"div", [], [{"span", [], ["hello"]}, " world"]}, deep: false)
+
+      assert result == " world"
+    end
+
+    test "with stype opt and exsisting text" do
+      result = Html.text({"div", [], [{"style", [], ["hello"]}, " world"]}, style: true)
+
+      assert result == "hello world"
+    end
+
+    test "without stype opt (default) and exsisting text" do
+      result = Html.text({"div", [], [{"style", [], ["hello"]}, " world"]})
+
+      assert result == " world"
     end
   end
 end
