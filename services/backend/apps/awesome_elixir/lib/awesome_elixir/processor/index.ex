@@ -4,21 +4,21 @@ defmodule AwesomeElixir.Processor.Index do
   alias AwesomeElixir.Html
 
   @type repo_item() :: %{
-    name: String.t(),
-    url: String.t(),
-    description: String.t()
-  }
+          name: String.t(),
+          url: String.t(),
+          description: String.t()
+        }
 
   @type category_item() :: %{
-    name: String.t(),
-    description: String.t(),
-    repos: [repo_item()]
-  }
+          name: String.t(),
+          description: String.t(),
+          repos: [repo_item()]
+        }
 
   def call(body) do
     body
     |> Html.find("article.markdown-body > *")
-    |> Enum.reduce([], fn(node, acc) -> process(node, acc) end)
+    |> Enum.reduce([], fn node, acc -> process(node, acc) end)
     |> Enum.reverse()
   end
 

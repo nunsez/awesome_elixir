@@ -13,20 +13,21 @@ defmodule AwesomeElixir.Processor.IndexTest do
     result = Index.call(doc)
 
     name = "Package Management"
-    category = Enum.find(result, & &1.name == name)
+    category = Enum.find(result, &(&1.name == name))
 
     assert category.description == "Libraries and tools for package and dependency management."
+
     assert category.repos == [
-      %{
-        name: "Hex",
-        url: "https://hex.pm/",
-        description: "A package manager for the Erlang ecosystem."
-      },
-      %{
-        name: "rebar3_hex",
-        url: "https://github.com/hexpm/rebar3_hex",
-        description: "Hex.pm plugin for rebar3."
-      }
-    ]
+             %{
+               name: "Hex",
+               url: "https://hex.pm/",
+               description: "A package manager for the Erlang ecosystem."
+             },
+             %{
+               name: "rebar3_hex",
+               url: "https://github.com/hexpm/rebar3_hex",
+               description: "Hex.pm plugin for rebar3."
+             }
+           ]
   end
 end

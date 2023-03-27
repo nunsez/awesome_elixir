@@ -8,11 +8,11 @@ defmodule AwesomeElixir.Html do
   @type document() :: html_tree() | html_node()
 
   @type text_opts() :: [
-    deep: boolean(),
-    js: boolean(),
-    style: boolean(),
-    sep: String.t()
-  ]
+          deep: boolean(),
+          js: boolean(),
+          style: boolean(),
+          sep: String.t()
+        ]
 
   @spec parse(String.t()) :: html_tree()
   def parse(html) do
