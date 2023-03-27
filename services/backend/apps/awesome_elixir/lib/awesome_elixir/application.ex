@@ -11,7 +11,8 @@ defmodule AwesomeElixir.Application do
       # Start the Ecto repository
       AwesomeElixir.Repo,
       # Start the PubSub system
-      {Phoenix.PubSub, name: AwesomeElixir.PubSub}
+      {Phoenix.PubSub, name: AwesomeElixir.PubSub},
+      AwesomeElixir.GithubClient
       # Start a worker by calling: AwesomeElixir.Worker.start_link(arg)
       # {AwesomeElixir.Worker, arg}
     ]
