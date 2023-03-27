@@ -2,8 +2,17 @@ defmodule AwesomeElixir.Html do
   @moduledoc false
 
   @type html_tree() :: Floki.html_tree()
+
   @type html_node() :: Floki.html_node()
+
   @type document() :: html_tree() | html_node()
+
+  @type text_opts() :: [
+    deep: boolean(),
+    js: boolean(),
+    style: boolean(),
+    sep: String.t()
+  ]
 
   @spec parse(String.t()) :: html_tree()
   def parse(html) do
@@ -37,5 +46,10 @@ defmodule AwesomeElixir.Html do
   @spec attr(document(), String.t(), String.t(), (String.t() -> String.t())) :: document()
   def attr(document, selector, attribute, func) do
     Floki.attr(document, selector, attribute, func)
+  end
+
+  @spec text(document(), text_opts()) :: String.t()
+  def text(document, opts \\ []) do
+    Floki.text(document, opts)
   end
 end
