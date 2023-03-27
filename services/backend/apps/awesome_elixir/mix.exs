@@ -40,6 +40,8 @@ defmodule AwesomeElixir.MixProject do
       {:ecto_sql, "~> 3.6"},
       {:ecto_sqlite3, ">= 0.0.0"},
       {:jason, "~> 1.2"},
+      {:floki, "~> 0.34.2"},
+      {:finch, "~> 0.15.0"},
 
       # dev and test
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
