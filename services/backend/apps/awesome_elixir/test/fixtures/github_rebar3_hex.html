@@ -1,0 +1,1638 @@
+<main id="js-repo-pjax-container">
+    <template class="js-user-list-create-dialog-template" data-label="Create list">
+      <div class="Box-header">
+        <h2 class="Box-title">Create list</h2>
+      </div>
+      <!-- '"` --><!-- </textarea></xmp> --><form class="Box-body d-flex flex-column p-3 js-user-list-form" data-turbo="false" action="/stars/nunsez/lists" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="0BUFJrRhNx1DW2FM4nlFAA62P-0mcj3hVY2x7TkYWOg5Zt8G8PBD1uNxWLNDGEGU8pD5cHpcYj3cXchZDO-RUg" autocomplete="off">
+            <p class="color-fg-subtle mb-3">Create a list to organize your starred repositories.</p>
+          <input type="hidden" name="repository_id" value="{{ repositoryId }}">
+      <div class="form-group mx-0 mt-0 mb-2 js-user-list-input-container js-characters-remaining-container position-relative">
+        <auto-check src="/stars/nunsez/list-check?attr=name" required="">
+          <text-expander keys=":" data-emoji-url="/autocomplete/emoji">
+            <input type="text" name="user_list[name]" class="form-control js-user-list-input js-characters-remaining-field" placeholder="⭐️ Name this list" value="{{ placeholderName }}" aria-label="List name" maxlength="32" data-maxlength="32" autofocus="" required="">
+          </text-expander>
+          <input type="hidden" value="xI_bZap_xDEuYW0ydqTK-afGyRR-dsnkfl8iFvx_koz_ZEQmf9yi2w4xYnAmtNsI9NBH0lPLgP5ZYqOWJSRVSQ" data-csrf="true">
+        </auto-check>
+        <p class="note error position-relative js-user-list-error" hidden="">
+          Name .
+        </p>
+        <p class="mt-1 text-small float-right js-characters-remaining" data-suffix="remaining" hidden="">
+          32 remaining
+        </p>
+      </div>
+      <div class="form-group mx-0 mt-0 mb-2 js-user-list-input-container js-characters-remaining-container position-relative">
+        <text-expander keys=":" data-emoji-url="/autocomplete/emoji">
+          <textarea name="user_list[description]" class="form-control js-user-list-input js-characters-remaining-field" placeholder="Write a description" aria-label="List description" maxlength="160" data-maxlength="160" style="height: 74px; min-height: 74px"></textarea>
+        </text-expander>
+        <p class="note error position-relative js-user-list-error" hidden="">
+          Description .
+        </p>
+        <p class="mt-1 text-small float-right js-characters-remaining" data-suffix="remaining" hidden="">
+          160 remaining
+        </p>
+      </div>
+      <div data-generic-message="Unable to save your list at this time." data-view-component="true" class="js-user-list-base flash flash-error mx-0 mt-0 mb-2" hidden="hidden">
+      .
+    </div>        <button disabled="disabled" data-disable-invalid="true" data-submitting-message="Creating..." type="submit" data-view-component="true" class="Button--primary Button--medium Button Button--fullWidth mt-2">    <span class="Button-content">
+          <span class="Button-label">Create</span>
+        </span>
+    </button>  
+      <p class="note mt-2 mb-0">
+        <strong>Tip:</strong> type <code>:</code> to add emoji to the name or description.
+      </p>
+    </form>
+      <div data-view-component="true" class="Box-footer Box-row--gray text-small color-fg-muted d-flex flex-items-baseline py-2">
+      <span title="Feature Release Label: Beta" aria-label="Feature Release Label: Beta" data-view-component="true" class="Label Label--success Label--inline px-2 mr-2">Beta</span>
+      <span class="mr-1">Lists are currently in beta.</span>
+      <a href="https://github.com//github/feedback/discussions/categories/lists">Share feedback and report bugs.</a>
+    </div>
+    </template>
+      <div id="repository-container-header" class="pt-3 hide-full-screen" style="background-color: var(--color-page-header-bg);" data-turbo-replace="">
+          <div class="d-flex flex-wrap flex-justify-end mb-3  px-3 px-md-4 px-lg-5" style="gap: 1rem;">
+            <div class="flex-auto min-width-0 width-fit mr-3">
+      <div class=" d-flex flex-wrap flex-items-center wb-break-word f3 text-normal">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo color-fg-muted mr-2">
+        <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+    </svg>
+        <span class="author flex-self-stretch" itemprop="author">
+          <a class="url fn" rel="author" data-hovercard-type="organization" data-hovercard-url="/orgs/erlef/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/erlef">
+            erlef
+    </a>    </span>
+        <span class="mx-1 flex-self-stretch color-fg-muted">/</span>
+        <strong itemprop="name" class="mr-2 flex-self-stretch">
+          <a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex">rebar3_hex</a>
+        </strong>
+        <span></span><span class="Label Label--secondary v-align-middle mr-1">Public</span>
+      </div>
+            </div>
+            <ul class="pagehead-actions flex-shrink-0 d-none d-md-inline" style="padding: 2px 0;">
+      <li>
+                <notifications-list-subscription-form data-action="notifications-dialog-label-toggled:notifications-list-subscription-form#handleDialogLabelToggle" class="f5 position-relative" data-catalyst="">
+            <details class="details-reset details-overlay f5 position-relative" data-target="notifications-list-subscription-form.details" data-action="toggle:notifications-list-subscription-form#detailsToggled">
+              <summary data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;WATCH_BUTTON&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="10e1625476fdb9f1cf4c61d0932564559bb16afa46dad4031b441ce904b11217" data-ga-click="Repository, click Watch settings, action:files#disambiguate" aria-label="Notification settings" data-view-component="true" class="btn-sm btn" aria-haspopup="menu" role="button">    <span data-menu-button="">
+                  <span data-target="notifications-list-subscription-form.unwatchButtonCopy" hidden="">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye">
+        <path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path>
+    </svg>
+                    Unwatch
+                  </span>
+                  <span data-target="notifications-list-subscription-form.stopIgnoringButtonCopy" hidden="">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell-slash">
+        <path d="m4.182 4.31.016.011 10.104 7.316.013.01 1.375.996a.75.75 0 1 1-.88 1.214L13.626 13H2.518a1.516 1.516 0 0 1-1.263-2.36l1.703-2.554A.255.255 0 0 0 3 7.947V5.305L.31 3.357a.75.75 0 1 1 .88-1.214Zm7.373 7.19L4.5 6.391v1.556c0 .346-.102.683-.294.97l-1.703 2.556a.017.017 0 0 0-.003.01c0 .005.002.009.005.012l.006.004.007.001ZM8 1.5c-.997 0-1.895.416-2.534 1.086A.75.75 0 1 1 4.38 1.55 5 5 0 0 1 13 5v2.373a.75.75 0 0 1-1.5 0V5A3.5 3.5 0 0 0 8 1.5ZM8 16a2 2 0 0 1-1.985-1.75c-.017-.137.097-.25.235-.25h3.5c.138 0 .252.113.235.25A2 2 0 0 1 8 16Z"></path>
+    </svg>
+                    Stop ignoring
+                  </span>
+                  <span data-target="notifications-list-subscription-form.watchButtonCopy">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye">
+        <path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path>
+    </svg>
+                    Watch
+                  </span>
+                </span>
+                  <span id="repo-notifications-counter" data-target="notifications-list-subscription-form.socialCount" data-pjax-replace="true" data-turbo-replace="true" title="13" data-view-component="true" class="Counter">13</span>
+                <span class="dropdown-caret"></span>
+    </summary>
+              <details-menu class="SelectMenu  " role="menu" data-target="notifications-list-subscription-form.menu" data-focus-trap="suspended"><span class="sentinel" tabindex="0" aria-hidden="true"></span>
+                <div class="SelectMenu-modal notifications-component-menu-modal">
+                  <header class="SelectMenu-header">
+                    <h3 class="SelectMenu-title">Notifications</h3>
+                    <button class="SelectMenu-closeButton" type="button" aria-label="Close menu" data-action="click:notifications-list-subscription-form#closeMenu">
+                      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+    </svg>
+                    </button>
+                  </header>
+                  <div class="SelectMenu-list">
+                    <!-- '"` --><!-- </textarea></xmp> --><form data-target="notifications-list-subscription-form.form" data-action="submit:notifications-list-subscription-form#submitForm" data-turbo="false" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="3hQW_sHh7_Zittk86qF0RT1qnEj45json2jtpfLZf4Vk5IzLoLOSSfelI0iIiNJDsGKS6lFSr7FS0pMMxebtRA" autocomplete="off">
+                      <input type="hidden" name="repository_id" value="33827181">
+                      <button type="submit" name="do" value="included" class="SelectMenu-item flex-items-start" role="menuitemradio" aria-checked="true" data-targets="notifications-list-subscription-form.subscriptionButtons">
+                        <span class="f5">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+                        </span>
+                        <div>
+                          <div class="f5 text-bold">
+                            Participating and @mentions
+                          </div>
+                          <div class="text-small color-fg-muted text-normal pb-1">
+                            Only receive notifications from this repository when participating or @mentioned.
+                          </div>
+                        </div>
+                      </button>
+                      <button type="submit" name="do" value="subscribed" class="SelectMenu-item flex-items-start" role="menuitemradio" aria-checked="false" data-targets="notifications-list-subscription-form.subscriptionButtons">
+                        <span class="f5">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+                        </span>
+                        <div>
+                          <div class="f5 text-bold">
+                            All Activity
+                          </div>
+                          <div class="text-small color-fg-muted text-normal pb-1">
+                            Notified of all notifications on this repository.
+                          </div>
+                        </div>
+                      </button>
+                      <button type="submit" name="do" value="ignore" class="SelectMenu-item flex-items-start" role="menuitemradio" aria-checked="false" data-targets="notifications-list-subscription-form.subscriptionButtons">
+                        <span class="f5">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+                        </span>
+                        <div>
+                          <div class="f5 text-bold">
+                            Ignore
+                          </div>
+                          <div class="text-small color-fg-muted text-normal pb-1">
+                            Never be notified.
+                          </div>
+                        </div>
+                      </button>
+    </form>
+                    <button class="SelectMenu-item flex-items-start pr-3" type="button" role="menuitemradio" data-target="notifications-list-subscription-form.customButton" data-action="click:notifications-list-subscription-form#openCustomDialog" aria-haspopup="true" aria-checked="false">
+                      <span class="f5">
+                        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+                      </span>
+                      <div>
+                        <div class="d-flex flex-items-start flex-justify-between">
+                          <div class="f5 text-bold">Custom</div>
+                          <div class="f5 pr-1">
+                            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-right">
+        <path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path>
+    </svg>
+                          </div>
+                        </div>
+                        <div class="text-small color-fg-muted text-normal pb-1">
+                          Select events you want to be notified of in addition to participating and @mentions.
+                        </div>
+                      </div>
+                    </button>
+                      <div class="px-3 py-2 d-flex color-bg-subtle flex-items-center">
+                        <span class="f5">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-device-mobile SelectMenu-icon SelectMenu-icon--device-mobile">
+        <path d="M3.75 0h8.5C13.216 0 14 .784 14 1.75v12.5A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25V1.75C2 .784 2.784 0 3.75 0ZM3.5 1.75v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM8 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+    </svg>
+                        </span>
+                        <span classname="text-small color-fg-muted text-normal pb-1">
+                          Get push notifications on <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/app/apple-store/id1477376905?ct=watch-dropdown&amp;mt=8&amp;pt=524675">iOS</a> or <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.github.android&amp;referrer=utm_campaign%3Dwatch-dropdown%26utm_medium%3Dweb%26utm_source%3Dgithub">Android</a>.
+                        </span>
+                      </div>
+                  </div>
+                </div>
+              <span class="sentinel" tabindex="0" aria-hidden="true"></span></details-menu>
+              <details-dialog class="notifications-component-dialog " data-target="notifications-list-subscription-form.customDialog" aria-label="Custom dialog" role="dialog" aria-modal="true" hidden="">
+                <div class="SelectMenu-modal notifications-component-dialog-modal overflow-visible">
+                  <!-- '"` --><!-- </textarea></xmp> --><form data-target="notifications-list-subscription-form.customform" data-action="submit:notifications-list-subscription-form#submitCustomForm" data-turbo="false" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="K0xeylUWLSPHMdFDRKA4Baly8YukD8T1Et2GR1rnaW6RvMT_NERQnFIiKzcmiZ4DJHr_KQ27UGzfZ_jubdj7rw" autocomplete="off">
+                    <input type="hidden" name="repository_id" value="33827181">
+                    <header class="d-sm-none SelectMenu-header pb-0 border-bottom-0 px-2 px-sm-3">
+                      <h1 class="f3 SelectMenu-title d-inline-flex">
+                        <button class="color-bg-default border-0 px-2 py-0 m-0 Link--secondary f5" aria-label="Return to menu" type="button" data-action="click:notifications-list-subscription-form#closeCustomDialog">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
+        <path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path>
+    </svg>
+                        </button>
+                        Custom
+                      </h1>
+                    </header>
+                    <header class="d-none d-sm-flex flex-items-start pt-1">
+                      <button class="border-0 px-2 pt-1 m-0 Link--secondary f5" style="background-color: transparent;" aria-label="Return to menu" type="button" data-action="click:notifications-list-subscription-form#closeCustomDialog">
+                        <svg style="position: relative; left: 2px; top: 1px" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
+        <path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path>
+    </svg>
+                      </button>
+                      <h1 class="pt-1 pr-4 pb-0 pl-0 f5 text-bold">
+                        Custom
+                      </h1>
+                    </header>
+                    <fieldset>
+                      <legend>
+                        <div class="text-small color-fg-muted pt-0 pr-3 pb-3 pl-6 pl-sm-5 border-bottom mb-3">
+                          Select events you want to be notified of in addition to participating and @mentions.
+                        </div>
+                      </legend>
+                      <div data-target="notifications-list-subscription-form.labelInputs">
+                      </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="Issue" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
+                            Issues
+                          </label>
+                        </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="PullRequest" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
+                            Pull requests
+                          </label>
+                        </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="Release" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
+                            Releases
+                          </label>
+                        </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="Discussion" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated" aria-describedby="Discussion-disabled" aria-disabled="true">
+                            Discussions
+                          </label>
+                            <div id="Discussion-disabled" class="color-fg-muted">
+                              Discussions are not enabled for this repository
+                            </div>
+                        </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="SecurityAlert" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
+                            Security alerts
+                          </label>
+                        </div>
+                    </fieldset>
+                    <div class="pt-2 pb-3 px-3 d-flex flex-justify-start flex-row-reverse">
+                        <button name="do" value="custom" data-target="notifications-list-subscription-form.customSubmit" disabled="disabled" type="submit" data-view-component="true" class="btn-primary btn-sm btn ml-2">    Apply
+    </button>
+                        <button data-action="click:notifications-list-subscription-form#resetForm" data-close-dialog="" type="button" data-view-component="true" class="btn-sm btn">    Cancel
+    </button>
+                    </div>
+    </form>            </div>
+              </details-dialog>
+              <div class="notifications-component-dialog-overlay"></div>
+            </details>
+          </notifications-list-subscription-form>
+      </li>
+      <li>
+            <div data-view-component="true" class="d-flex">
+            <div data-view-component="true" class="position-relative d-inline-block">
+        <a icon="repo-forked" id="fork-button" href="/erlef/rebar3_hex/fork" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FORK_BUTTON&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="672aac9a22e50e339f6296a96b46ff09cdec0da4fdd1837e4d7c509ee70fd525" data-ga-click="Repository, show fork modal, action:files#disambiguate; text:Fork" data-view-component="true" class="btn-sm btn BtnGroup-item border-right-0" aria-describedby="tooltip-e0409df0-7cfc-48ea-a405-7709efc15347">      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2">
+        <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+    </svg>Fork
+              <span id="repo-network-counter" data-pjax-replace="true" data-turbo-replace="true" title="51" data-view-component="true" class="Counter">51</span>
+    </a>    <tool-tip id="tooltip-e0409df0-7cfc-48ea-a405-7709efc15347" for="fork-button" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute" role="tooltip">Fork your own copy of erlef/rebar3_hex</tool-tip>
+    </div>
+          <details group_item="true" id="my-forks-menu-33827181" data-view-component="true" class="details-reset details-overlay BtnGroup-parent d-inline-block position-relative">
+                  <summary aria-label="See your forks of this repository" data-view-component="true" class="btn-sm btn BtnGroup-item px-2 float-none" aria-haspopup="menu" role="button">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+        <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+    </svg>
+    </summary>
+      <details-menu class="SelectMenu right-0" src="/erlef/rebar3_hex/my_forks_menu_content?can_fork=true" role="menu" data-focus-trap="suspended"><span class="sentinel" tabindex="0" aria-hidden="true"></span>
+        <div class="SelectMenu-modal">
+            <button class="SelectMenu-closeButton position-absolute right-0 m-2" type="button" aria-label="Close menu" data-toggle-for="details-63d7fd">
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+    </svg>
+            </button>
+          <div id="filter-menu-63d7fd" class="d-flex flex-column flex-1 overflow-hidden">
+            <div class="SelectMenu-list">
+                <include-fragment class="SelectMenu-loading" aria-label="Loading">
+                  <svg role="menuitem" style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle>
+      <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+    </svg>
+                </include-fragment>
+            </div>
+          </div>
+        </div>
+      <span class="sentinel" tabindex="0" aria-hidden="true"></span></details-menu>
+    </details></div>
+      </li>
+      <li>
+            <template class="js-unstar-confirmation-dialog-template">
+      <div class="Box-header">
+        <h2 class="Box-title">Unstar this repository?</h2>
+      </div>
+      <div class="Box-body">
+        <p class="mb-3">
+          This will remove {{ repoNameWithOwner }} from the {{ listsWithCount }} that it's been added to.
+        </p>
+        <div class="form-actions">
+          <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-confirmation-form" data-turbo="false" action="{{ confirmUrl }}" accept-charset="UTF-8" method="post">
+            <input type="hidden" name="authenticity_token" value="{{ confirmCsrfToken }}">
+            <input type="hidden" name="confirm" value="true">
+              <button data-close-dialog="true" type="submit" data-view-component="true" class="btn-danger btn width-full">    Unstar
+    </button>
+    </form>    </div>
+      </div>
+    </template>
+      <div data-view-component="true" class="js-toggler-container js-social-container starring-container d-flex">
+        <div data-view-component="true" class="starred BtnGroup flex-1">
+          <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent flex-auto js-deferred-toggler-target" data-turbo="false" action="/erlef/rebar3_hex/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="ASAH5L14QfWVn2ph-idATJblFXB6bzZRWiHpVEIyw2_GW7edMBc02cL8_SDvy6ZcGpEO2aaQfZdzXnXENz101w" autocomplete="off">
+              <input type="hidden" value="rg-sKTzL26Oe0zwem6oyY1AvYaeHzsG0v3rE7r9kLP9pdBxQsaSuj8mwq1-ORtRz3Ft6DlsxinKWBVh-ymubRw" data-csrf="true" class="js-confirm-csrf-token">
+            <input type="hidden" name="context" value="repository">
+              <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="b56179e1b4259a60fff1015f9f02dff79e0b3299f4df136745f6358bea1a8d27" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar" aria-label="Unstar this repository (91)" type="submit" data-view-component="true" class="rounded-left-2 btn-sm btn BtnGroup-item">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star-fill starred-button-icon d-inline-block mr-2">
+        <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
+    </svg><span data-view-component="true" class="d-inline">
+                Starred
+    </span>            <span id="repo-stars-counter-unstar" aria-label="91 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-turbo-replace="true" title="91" data-view-component="true" class="Counter js-social-count">91</span>
+    </button></form>        <details id="details-user-list-33827181-starred" data-view-component="true" class="details-reset details-overlay BtnGroup-parent js-user-list-menu d-inline-block position-relative">
+            <summary aria-label="Add this repository to a list" data-view-component="true" class="btn-sm btn BtnGroup-item px-2 float-none" aria-haspopup="menu" role="button">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+        <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+    </svg>
+    </summary>
+      <details-menu class="SelectMenu right-0" src="/erlef/rebar3_hex/lists" role="menu" data-focus-trap="suspended"><span class="sentinel" tabindex="0" aria-hidden="true"></span>
+        <div class="SelectMenu-modal">
+            <button class="SelectMenu-closeButton position-absolute right-0 m-2" type="button" aria-label="Close menu" data-toggle-for="details-5d0efd">
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+    </svg>
+            </button>
+          <div id="filter-menu-5d0efd" class="d-flex flex-column flex-1 overflow-hidden">
+            <div class="SelectMenu-list">
+                <include-fragment class="SelectMenu-loading" aria-label="Loading">
+                  <svg role="menuitem" style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle>
+      <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+    </svg>
+                </include-fragment>
+            </div>
+          </div>
+        </div>
+      <span class="sentinel" tabindex="0" aria-hidden="true"></span></details-menu>
+    </details>
+    </div>
+        <div data-view-component="true" class="unstarred BtnGroup flex-1">
+          <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent flex-auto" data-turbo="false" action="/erlef/rebar3_hex/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="1p7ChPAPFQAMxaMAh0Xy6NnSmDRdmXfs6I8hO40pjvIw9hF55x4hhPABRJonPSJGG1ImN11MAZbQE68waC4F9w" autocomplete="off">
+            <input type="hidden" name="context" value="repository">
+              <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="0fbd9ea752e2d82f21aef5321dcd61d5715797a2ba17d7c19ce333583053c8d8" data-ga-click="Repository, click star button, action:files#disambiguate; text:Star" aria-label="Star this repository (91)" type="submit" data-view-component="true" class="js-toggler-target rounded-left-2 btn-sm btn BtnGroup-item">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star d-inline-block mr-2">
+        <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+    </svg><span data-view-component="true" class="d-inline">
+                Star
+    </span>            <span id="repo-stars-counter-star" aria-label="91 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-turbo-replace="true" title="91" data-view-component="true" class="Counter js-social-count">91</span>
+    </button></form>        <details id="details-user-list-33827181-unstarred" data-view-component="true" class="details-reset details-overlay BtnGroup-parent js-user-list-menu d-inline-block position-relative">
+            <summary aria-label="Add this repository to a list" data-view-component="true" class="btn-sm btn BtnGroup-item px-2 float-none" aria-haspopup="menu" role="button">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+        <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+    </svg>
+    </summary>
+      <details-menu class="SelectMenu right-0" src="/erlef/rebar3_hex/lists" role="menu" data-focus-trap="suspended"><span class="sentinel" tabindex="0" aria-hidden="true"></span>
+        <div class="SelectMenu-modal">
+            <button class="SelectMenu-closeButton position-absolute right-0 m-2" type="button" aria-label="Close menu" data-toggle-for="details-621346">
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+    </svg>
+            </button>
+          <div id="filter-menu-621346" class="d-flex flex-column flex-1 overflow-hidden">
+            <div class="SelectMenu-list">
+                <include-fragment class="SelectMenu-loading" aria-label="Loading">
+                  <svg role="menuitem" style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle>
+      <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+    </svg>
+                </include-fragment>
+            </div>
+          </div>
+        </div>
+      <span class="sentinel" tabindex="0" aria-hidden="true"></span></details-menu>
+    </details>
+    </div></div>
+      </li>
+    </ul>
+          </div>
+            <div id="responsive-meta-container" data-turbo-replace="">
+          <div class="d-block d-md-none mb-2 px-3 px-md-4 px-lg-5">
+          <p class="f4 mb-3 ">
+            Rebar3 Hex library
+          </p>
+        <h3 class="sr-only">License</h3>
+      <div class="mb-2">
+        <a href="/erlef/rebar3_hex/blob/main/LICENSE" class="Link--muted" data-analytics-event="{&quot;category&quot;:&quot;Repository Overview&quot;,&quot;action&quot;:&quot;click&quot;,&quot;label&quot;:&quot;location:sidebar;file:license&quot;}">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-law mr-2">
+        <path d="M8.75.75V2h.985c.304 0 .603.08.867.231l1.29.736c.038.022.08.033.124.033h2.234a.75.75 0 0 1 0 1.5h-.427l2.111 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.006.005-.01.01-.045.04c-.21.176-.441.327-.686.45C14.556 10.78 13.88 11 13 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L12.178 4.5h-.162c-.305 0-.604-.079-.868-.231l-1.29-.736a.245.245 0 0 0-.124-.033H8.75V13h2.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.5V3.5h-.984a.245.245 0 0 0-.124.033l-1.289.737c-.265.15-.564.23-.869.23h-.162l2.112 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.016.015-.045.04c-.21.176-.441.327-.686.45C4.556 10.78 3.88 11 3 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L2.178 4.5H1.75a.75.75 0 0 1 0-1.5h2.234a.249.249 0 0 0 .125-.033l1.288-.737c.265-.15.564-.23.869-.23h.984V.75a.75.75 0 0 1 1.5 0Zm2.945 8.477c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327Zm-10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327Z"></path>
+    </svg>
+         Apache-2.0 license
+        </a>
+      </div>
+        <div class="mb-3">
+            <a class="Link--secondary no-underline mr-3" href="/erlef/rebar3_hex/stargazers">
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star mr-1">
+        <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+    </svg>
+              <span class="text-bold">91</span>
+              stars
+    </a>        <a class="Link--secondary no-underline" href="/erlef/rebar3_hex/forks">
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-1">
+        <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+    </svg>
+              <span class="text-bold">51</span>
+              forks
+    </a>    </div>
+          <div class="d-flex">
+            <div class="flex-1 mr-2">
+                <template class="js-unstar-confirmation-dialog-template">
+      <div class="Box-header">
+        <h2 class="Box-title">Unstar this repository?</h2>
+      </div>
+      <div class="Box-body">
+        <p class="mb-3">
+          This will remove {{ repoNameWithOwner }} from the {{ listsWithCount }} that it's been added to.
+        </p>
+        <div class="form-actions">
+          <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-confirmation-form" data-turbo="false" action="{{ confirmUrl }}" accept-charset="UTF-8" method="post">
+            <input type="hidden" name="authenticity_token" value="{{ confirmCsrfToken }}">
+            <input type="hidden" name="confirm" value="true">
+              <button data-close-dialog="true" type="submit" data-view-component="true" class="btn-danger btn width-full">    Unstar
+    </button>
+    </form>    </div>
+      </div>
+    </template>
+      <div data-view-component="true" class="js-toggler-container js-social-container starring-container d-flex">
+        <div data-view-component="true" class="starred BtnGroup flex-1">
+          <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent flex-auto width-full js-deferred-toggler-target" data-turbo="false" action="/erlef/rebar3_hex/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="ai_f28pEecINdgD7v_rjmImNhw3ketCp5cpJ0sybhrCtVG-iRysM7loVl7qqFgWIBfmcpDiFm2_MtdVCuZQxCA" autocomplete="off">
+              <input type="hidden" value="ioinVqI4WIGoI5K-E4R8geYjyl8MJqg64nUDQyJy2dlN8xcvL1ctrf9ABf8GaJqRalfR9tDZ4_zLCp_TV31uYQ" data-csrf="true" class="js-confirm-csrf-token">
+            <input type="hidden" name="context" value="repository">
+              <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="b56179e1b4259a60fff1015f9f02dff79e0b3299f4df136745f6358bea1a8d27" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar" aria-label="Unstar this repository" type="submit" data-view-component="true" class="rounded-left-2 btn-sm btn btn-block BtnGroup-item">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star-fill starred-button-icon d-inline-block mr-2">
+        <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
+    </svg><span data-view-component="true" class="d-inline">
+                Starred
+    </span>
+    </button></form></div>
+        <div data-view-component="true" class="unstarred BtnGroup flex-1">
+          <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent flex-auto width-full" data-turbo="false" action="/erlef/rebar3_hex/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="GyQ0zEZq7Smn8_dNMWpjQJVjbWYFKbl6VwVC41Jlayf9TOcxUXvZrVs3ENeRErPuV-PTZQX8zwBvmczot2LgIg" autocomplete="off">
+            <input type="hidden" name="context" value="repository">
+              <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="0fbd9ea752e2d82f21aef5321dcd61d5715797a2ba17d7c19ce333583053c8d8" data-ga-click="Repository, click star button, action:files#disambiguate; text:Star" aria-label="Star this repository" type="submit" data-view-component="true" class="js-toggler-target rounded-left-2 btn-sm btn btn-block BtnGroup-item">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star d-inline-block mr-2">
+        <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+    </svg><span data-view-component="true" class="d-inline">
+                Star
+    </span>
+    </button></form></div></div>
+            </div>
+            <div class="flex-1">
+                    <notifications-list-subscription-form data-action="notifications-dialog-label-toggled:notifications-list-subscription-form#handleDialogLabelToggle" class="f5 position-relative" data-catalyst="">
+            <details class="details-reset details-overlay f5 position-relative" data-target="notifications-list-subscription-form.details" data-action="toggle:notifications-list-subscription-form#detailsToggled">
+              <summary data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;WATCH_BUTTON&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="10e1625476fdb9f1cf4c61d0932564559bb16afa46dad4031b441ce904b11217" data-ga-click="Repository, click Watch settings, action:files#disambiguate" aria-label="Notification settings" data-view-component="true" class="btn-sm btn btn-block" aria-haspopup="menu" role="button">    <span data-menu-button="">
+                  <span data-target="notifications-list-subscription-form.unwatchButtonCopy" hidden="">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye">
+        <path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path>
+    </svg>
+                    Unwatch
+                  </span>
+                  <span data-target="notifications-list-subscription-form.stopIgnoringButtonCopy" hidden="">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bell-slash">
+        <path d="m4.182 4.31.016.011 10.104 7.316.013.01 1.375.996a.75.75 0 1 1-.88 1.214L13.626 13H2.518a1.516 1.516 0 0 1-1.263-2.36l1.703-2.554A.255.255 0 0 0 3 7.947V5.305L.31 3.357a.75.75 0 1 1 .88-1.214Zm7.373 7.19L4.5 6.391v1.556c0 .346-.102.683-.294.97l-1.703 2.556a.017.017 0 0 0-.003.01c0 .005.002.009.005.012l.006.004.007.001ZM8 1.5c-.997 0-1.895.416-2.534 1.086A.75.75 0 1 1 4.38 1.55 5 5 0 0 1 13 5v2.373a.75.75 0 0 1-1.5 0V5A3.5 3.5 0 0 0 8 1.5ZM8 16a2 2 0 0 1-1.985-1.75c-.017-.137.097-.25.235-.25h3.5c.138 0 .252.113.235.25A2 2 0 0 1 8 16Z"></path>
+    </svg>
+                    Stop ignoring
+                  </span>
+                  <span data-target="notifications-list-subscription-form.watchButtonCopy">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye">
+        <path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path>
+    </svg>
+                    Watch
+                  </span>
+                </span>
+                <span class="dropdown-caret"></span>
+    </summary>
+              <details-menu class="SelectMenu  " role="menu" data-target="notifications-list-subscription-form.menu" data-focus-trap="suspended"><span class="sentinel" tabindex="0" aria-hidden="true"></span>
+                <div class="SelectMenu-modal notifications-component-menu-modal">
+                  <header class="SelectMenu-header">
+                    <h3 class="SelectMenu-title">Notifications</h3>
+                    <button class="SelectMenu-closeButton" type="button" aria-label="Close menu" data-action="click:notifications-list-subscription-form#closeMenu">
+                      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+    </svg>
+                    </button>
+                  </header>
+                  <div class="SelectMenu-list">
+                    <!-- '"` --><!-- </textarea></xmp> --><form data-target="notifications-list-subscription-form.form" data-action="submit:notifications-list-subscription-form#submitForm" data-turbo="false" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="AStjFpHEbJL5082QDcZeQt7babxLJ81fNOQ6Kc8CE9a72_kj8JYRLWzAN-Rv7_hEU9NnHuKTWcb5XkSA-D2BFw" autocomplete="off">
+                      <input type="hidden" name="repository_id" value="33827181">
+                      <button type="submit" name="do" value="included" class="SelectMenu-item flex-items-start" role="menuitemradio" aria-checked="true" data-targets="notifications-list-subscription-form.subscriptionButtons">
+                        <span class="f5">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+                        </span>
+                        <div>
+                          <div class="f5 text-bold">
+                            Participating and @mentions
+                          </div>
+                          <div class="text-small color-fg-muted text-normal pb-1">
+                            Only receive notifications from this repository when participating or @mentioned.
+                          </div>
+                        </div>
+                      </button>
+                      <button type="submit" name="do" value="subscribed" class="SelectMenu-item flex-items-start" role="menuitemradio" aria-checked="false" data-targets="notifications-list-subscription-form.subscriptionButtons">
+                        <span class="f5">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+                        </span>
+                        <div>
+                          <div class="f5 text-bold">
+                            All Activity
+                          </div>
+                          <div class="text-small color-fg-muted text-normal pb-1">
+                            Notified of all notifications on this repository.
+                          </div>
+                        </div>
+                      </button>
+                      <button type="submit" name="do" value="ignore" class="SelectMenu-item flex-items-start" role="menuitemradio" aria-checked="false" data-targets="notifications-list-subscription-form.subscriptionButtons">
+                        <span class="f5">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+                        </span>
+                        <div>
+                          <div class="f5 text-bold">
+                            Ignore
+                          </div>
+                          <div class="text-small color-fg-muted text-normal pb-1">
+                            Never be notified.
+                          </div>
+                        </div>
+                      </button>
+    </form>
+                    <button class="SelectMenu-item flex-items-start pr-3" type="button" role="menuitemradio" data-target="notifications-list-subscription-form.customButton" data-action="click:notifications-list-subscription-form#openCustomDialog" aria-haspopup="true" aria-checked="false">
+                      <span class="f5">
+                        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+                      </span>
+                      <div>
+                        <div class="d-flex flex-items-start flex-justify-between">
+                          <div class="f5 text-bold">Custom</div>
+                          <div class="f5 pr-1">
+                            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-right">
+        <path d="M8.22 2.97a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l2.97-2.97H3.75a.75.75 0 0 1 0-1.5h7.44L8.22 4.03a.75.75 0 0 1 0-1.06Z"></path>
+    </svg>
+                          </div>
+                        </div>
+                        <div class="text-small color-fg-muted text-normal pb-1">
+                          Select events you want to be notified of in addition to participating and @mentions.
+                        </div>
+                      </div>
+                    </button>
+                      <div class="px-3 py-2 d-flex color-bg-subtle flex-items-center">
+                        <span class="f5">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-device-mobile SelectMenu-icon SelectMenu-icon--device-mobile">
+        <path d="M3.75 0h8.5C13.216 0 14 .784 14 1.75v12.5A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25V1.75C2 .784 2.784 0 3.75 0ZM3.5 1.75v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM8 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+    </svg>
+                        </span>
+                        <span classname="text-small color-fg-muted text-normal pb-1">
+                          Get push notifications on <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/app/apple-store/id1477376905?ct=watch-dropdown&amp;mt=8&amp;pt=524675">iOS</a> or <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=com.github.android&amp;referrer=utm_campaign%3Dwatch-dropdown%26utm_medium%3Dweb%26utm_source%3Dgithub">Android</a>.
+                        </span>
+                      </div>
+                  </div>
+                </div>
+              <span class="sentinel" tabindex="0" aria-hidden="true"></span></details-menu>
+              <details-dialog class="notifications-component-dialog " data-target="notifications-list-subscription-form.customDialog" aria-label="Custom dialog" role="dialog" aria-modal="true" hidden="">
+                <div class="SelectMenu-modal notifications-component-dialog-modal overflow-visible">
+                  <!-- '"` --><!-- </textarea></xmp> --><form data-target="notifications-list-subscription-form.customform" data-action="submit:notifications-list-subscription-form#submitCustomForm" data-turbo="false" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="6T1vn1L3p1IG_-VWw6ZumNBlE3jSCp9u3zf570DpSOxTzfWqM6Xa7ZPsHyKhj8ieXW0d2nu-C_cSjYdGd9baLQ" autocomplete="off">
+                    <input type="hidden" name="repository_id" value="33827181">
+                    <header class="d-sm-none SelectMenu-header pb-0 border-bottom-0 px-2 px-sm-3">
+                      <h1 class="f3 SelectMenu-title d-inline-flex">
+                        <button class="color-bg-default border-0 px-2 py-0 m-0 Link--secondary f5" aria-label="Return to menu" type="button" data-action="click:notifications-list-subscription-form#closeCustomDialog">
+                          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
+        <path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path>
+    </svg>
+                        </button>
+                        Custom
+                      </h1>
+                    </header>
+                    <header class="d-none d-sm-flex flex-items-start pt-1">
+                      <button class="border-0 px-2 pt-1 m-0 Link--secondary f5" style="background-color: transparent;" aria-label="Return to menu" type="button" data-action="click:notifications-list-subscription-form#closeCustomDialog">
+                        <svg style="position: relative; left: 2px; top: 1px" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-left">
+        <path d="M7.78 12.53a.75.75 0 0 1-1.06 0L2.47 8.28a.75.75 0 0 1 0-1.06l4.25-4.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L4.81 7h7.44a.75.75 0 0 1 0 1.5H4.81l2.97 2.97a.75.75 0 0 1 0 1.06Z"></path>
+    </svg>
+                      </button>
+                      <h1 class="pt-1 pr-4 pb-0 pl-0 f5 text-bold">
+                        Custom
+                      </h1>
+                    </header>
+                    <fieldset>
+                      <legend>
+                        <div class="text-small color-fg-muted pt-0 pr-3 pb-3 pl-6 pl-sm-5 border-bottom mb-3">
+                          Select events you want to be notified of in addition to participating and @mentions.
+                        </div>
+                      </legend>
+                      <div data-target="notifications-list-subscription-form.labelInputs">
+                      </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="Issue" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
+                            Issues
+                          </label>
+                        </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="PullRequest" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
+                            Pull requests
+                          </label>
+                        </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="Release" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
+                            Releases
+                          </label>
+                        </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="Discussion" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated" aria-describedby="Discussion-disabled" aria-disabled="true">
+                            Discussions
+                          </label>
+                            <div id="Discussion-disabled" class="color-fg-muted">
+                              Discussions are not enabled for this repository
+                            </div>
+                        </div>
+                        <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
+                          <label class="f5 text-normal">
+                            <input type="checkbox" name="thread_types[]" value="SecurityAlert" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
+                            Security alerts
+                          </label>
+                        </div>
+                    </fieldset>
+                    <div class="pt-2 pb-3 px-3 d-flex flex-justify-start flex-row-reverse">
+                        <button name="do" value="custom" data-target="notifications-list-subscription-form.customSubmit" disabled="disabled" type="submit" data-view-component="true" class="btn-primary btn-sm btn ml-2">    Apply
+    </button>
+                        <button data-action="click:notifications-list-subscription-form#resetForm" data-close-dialog="" type="button" data-view-component="true" class="btn-sm btn">    Cancel
+    </button>
+                    </div>
+    </form>            </div>
+              </details-dialog>
+              <div class="notifications-component-dialog-overlay"></div>
+            </details>
+          </notifications-list-subscription-form>
+            </div>
+          </div>
+      </div>
+    </div>
+              <nav data-pjax="#js-repo-pjax-container" aria-label="Repository" data-view-component="true" class="js-repo-nav js-sidenav-container-pjax js-responsive-underlinenav overflow-hidden UnderlineNav px-3 px-md-4 px-lg-5">
+      <ul data-view-component="true" class="UnderlineNav-body list-style-none">
+          <li data-view-component="true" class="d-inline-flex">
+      <a id="code-tab" href="/erlef/rebar3_hex" data-tab-item="i0code-tab" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments /erlef/rebar3_hex" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g c" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Code&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" aria-current="page" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code UnderlineNav-octicon d-none d-sm-inline">
+        <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+    </svg>
+            <span data-content="Code">Code</span>
+              <span id="code-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+    </a></li>
+          <li data-view-component="true" class="d-inline-flex">
+      <a id="issues-tab" href="/erlef/rebar3_hex/issues" data-tab-item="i1issues-tab" data-selected-links="repo_issues repo_labels repo_milestones /erlef/rebar3_hex/issues" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g i" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Issues&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened UnderlineNav-octicon d-none d-sm-inline">
+        <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+    </svg>
+            <span data-content="Issues">Issues</span>
+              <span id="issues-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="20" data-view-component="true" class="Counter">20</span>
+    </a></li>
+          <li data-view-component="true" class="d-inline-flex">
+      <a id="pull-requests-tab" href="/erlef/rebar3_hex/pulls" data-tab-item="i2pull-requests-tab" data-selected-links="repo_pulls checks /erlef/rebar3_hex/pulls" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g p" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Pull requests&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-pull-request UnderlineNav-octicon d-none d-sm-inline">
+        <path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path>
+    </svg>
+            <span data-content="Pull requests">Pull requests</span>
+              <span id="pull-requests-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" data-view-component="true" class="Counter" hidden="hidden">0</span>
+    </a></li>
+          <li data-view-component="true" class="d-inline-flex">
+      <a id="actions-tab" href="/erlef/rebar3_hex/actions" data-tab-item="i3actions-tab" data-selected-links="repo_actions /erlef/rebar3_hex/actions" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g a" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Actions&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play UnderlineNav-octicon d-none d-sm-inline">
+        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path>
+    </svg>
+            <span data-content="Actions">Actions</span>
+              <span id="actions-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+    </a></li>
+          <li data-view-component="true" class="d-inline-flex">
+      <a id="projects-tab" href="/erlef/rebar3_hex/projects" data-tab-item="i4projects-tab" data-selected-links="repo_projects new_repo_project repo_project /erlef/rebar3_hex/projects" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g b" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Projects&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-table UnderlineNav-octicon d-none d-sm-inline">
+        <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25ZM6.5 6.5v8h7.75a.25.25 0 0 0 .25-.25V6.5Zm8-1.5V1.75a.25.25 0 0 0-.25-.25H6.5V5Zm-13 1.5v7.75c0 .138.112.25.25.25H5v-8ZM5 5V1.5H1.75a.25.25 0 0 0-.25.25V5Z"></path>
+    </svg>
+            <span data-content="Projects">Projects</span>
+              <span id="projects-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="0" data-view-component="true" class="Counter" hidden="hidden">0</span>
+    </a></li>
+          <li data-view-component="true" class="d-inline-flex">
+      <a id="wiki-tab" href="/erlef/rebar3_hex/wiki" data-tab-item="i5wiki-tab" data-selected-links="repo_wiki /erlef/rebar3_hex/wiki" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g w" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Wiki&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book UnderlineNav-octicon d-none d-sm-inline">
+        <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path>
+    </svg>
+            <span data-content="Wiki">Wiki</span>
+              <span id="wiki-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+    </a></li>
+          <li data-view-component="true" class="d-inline-flex">
+      <a id="security-tab" href="/erlef/rebar3_hex/security" data-tab-item="i6security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /erlef/rebar3_hex/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield UnderlineNav-octicon d-none d-sm-inline">
+        <path d="M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667Zm.61 1.429a.25.25 0 0 0-.153 0l-5.25 1.68a.25.25 0 0 0-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.196.196 0 0 0 .154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.251.251 0 0 0-.174-.237l-5.25-1.68ZM8.75 4.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0ZM9 10.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+    </svg>
+            <span data-content="Security">Security</span>
+    </a></li>
+          <li data-view-component="true" class="d-inline-flex">
+      <a id="insights-tab" href="/erlef/rebar3_hex/pulse" data-tab-item="i7insights-tab" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /erlef/rebar3_hex/pulse" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Insights&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true" class="UnderlineNav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item">
+                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-graph UnderlineNav-octicon d-none d-sm-inline">
+        <path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+    </svg>
+            <span data-content="Insights">Insights</span>
+              <span id="insights-repo-tab-count" data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true" class="Counter"></span>
+    </a></li>
+    </ul>
+        <div style="visibility:hidden;" data-view-component="true" class="UnderlineNav-actions js-responsive-underlinenav-overflow position-absolute pr-3 pr-md-4 pr-lg-5 right-0">      <details data-view-component="true" class="details-overlay details-reset position-relative">
+      <summary role="button" data-view-component="true" aria-haspopup="menu">          <div class="UnderlineNav-item mr-0 border-0">
+                <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal">
+        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+    </svg>
+                <span class="sr-only">More</span>
+              </div>
+    </summary>
+      <details-menu role="menu" data-view-component="true" class="dropdown-menu dropdown-menu-sw" data-focus-trap="suspended"><span class="sentinel" tabindex="0" aria-hidden="true"></span>          <ul>
+                  <li data-menu-item="i0code-tab" hidden="">
+                    <a role="menuitem" class="js-selected-navigation-item selected dropdown-item" aria-current="page" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments /erlef/rebar3_hex" href="/erlef/rebar3_hex">
+                      Code
+    </a>              </li>
+                  <li data-menu-item="i1issues-tab" hidden="">
+                    <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_issues repo_labels repo_milestones /erlef/rebar3_hex/issues" href="/erlef/rebar3_hex/issues">
+                      Issues
+    </a>              </li>
+                  <li data-menu-item="i2pull-requests-tab" hidden="">
+                    <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_pulls checks /erlef/rebar3_hex/pulls" href="/erlef/rebar3_hex/pulls">
+                      Pull requests
+    </a>              </li>
+                  <li data-menu-item="i3actions-tab" hidden="">
+                    <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_actions /erlef/rebar3_hex/actions" href="/erlef/rebar3_hex/actions">
+                      Actions
+    </a>              </li>
+                  <li data-menu-item="i4projects-tab" hidden="">
+                    <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_projects new_repo_project repo_project /erlef/rebar3_hex/projects" href="/erlef/rebar3_hex/projects">
+                      Projects
+    </a>              </li>
+                  <li data-menu-item="i5wiki-tab" hidden="">
+                    <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_wiki /erlef/rebar3_hex/wiki" href="/erlef/rebar3_hex/wiki">
+                      Wiki
+    </a>              </li>
+                  <li data-menu-item="i6security-tab" hidden="">
+                    <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="security overview alerts policy token_scanning code_scanning /erlef/rebar3_hex/security" href="/erlef/rebar3_hex/security">
+                      Security
+    </a>              </li>
+                  <li data-menu-item="i7insights-tab" hidden="">
+                    <a role="menuitem" class="js-selected-navigation-item dropdown-item" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /erlef/rebar3_hex/pulse" href="/erlef/rebar3_hex/pulse">
+                      Insights
+    </a>              </li>
+              </ul>
+    <span class="sentinel" tabindex="0" aria-hidden="true"></span></details-menu>
+    </details></div>
+    </nav>
+      </div>
+      <turbo-frame id="repo-content-turbo-frame" target="_top" data-turbo-action="advance" class="">
+          <div id="repo-content-pjax-container" class="repository-content ">
+          <a href="https://github.dev/" class="d-none js-github-dev-shortcut" data-hotkey=".">Open in github.dev</a>
+      <a href="https://github.dev/" class="d-none js-github-dev-new-tab-shortcut" data-hotkey="Shift+.,Shift+>,>" target="_blank">Open in a new github.dev tab</a>
+      <h1 class="sr-only">erlef/rebar3_hex</h1>
+      <div class="clearfix  container-xl mt-4  px-3 px-md-4 px-lg-5">
+    <div>
+      <div id="spoof-warning" class="mt-0 pb-3" aria-hidden="" hidden="">
+      <div data-view-component="true" class="flash flash-warn mt-0 clearfix">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert float-left mt-1">
+        <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+    </svg>
+          <div class="overflow-hidden">This commit does not belong to any branch on this repository, and may belong to a fork outside of the repository.</div>
+    </div></div>
+      <div data-view-component="true" class="Layout Layout--flowRow-until-md Layout--sidebarPosition-end Layout--sidebarPosition-flowRow-end">
+      <div data-view-component="true" class="Layout-main">        
+            <div class="file-navigation mb-3 d-flex flex-items-start">
+    <div class="position-relative">
+      <details class="js-branch-select-menu details-reset details-overlay mr-0 mb-0 " id="branch-select-menu" data-hydro-click-payload="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;REFS_SELECTOR_MENU&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="c390efd1cf58dba9652c84a567e470f27e4ab7975d7414fe24c17e946471f3c4">
+        <summary class="btn css-truncate" data-hotkey="w" title="Switch branches or tags">
+          <svg text="gray" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-branch">
+        <path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Zm-6 0a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Zm8.25-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM4.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"></path>
+    </svg>
+          <span class="css-truncate-target" data-menu-button="">main</span>
+          <span class="dropdown-caret"></span>
+        </summary>
+    <div class="SelectMenu">
+      <div class="SelectMenu-modal">
+        <header class="SelectMenu-header">
+          <span class="SelectMenu-title">Switch branches/tags</span>
+          <button class="SelectMenu-closeButton" type="button" data-toggle-for="branch-select-menu"><svg aria-label="Close menu" aria-hidden="false" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+    </svg></button>
+        </header>
+        <input-demux data-action="tab-container-change:input-demux#storeInput tab-container-changed:input-demux#updateInput" data-catalyst="">
+          <tab-container class="d-flex flex-column js-branches-tags-tabs" style="min-height: 0;">
+            <div class="SelectMenu-filter">
+              <input data-target="input-demux.source" id="context-commitish-filter-field" class="SelectMenu-input form-control" aria-owns="ref-list-branches" data-controls-ref-menu-id="ref-list-branches" autofocus="" autocomplete="off" aria-label="Filter branches/tags" placeholder="Filter branches/tags" type="text">
+            </div>
+            <div class="SelectMenu-tabs" role="tablist" data-target="input-demux.control">
+              <button class="SelectMenu-tab" type="button" role="tab" aria-selected="true" tabindex="0">Branches</button>
+              <button class="SelectMenu-tab" type="button" role="tab" aria-selected="false" tabindex="-1">Tags</button>
+            </div>
+            <div role="tabpanel" id="ref-list-branches" data-filter-placeholder="Filter branches/tags" tabindex="" class="d-flex flex-column flex-auto overflow-auto">
+              <ref-selector type="branch" data-targets="input-demux.sinks" data-action="
+                  input-entered:ref-selector#inputEntered
+                  tab-selected:ref-selector#tabSelected
+                  focus-list:ref-selector#focusFirstListMember
+                " query-endpoint="/erlef/rebar3_hex/refs" cache-key="v0:1678463629.047851" current-committish="bWFpbg==" default-branch="bWFpbg==" name-with-owner="ZXJsZWYvcmViYXIzX2hleA==" prefetch-on-mouseover="" data-catalyst="">
+                <template data-target="ref-selector.fetchFailedTemplate">
+                  <div class="SelectMenu-message" data-index="{{ index }}">Could not load branches</div>
+                </template>
+                  <template data-target="ref-selector.noMatchTemplate">
+        <div class="SelectMenu-message">Nothing to show</div>
+    </template>
+                <div data-target="ref-selector.listContainer" role="menu" class="SelectMenu-list " data-turbo-frame="repo-content-turbo-frame">
+                  <div class="SelectMenu-loading pt-3 pb-0 overflow-hidden" aria-label="Menu is loading">
+                    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle>
+      <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+    </svg>
+                  </div>
+                </div>
+    <template data-target="ref-selector.itemTemplate">
+      <a href="https://github.com/erlef/rebar3_hex/tree/{{ urlEncodedRefName }}" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+        <span class="flex-1 css-truncate css-truncate-overflow {{ isFilteringClass }}">{{ refName }}</span>
+        <span class="Label Label--secondary flex-self-start" hidden="{{ isNotDefault }}">default</span>
+      </a>
+    </template>
+                  <footer class="SelectMenu-footer"><a href="/erlef/rebar3_hex/branches">View all branches</a></footer>
+              </ref-selector>
+            </div>
+            <div role="tabpanel" id="tags-menu" data-filter-placeholder="Find a tag" tabindex="" class="d-flex flex-column flex-auto overflow-auto" hidden="">
+              <ref-selector type="tag" data-action="
+                  input-entered:ref-selector#inputEntered
+                  tab-selected:ref-selector#tabSelected
+                  focus-list:ref-selector#focusFirstListMember
+                " data-targets="input-demux.sinks" query-endpoint="/erlef/rebar3_hex/refs" cache-key="v0:1678463629.047851" current-committish="bWFpbg==" default-branch="bWFpbg==" name-with-owner="ZXJsZWYvcmViYXIzX2hleA==" data-catalyst="">
+                <template data-target="ref-selector.fetchFailedTemplate">
+                  <div class="SelectMenu-message" data-index="{{ index }}">Could not load tags</div>
+                </template>
+                <template data-target="ref-selector.noMatchTemplate">
+                  <div class="SelectMenu-message" data-index="{{ index }}">Nothing to show</div>
+                </template>
+    <template data-target="ref-selector.itemTemplate">
+      <a href="https://github.com/erlef/rebar3_hex/tree/{{ urlEncodedRefName }}" class="SelectMenu-item" role="menuitemradio" rel="nofollow" aria-checked="{{ isCurrent }}" data-index="{{ index }}">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+        <span class="flex-1 css-truncate css-truncate-overflow {{ isFilteringClass }}">{{ refName }}</span>
+        <span class="Label Label--secondary flex-self-start" hidden="{{ isNotDefault }}">default</span>
+      </a>
+    </template>
+                <div data-target="ref-selector.listContainer" role="menu" class="SelectMenu-list" data-turbo-frame="repo-content-turbo-frame">
+                  <div class="SelectMenu-loading pt-3 pb-0 overflow-hidden" aria-label="Menu is loading">
+                    <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle>
+      <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+    </svg>
+                  </div>
+                </div>
+                  <footer class="SelectMenu-footer"><a href="/erlef/rebar3_hex/tags">View all tags</a></footer>
+              </ref-selector>
+            </div>
+          </tab-container>
+        </input-demux>
+      </div>
+    </div>
+      </details>
+    </div>
+    <div class="Overlay--hidden Overlay-backdrop--center" data-modal-dialog-overlay="">
+      <modal-dialog role="dialog" id="warn-tag-match-create-branch-dialog" aria-modal="true" aria-labelledby="warn-tag-match-create-branch-dialog-header" data-view-component="true" class="Overlay Overlay--width-large Overlay--height-auto Overlay--motion-scaleFade">
+          <header class="Overlay-header Overlay-header--large Overlay-header--divided">
+            <div class="Overlay-headerContentWrap">
+              <div class="Overlay-titleWrap">
+                <h1 id="warn-tag-match-create-branch-dialog-header" class="Overlay-title">Name already in use</h1>
+              </div>
+              <div class="Overlay-actionWrap">
+                <button data-close-dialog-id="warn-tag-match-create-branch-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+        <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+    </svg></button>
+              </div>
+            </div>
+          </header>
+        <div class="Overlay-body ">
+              <div data-view-component="true">      A tag already exists with the provided branch name. Many Git commands accept both tag and branch names, so creating this branch may cause unexpected behavior. Are you sure you want to create this branch?
+    </div>
+        </div>
+          <footer class="Overlay-footer Overlay-footer--alignEnd">
+                <button data-close-dialog-id="warn-tag-match-create-branch-dialog" type="button" data-view-component="true" class="btn">    Cancel
+    </button>
+                <button data-submit-dialog-id="warn-tag-match-create-branch-dialog" type="button" data-view-component="true" class="btn-danger btn">    Create
+    </button>
+          </footer>
+    </modal-dialog></div>
+      <div class="flex-self-center flex-self-stretch d-none flex-items-center lh-condensed-ultra d-lg-flex">
+        <a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/branches" class="ml-3 Link--primary no-underline">
+              <svg text="gray" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-branch">
+        <path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Zm-6 0a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Zm8.25-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM4.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"></path>
+    </svg>
+              <strong>9</strong>
+              <span class="color-fg-muted">branches</span>
+        </a>
+        <a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/tags" class="ml-3 Link--primary no-underline">
+          <svg text="gray" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-tag">
+        <path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path>
+    </svg>
+            <strong>58</strong>
+            <span class="color-fg-muted">tags</span>
+        </a>
+      </div>
+      <div class="flex-auto"></div>
+      <a class="btn ml-2 d-none d-md-block" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FIND_FILE_BUTTON&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex/overview_actions/main&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="9b69445cf66146ae23366b410cd7f168752f5502bfb97299a724639b6c928d06" data-ga-click="Repository, find file, location:repo overview" data-hotkey="t" href="/erlef/rebar3_hex/find/main">
+      Go to file
+    </a>
+      <details data-view-component="true" class="details-overlay details-reset position-relative d-block">
+        <summary role="button" data-view-component="true" class="btn ml-2">    <span class="d-none d-md-flex flex-items-center">
+            Add file
+            <span class="dropdown-caret ml-1"></span>
+          </span>
+          <span class="d-inline-block d-md-none">
+            <svg aria-label="More options" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-kebab-horizontal">
+        <path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path>
+    </svg>
+          </span>
+    </summary>
+      <div data-view-component="true">      <ul class="dropdown-menu dropdown-menu-sw">
+            <li class="d-block d-md-none">
+              <a class="dropdown-item" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FIND_FILE_BUTTON&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex/overview_actions/main&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="9b69445cf66146ae23366b410cd7f168752f5502bfb97299a724639b6c928d06" data-ga-click="Repository, find file, location:repo overview" data-hotkey="t" href="/erlef/rebar3_hex/find/main">
+                Go to file
+    </a>        </li>
+              <li class="d-block d-md-none dropdown-divider" role="none"></li>
+              <li><!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" action="/erlef/rebar3_hex/new/main" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="UNqxlW5aBybLorVDEF1JatA1rGUXd1d3Z_mSVYHSyww1HqGYQ6uBSm4NhlNRybBSfLsr2l94D7HeeQ6shrU8AA">
+        <button type="submit" data-view-component="true" class="dropdown-item btn-link">    Create new file
+    </button></form></li>
+              <li><a href="/erlef/rebar3_hex/upload/main" class="dropdown-item">
+      Upload files
+    </a></li>
+          </ul>
+    </div>
+    </details>
+        <span class="d-none d-md-flex ml-2">
+    <get-repo class="" data-catalyst="">
+        <details class="position-relative details-overlay details-reset js-codespaces-details-container" data-action="toggle:get-repo#onDetailsToggle">
+            <summary data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;repository_id&quot;:33827181,&quot;target&quot;:&quot;CLONE_OR_DOWNLOAD_BUTTON&quot;,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="7b0f1f75102c06449a7e5be475b944acbf218dc6c107f00dceffe760aa7a810c" data-view-component="true" class="Button--primary Button--medium Button">    <span class="Button-content">
+            <span class="Button-visual Button-leadingVisual">
+              <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
+        <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+    </svg>
+            </span>
+          <span class="Button-label">Code</span>
+        </span>
+          <span class="Button-visual Button-trailingAction">
+            <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+        <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+    </svg>
+          </span>
+    </summary>  
+          <div class="position-relative">
+            <div class="dropdown-menu dropdown-menu-sw p-0" style="top:6px;width:400px;max-width: calc(100vw - 320px);">
+              <div data-target="get-repo.modal">
+        <tab-container data-view-component="true">
+      <div with_panel="true" data-view-component="true" class="tabnav hx_tabnav-in-dropdown color-bg-subtle m-0">
+        <ul role="tablist" aria-label="Choose where to access your code" data-view-component="true" class="tabnav-tabs d-flex">
+            <li role="presentation" data-view-component="true" class="hx_tabnav-in-dropdown-wrapper flex-1 d-inline-flex">
+      <button data-tab="local" data-action="click:get-repo#localTabSelected focusin:get-repo#localTabSelected" id="local-tab" type="button" role="tab" aria-controls="local-panel" aria-selected="true" data-view-component="true" class="tabnav-tab flex-1" tabindex="0">
+          <span data-view-component="true">Local</span>
+    </button></li>
+            <li role="presentation" data-view-component="true" class="hx_tabnav-in-dropdown-wrapper flex-1 d-inline-flex">
+      <button data-tab="cloud" data-action="click:get-repo#cloudTabSelected focusin:get-repo#cloudTabSelected" data-target="feature-callout.dismisser" id="cloud-tab" type="button" role="tab" aria-controls="cloud-panel" data-view-component="true" class="tabnav-tab flex-1" aria-selected="false" tabindex="-1">
+          <span data-view-component="true">          <span>Codespaces</span>
+    </span>
+    </button></li>
+    </ul>    
+    </div>    <div id="local-panel" role="tabpanel" tabindex="0" aria-labelledby="local-tab" data-view-component="true">          <ul class="list-style-none">
+                  <li class="Box-row p-3">
+      <a class="Link--muted float-right tooltipped tooltipped-s" href="https://docs.github.com/articles/which-remote-url-should-i-use" target="_blank" aria-label="Which remote URL should I use?">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-question">
+        <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+    </svg>
+    </a>
+    <div class="text-bold">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-terminal mr-2">
+        <path d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25Zm1.75-.25a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25ZM7.25 8a.749.749 0 0 1-.22.53l-2.25 2.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L5.44 8 3.72 6.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.25 2.25c.141.14.22.331.22.53Zm1.5 1.5h3a.75.75 0 0 1 0 1.5h-3a.75.75 0 0 1 0-1.5Z"></path>
+    </svg>
+      Clone
+    </div>
+    <tab-container>
+      <div class="UnderlineNav my-2 box-shadow-none">
+        <div class="UnderlineNav-body" role="tablist">
+              <!-- '"` --><!-- </textarea></xmp> --><form data-remote="true" data-turbo="false" action="/users/set_protocol?protocol_type=clone" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="LcGW6v43Ng6Df7Wn9S_rEUbJSg7onf1ltCEm0vJ3gNsrv3YM6BK6RuHIw4Lan_2gGHcmDASHyz5-SrBkk7s7gA">
+                <button name="protocol_selector" type="submit" role="tab" class="UnderlineNav-item" aria-selected="true" value="http" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;USE_HTTPS&quot;,&quot;git_repository_type&quot;:&quot;REPOSITORY&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="381a2264ab9d382905db0de3a35316c1fdb701f208236ae8bac0b6d6e6262c75" tabindex="0">
+                  HTTPS
+    </button></form>          <!-- '"` --><!-- </textarea></xmp> --><form data-remote="true" data-turbo="false" action="/users/set_protocol?protocol_type=clone" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="9OTCGCRjhBHWWJ845p-68wH46SyOfKFOcy1EBmFbIhbymiL-MkYIWbTv6R3JL6xCX0aFLmJmlxW5RtKwAJeZTQ">
+                <button name="protocol_selector" type="submit" role="tab" class="UnderlineNav-item" value="ssh" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;USE_SSH&quot;,&quot;git_repository_type&quot;:&quot;REPOSITORY&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="160d8e849feffaa995d6bff042b079124b62976d7d076eac566212d99ec5d6b5" aria-selected="false" tabindex="-1">
+                  SSH
+    </button></form>          <!-- '"` --><!-- </textarea></xmp> --><form data-remote="true" data-turbo="false" action="/users/set_protocol?protocol_type=clone" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="telcpZTX-e0TY_2iOeiLA0oQSU6LqNEoieKfdAWF3Vyzl7xDgvJ1pXHUi4cWWJ2yFK4lTGey53NDiQnCZElmBw">
+                <button name="protocol_selector" type="submit" role="tab" class="UnderlineNav-item" value="gh_cli" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;USE_GH_CLI&quot;,&quot;git_repository_type&quot;:&quot;REPOSITORY&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="5ba2e04d0abe895cf2dc2ef484fbe6936f4e4782092385c37a15c571b295962e" aria-selected="false" tabindex="-1">
+                  GitHub CLI
+    </button></form>    </div>
+      </div>
+      <div role="tabpanel">
+        <div class="input-group">
+      <input type="text" class="form-control input-monospace input-sm color-bg-subtle" data-autoselect="" value="https://github.com/erlef/rebar3_hex.git" aria-label="https://github.com/erlef/rebar3_hex.git" readonly="">
+      <div class="input-group-button">
+        <clipboard-copy value="https://github.com/erlef/rebar3_hex.git" aria-label="Copy to clipboard" class="btn btn-sm js-clipboard-copy tooltipped-no-delay ClipboardButton js-clone-url-http" data-copy-feedback="Copied!" data-tooltip-direction="n" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;COPY_URL&quot;,&quot;git_repository_type&quot;:&quot;REPOSITORY&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="cd6a0d3c34dadec1a68dd3c3d0e97b6b56c0c42067f0ca8a9fb980224c4d91aa" tabindex="0" role="button"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon d-inline-block">
+        <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+    </svg><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-inline-block d-sm-none">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg></clipboard-copy>
+      </div>
+    </div>
+        <p class="mt-2 mb-0 f6 color-fg-muted">
+            Use Git or checkout with SVN using the web URL.
+        </p>
+      </div>
+      <div role="tabpanel" hidden="">
+        <div class="input-group">
+      <input type="text" class="form-control input-monospace input-sm color-bg-subtle" data-autoselect="" value="git@github.com:erlef/rebar3_hex.git" aria-label="git@github.com:erlef/rebar3_hex.git" readonly="">
+      <div class="input-group-button">
+        <clipboard-copy value="git@github.com:erlef/rebar3_hex.git" aria-label="Copy to clipboard" class="btn btn-sm js-clipboard-copy tooltipped-no-delay ClipboardButton js-clone-url-ssh" data-copy-feedback="Copied!" data-tooltip-direction="n" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;COPY_URL&quot;,&quot;git_repository_type&quot;:&quot;REPOSITORY&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="cd6a0d3c34dadec1a68dd3c3d0e97b6b56c0c42067f0ca8a9fb980224c4d91aa" tabindex="0" role="button"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon d-inline-block">
+        <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+    </svg><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-inline-block d-sm-none">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg></clipboard-copy>
+      </div>
+    </div>
+        <p class="mt-2 mb-0 f6 color-fg-muted">
+            Use a password-protected SSH key.
+        </p>
+      </div>
+      <div role="tabpanel" hidden="">
+        <div class="input-group">
+      <input type="text" class="form-control input-monospace input-sm color-bg-subtle" data-autoselect="" value="gh repo clone erlef/rebar3_hex" aria-label="gh repo clone erlef/rebar3_hex" readonly="">
+      <div class="input-group-button">
+        <clipboard-copy value="gh repo clone erlef/rebar3_hex" aria-label="Copy to clipboard" class="btn btn-sm js-clipboard-copy tooltipped-no-delay ClipboardButton js-clone-url-gh-cli" data-copy-feedback="Copied!" data-tooltip-direction="n" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;COPY_URL&quot;,&quot;git_repository_type&quot;:&quot;REPOSITORY&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="cd6a0d3c34dadec1a68dd3c3d0e97b6b56c0c42067f0ca8a9fb980224c4d91aa" tabindex="0" role="button"><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon d-inline-block">
+        <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+    </svg><svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-inline-block d-sm-none">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg></clipboard-copy>
+      </div>
+    </div>
+        <p class="mt-2 mb-0 f6 color-fg-muted">
+          Work fast with our official CLI.
+          <a href="https://cli.github.com" target="_blank">Learn more</a>.
+        </p>
+      </div>
+    </tab-container>
+    </li>
+    <li data-platforms="windows,mac" class="Box-row Box-row--hover-gray p-3 mt-0 rounded-0 js-remove-unless-platform">
+      <a class="d-flex flex-items-center color-fg-default text-bold no-underline" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;OPEN_IN_DESKTOP&quot;,&quot;git_repository_type&quot;:&quot;REPOSITORY&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="d0a57b94beca8516ad05559aa68097084d8afd8a1a47301bdb2657660ed4232b" data-action="click:get-repo#showDownloadMessage" href="https://desktop.github.com">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-desktop-download mr-2">
+        <path d="m4.927 5.427 2.896 2.896a.25.25 0 0 0 .354 0l2.896-2.896A.25.25 0 0 0 10.896 5H8.75V.75a.75.75 0 1 0-1.5 0V5H5.104a.25.25 0 0 0-.177.427Z"></path><path d="M1.573 2.573a.25.25 0 0 0-.073.177v7.5a.25.25 0 0 0 .25.25h12.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25h-3a.75.75 0 1 1 0-1.5h3A1.75 1.75 0 0 1 16 2.75v7.5A1.75 1.75 0 0 1 14.25 12h-3.727c.099 1.041.52 1.872 1.292 2.757A.75.75 0 0 1 11.25 16h-6.5a.75.75 0 0 1-.565-1.243c.772-.885 1.192-1.716 1.292-2.757H1.75A1.75 1.75 0 0 1 0 10.25v-7.5A1.75 1.75 0 0 1 1.75 1h3a.75.75 0 0 1 0 1.5h-3a.25.25 0 0 0-.177.073ZM6.982 12a5.72 5.72 0 0 1-.765 2.5h3.566a5.72 5.72 0 0 1-.765-2.5H6.982Z"></path>
+    </svg>
+        Open with GitHub Desktop
+    </a></li>
+    <li class="Box-row Box-row--hover-gray p-3 mt-0">
+      <a class="d-flex flex-items-center color-fg-default text-bold no-underline" rel="nofollow" data-hydro-click="{&quot;event_type&quot;:&quot;clone_or_download.click&quot;,&quot;payload&quot;:{&quot;feature_clicked&quot;:&quot;DOWNLOAD_ZIP&quot;,&quot;git_repository_type&quot;:&quot;REPOSITORY&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="13c458343d6627bc866d172e5090a2dd964428f9842ed0ae313ac33e5610cbe9" data-ga-click="Repository, download zip, location:repo overview" data-open-app="link" data-turbo="false" href="/erlef/rebar3_hex/archive/refs/heads/main.zip">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file-zip mr-2">
+        <path d="M3.5 1.75v11.5c0 .09.048.173.126.217a.75.75 0 0 1-.752 1.298A1.748 1.748 0 0 1 2 13.25V1.75C2 .784 2.784 0 3.75 0h5.586c.464 0 .909.185 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v8.586A1.75 1.75 0 0 1 12.25 15h-.5a.75.75 0 0 1 0-1.5h.5a.25.25 0 0 0 .25-.25V4.664a.25.25 0 0 0-.073-.177L9.513 1.573a.25.25 0 0 0-.177-.073H7.25a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5h-3a.25.25 0 0 0-.25.25Zm3.75 8.75h.5c.966 0 1.75.784 1.75 1.75v3a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1-.75-.75v-3c0-.966.784-1.75 1.75-1.75ZM6 5.25a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 6 5.25Zm.75 2.25h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM8 6.75A.75.75 0 0 1 8.75 6h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 8 6.75ZM8.75 3h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM8 9.75A.75.75 0 0 1 8.75 9h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 8 9.75Zm-1 2.5v2.25h1v-2.25a.25.25 0 0 0-.25-.25h-.5a.25.25 0 0 0-.25.25Z"></path>
+    </svg>
+        Download ZIP
+    </a></li>
+              </ul>
+    </div>
+        <div id="cloud-panel" role="tabpanel" tabindex="0" aria-labelledby="cloud-tab" data-view-component="true" class="cloud-panel" hidden="hidden">              <div class="js-socket-channel js-updatable-content" data-channel="eyJjIjoicmVwb3NpdG9yeV9jb2Rlc3BhY2VzOjMzODI3MTgxOjY5MzU0NzE2IiwidCI6MTY3OTk3NzA3OX0=--5a53a5c3a5d43cd135d4ca41593dafb1bb0c33f084b931bbd01d3c3776340bd8" data-url="/erlef/rebar3_hex/codespaces/code_menu_contents?name=main" data-gid="MDEwOlJlcG9zaXRvcnkzMzgyNzE4MQ==">
+      <ul class="list-style-none">
+        <li class="Box-row p-0 mt-0">
+          <include-fragment id="lazyLoadedCodespacesList" data-target="get-repo.codespaceList" data-src="/codespaces?codespace%5Bref%5D=main&amp;current_branch=main&amp;event_target=REPO_PAGE&amp;repo=33827181" data-action="include-fragment-replace:get-repo#hideSpinner">
+            <div class="d-flex flex-items-center" data-target="get-repo.codespaceLoadingMenu">
+              <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="my-3 flex-1 anim-rotate">
+      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle>
+      <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+    </svg>
+            </div>
+          </include-fragment>
+        </li>
+      </ul>
+    </div>
+    </div>
+    </tab-container></div>
+    <div class="p-3" data-targets="get-repo.platforms" data-platform="mac" hidden="">
+      <h4 class="lh-condensed mb-3">Launching GitHub Desktop<span class="AnimatedEllipsis"></span></h4>
+      <p class="color-fg-muted">
+        If nothing happens, <a href="https://desktop.github.com/">download GitHub Desktop</a> and try again.
+      </p>
+        <button data-action="click:get-repo#onDetailsToggle" type="button" data-view-component="true" class="btn-link">
+    </button>
+    </div>
+    <div class="p-3" data-targets="get-repo.platforms" data-platform="windows" hidden="">
+      <h4 class="lh-condensed mb-3">Launching GitHub Desktop<span class="AnimatedEllipsis"></span></h4>
+      <p class="color-fg-muted">
+        If nothing happens, <a href="https://desktop.github.com/">download GitHub Desktop</a> and try again.
+      </p>
+        <button data-action="click:get-repo#onDetailsToggle" type="button" data-view-component="true" class="btn-link">
+    </button>
+    </div>
+    <div class="p-3" data-targets="get-repo.platforms" data-platform="xcode" hidden="">
+      <h4 class="lh-condensed mb-3">Launching Xcode<span class="AnimatedEllipsis"></span></h4>
+      <p class="color-fg-muted">
+        If nothing happens, <a href="https://developer.apple.com/xcode/">download Xcode</a> and try again.
+      </p>
+        <button data-action="click:get-repo#onDetailsToggle" type="button" data-view-component="true" class="btn-link">
+    </button>
+    </div>
+    <div class="p-3 " data-targets="get-repo.platforms" data-target="new-codespace.loadingVscode create-button.loadingVscode" data-platform="vscode" hidden="">
+      <poll-include-fragment data-target="get-repo.vscodePoller new-codespace.vscodePoller create-button.vscodePoller" data-catalyst="">
+        <h4 class="lh-condensed mb-3">Launching Visual Studio Code<span class="AnimatedEllipsis" data-hide-on-error=""></span></h4>
+        <p class="color-fg-muted" data-hide-on-error="">Your codespace will open once ready.</p>
+        <p class="color-fg-muted" data-show-on-error="" hidden="">There was a problem preparing your codespace, please try again.</p>
+      </poll-include-fragment>
+    </div>
+            </div>
+          </div>
+        </details>
+    </get-repo>
+        </span>
+        <span class="d-none d-lg-flex">
+        </span>
+    </div>
+    <div class="Box mb-3">
+      <div class="Box-header position-relative">
+        <h2 class="sr-only">Latest commit</h2>
+        <div class="js-details-container Details d-flex rounded-top-2 flex-items-center flex-wrap" data-issue-and-pr-hovercards-enabled="">
+      <div class="flex-shrink-0 ml-n1 mr-n1 mt-n1 mb-n1 hx_avatar_stack_commit">
+    <div class="AvatarStack flex-self-start  ">
+      <div class="AvatarStack-body" aria-label="starbelly">
+          <a class="avatar avatar-user" style="width:24px;height:24px;" data-test-selector="commits-avatar-stack-avatar-link" data-hovercard-type="user" data-hovercard-url="/users/starbelly/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/starbelly">
+            <img data-test-selector="commits-avatar-stack-avatar-image" src="https://avatars.githubusercontent.com/u/39971740?s=48&amp;v=4" alt="@starbelly" class=" avatar-user" width="24" height="24">
+    </a>  </div>
+    </div>
+      </div>
+      <div class="flex-1 d-flex flex-items-center ml-3 min-width-0">
+        <div class="css-truncate css-truncate-overflow color-fg-muted">
+              <a class="commit-author user-mention" title="View all commits by starbelly" href="/erlef/rebar3_hex/commits?author=starbelly">starbelly</a>
+            <span class="d-none d-sm-inline">
+              <a data-pjax="true" data-test-selector="commit-tease-commit-message" title="Add option to opt-out of v prefix on tags / commits (#326)
+    * Add option to opt-out of v prefix on tags / commits" class="Link--primary markdown-title" href="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663">Add option to opt-out of v prefix on tags / commits (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1620084144" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/326" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/326/hovercard" href="https://github.com/erlef/rebar3_hex/pull/326">#326</a><a data-pjax="true" data-test-selector="commit-tease-commit-message" title="Add option to opt-out of v prefix on tags / commits (#326)
+    * Add option to opt-out of v prefix on tags / commits" class="Link--primary markdown-title" href="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663">)</a>
+            </span>
+        </div>
+        <span class="hidden-text-expander ml-2 d-inline-block ">
+          <button type="button" class="color-fg-default ellipsis-expander js-details-target" aria-expanded="false">
+            …
+          </button>
+        </span>
+        <div class="d-flex flex-auto flex-justify-end ml-3 flex-items-baseline">
+      <details class="commit-build-statuses details-overlay details-reset js-dropdown-details hx_dropdown-fullscreen js-socket-channel js-updatable-content" data-channel="eyJjIjoicmVwbzozMzgyNzE4MTpjb21taXQ6NGMwNWQ1YTAyNjA0OGFmZWE2NTUwODJkYTk0NjNmM2NkYTM1MzY2MyIsInQiOjE2Nzk5NzcwODF9--f9a78d366e9f308939cf9ba4be47e91df9997ca7560dc61bc3a179de56708dde" data-url="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663/rollup" data-deferred-details-content-url="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663/status-details?popover=true">
+        <summary class="color-fg-success">
+          <svg aria-label="2 / 2 checks OK" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check">
+        <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+    </svg>
+        </summary>
+        <div class="dropdown-menu status-checks-dropdown dropdown-menu-sw overflow-hidden">
+          <include-fragment class="m-4 d-flex flex-column flex-items-center">
+            <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
+      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle>
+      <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+    </svg>
+            <div class="color-fg-muted no-wrap">Loading status checks…</div>
+          </include-fragment>
+        </div>
+      </details>
+          <a href="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663" class="f6 Link--secondary text-mono ml-2 d-none d-lg-inline" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame">
+            4c05d5a
+          </a>
+          <a href="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663" class="Link--secondary ml-2" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame">
+            <relative-time datetime="2023-03-12T16:51:13Z" class="no-wrap" title="Mar 12, 2023, 11:51 PM GMT+7">Mar 12, 2023</relative-time>
+          </a>
+        </div>
+      </div>
+      <div class="pl-0 pl-md-5 flex-order-1 width-full Details-content--hidden">
+          <div class="mt-2">
+            <a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-test-selector="commit-tease-commit-message" class="Link--primary text-bold" href="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663">Add option to opt-out of v prefix on tags / commits (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1620084144" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/326" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/326/hovercard" href="https://github.com/erlef/rebar3_hex/pull/326">#326</a><a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-test-selector="commit-tease-commit-message" class="Link--primary text-bold" href="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663">)</a>
+          </div>
+          <pre class="mt-2 text-mono color-fg-muted text-small ws-pre-wrap">* Add option to opt-out of v prefix on tags / commits</pre>
+        <div class="d-flex flex-items-center">
+          <code class="border d-lg-none mt-2 px-1 rounded-2">4c05d5a</code>
+        </div>
+      </div>
+          <div class="flex-shrink-0">
+            <h2 class="sr-only">Git stats</h2>
+            <ul class="list-style-none d-flex">
+              <li class="ml-0 ml-md-3">
+                <a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/commits/main" class="pl-3 pr-3 py-3 p-md-0 mt-n3 mb-n3 mr-n3 m-md-0 Link--primary no-underline no-wrap">
+                  <svg text="gray" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-history">
+        <path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path>
+    </svg>
+                  <span class="d-none d-sm-inline">
+                        <strong>377</strong>
+                        <span aria-label="Commits on main" class="color-fg-muted d-none d-lg-inline">
+                          commits
+                        </span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+        <h2 id="files" class="sr-only">Files</h2>
+        <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/erlef/rebar3_hex/tree/4c05d5a026048afea655082da9463f3cda353663">Permalink</a>
+      <div data-view-component="true" class="include-fragment-error flash flash-error flash-full py-2">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+        <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+    </svg>
+        Failed to load latest commit information.
+    </div>  <div class="js-details-container Details" data-hpc="">
+        <div role="grid" aria-labelledby="files" class="Details-content--hidden-not-important js-navigation-container js-active-navigation-container d-md-block">
+          <div class="sr-only" role="row">
+            <div role="columnheader">Type</div>
+            <div role="columnheader">Name</div>
+            <div role="columnheader" class="d-none d-md-block">Latest commit message</div>
+            <div role="columnheader">Commit time</div>
+          </div>
+            <div role="row" class="Box-row Box-row--focus-gray py-2 d-flex position-relative js-navigation-item">
+              <div role="gridcell" class="mr-3 flex-shrink-0" style="width: 16px;">
+                  <svg aria-label="Directory" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file-directory-fill hx_color-icon-directory">
+        <path d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25v-8.5A1.75 1.75 0 0 0 14.25 3H7.5a.25.25 0 0 1-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75Z"></path>
+    </svg>
+              </div>
+              <div role="rowheader" class="flex-auto min-width-0 col-md-2 mr-3">
+                <span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title="This path skips through empty directories" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/tree/main/.github/workflows"><span class="color-fg-muted">.github/</span>workflows</a></span>
+              </div>
+              <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3">
+                  <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
+                        <a data-pjax="true" title="Update CI workflow (#319)
+    - Removed OTP 23 per an error with resolving the version, possibly related to the latest ubuntu.
+    - Refer to main, not master" class="Link--secondary" href="/erlef/rebar3_hex/commit/ff2f287c17cd38778482326fafb6d85aebee512d">Update CI workflow (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1560648948" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/319" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/319/hovercard" href="https://github.com/erlef/rebar3_hex/pull/319">#319</a><a data-pjax="true" title="Update CI workflow (#319)
+    - Removed OTP 23 per an error with resolving the version, possibly related to the latest ubuntu.
+    - Refer to main, not master" class="Link--secondary" href="/erlef/rebar3_hex/commit/ff2f287c17cd38778482326fafb6d85aebee512d">)</a>
+                  </span>
+              </div>
+              <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
+                  <relative-time tense="past" datetime="2023-01-30T18:58:55-06:00" data-view-component="true" title="Jan 31, 2023, 7:58 AM GMT+7">January 30, 2023 18:58</relative-time>
+              </div>
+            </div>
+            <div role="row" class="Box-row Box-row--focus-gray py-2 d-flex position-relative js-navigation-item">
+              <div role="gridcell" class="mr-3 flex-shrink-0" style="width: 16px;">
+                  <svg aria-label="Directory" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file-directory-fill hx_color-icon-directory">
+        <path d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25v-8.5A1.75 1.75 0 0 0 14.25 3H7.5a.25.25 0 0 1-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75Z"></path>
+    </svg>
+              </div>
+              <div role="rowheader" class="flex-auto min-width-0 col-md-2 mr-3">
+                <span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title="src" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/tree/main/src">src</a></span>
+              </div>
+              <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3">
+                  <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
+                        <a data-pjax="true" title="Add option to opt-out of v prefix on tags / commits (#326)
+    * Add option to opt-out of v prefix on tags / commits" class="Link--secondary" href="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663">Add option to opt-out of v prefix on tags / commits (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1620084144" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/326" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/326/hovercard" href="https://github.com/erlef/rebar3_hex/pull/326">#326</a><a data-pjax="true" title="Add option to opt-out of v prefix on tags / commits (#326)
+    * Add option to opt-out of v prefix on tags / commits" class="Link--secondary" href="/erlef/rebar3_hex/commit/4c05d5a026048afea655082da9463f3cda353663">)</a>
+                  </span>
+              </div>
+              <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
+                  <relative-time tense="past" datetime="2023-03-12T11:51:13-05:00" data-view-component="true" title="Mar 12, 2023, 11:51 PM GMT+7">March 12, 2023 11:51</relative-time>
+              </div>
+            </div>
+            <div role="row" class="Box-row Box-row--focus-gray py-2 d-flex position-relative js-navigation-item">
+              <div role="gridcell" class="mr-3 flex-shrink-0" style="width: 16px;">
+                  <svg aria-label="Directory" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file-directory-fill hx_color-icon-directory">
+        <path d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25v-8.5A1.75 1.75 0 0 0 14.25 3H7.5a.25.25 0 0 1-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75Z"></path>
+    </svg>
+              </div>
+              <div role="rowheader" class="flex-auto min-width-0 col-md-2 mr-3">
+                <span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title="test" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/tree/main/test">test</a></span>
+              </div>
+              <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3">
+                  <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
+                        <a data-pjax="true" title="Revert &quot;Set dependencies hexpm by default in hex metadta (#312)&quot; (#320)
+    This reverts commit ff710c90e934dce9e303bf191d97aa0485da1560." class="Link--secondary" href="/erlef/rebar3_hex/commit/993964074da7751ddbd163df87e08c205e860b8f">Revert "Set dependencies hexpm by default in hex metadta (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1226279012" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/312" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/312/hovercard" href="https://github.com/erlef/rebar3_hex/pull/312">#312</a><a data-pjax="true" title="Revert &quot;Set dependencies hexpm by default in hex metadta (#312)&quot; (#320)
+    This reverts commit ff710c90e934dce9e303bf191d97aa0485da1560." class="Link--secondary" href="/erlef/rebar3_hex/commit/993964074da7751ddbd163df87e08c205e860b8f">)" (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1560656400" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/320" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/320/hovercard" href="https://github.com/erlef/rebar3_hex/pull/320">#320</a><a data-pjax="true" title="Revert &quot;Set dependencies hexpm by default in hex metadta (#312)&quot; (#320)
+    This reverts commit ff710c90e934dce9e303bf191d97aa0485da1560." class="Link--secondary" href="/erlef/rebar3_hex/commit/993964074da7751ddbd163df87e08c205e860b8f">)</a>
+                  </span>
+              </div>
+              <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
+                  <relative-time tense="past" datetime="2023-01-28T19:42:22-06:00" data-view-component="true" title="Jan 29, 2023, 8:42 AM GMT+7">January 28, 2023 19:42</relative-time>
+              </div>
+            </div>
+            <div role="row" class="Box-row Box-row--focus-gray py-2 d-flex position-relative js-navigation-item">
+              <div role="gridcell" class="mr-3 flex-shrink-0" style="width: 16px;">
+                  <svg aria-label="File" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file color-fg-muted">
+        <path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path>
+    </svg>
+              </div>
+              <div role="rowheader" class="flex-auto min-width-0 col-md-2 mr-3">
+                <span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title=".gitignore" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/blob/main/.gitignore">.gitignore</a></span>
+              </div>
+              <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3">
+                  <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
+                        <a data-pjax="true" title="fix docs provider" class="Link--secondary" href="/erlef/rebar3_hex/commit/1e8d2c47dc9fa97de9a83a6cb6817dc6eb52490d">fix docs provider</a>
+                  </span>
+              </div>
+              <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
+                  <relative-time tense="past" datetime="2015-05-30T10:06:02-05:00" data-view-component="true" title="May 30, 2015, 10:06 PM GMT+7">May 30, 2015 10:06</relative-time>
+              </div>
+            </div>
+            <div role="row" class="Box-row Box-row--focus-gray py-2 d-flex position-relative js-navigation-item">
+              <div role="gridcell" class="mr-3 flex-shrink-0" style="width: 16px;">
+                  <svg aria-label="File" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file color-fg-muted">
+        <path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path>
+    </svg>
+              </div>
+              <div role="rowheader" class="flex-auto min-width-0 col-md-2 mr-3">
+                <span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title="LICENSE" data-turbo-frame="repo-content-turbo-frame" itemprop="license" href="/erlef/rebar3_hex/blob/main/LICENSE">LICENSE</a></span>
+              </div>
+              <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3">
+                  <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
+                        <a data-pjax="true" title="Add docs (#276)
+    * Add docs
+    - Added docs to all modules where documentation should be available on hexpm, all
+      other modules have been marked as private.
+    - Updated the license to reflect the license type publish with.
+    Co-authored-by: Fred Hebert <mononcqc@ferd.ca>" class="Link--secondary" href="/erlef/rebar3_hex/commit/eeba5a6245507a7f3a3fd4e9053f73265fee8265">Add docs (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1088865201" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/276" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/276/hovercard" href="https://github.com/erlef/rebar3_hex/pull/276">#276</a><a data-pjax="true" title="Add docs (#276)
+    * Add docs
+    - Added docs to all modules where documentation should be available on hexpm, all
+      other modules have been marked as private.
+    - Updated the license to reflect the license type publish with.
+    Co-authored-by: Fred Hebert <mononcqc@ferd.ca>" class="Link--secondary" href="/erlef/rebar3_hex/commit/eeba5a6245507a7f3a3fd4e9053f73265fee8265">)</a>
+                  </span>
+              </div>
+              <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
+                  <relative-time tense="past" datetime="2021-12-31T14:28:32-06:00" data-view-component="true" title="Jan 1, 2022, 3:28 AM GMT+7">December 31, 2021 14:28</relative-time>
+              </div>
+            </div>
+            <div role="row" class="Box-row Box-row--focus-gray py-2 d-flex position-relative js-navigation-item">
+              <div role="gridcell" class="mr-3 flex-shrink-0" style="width: 16px;">
+                  <svg aria-label="File" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file color-fg-muted">
+        <path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path>
+    </svg>
+              </div>
+              <div role="rowheader" class="flex-auto min-width-0 col-md-2 mr-3">
+                <span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title="README.md" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/blob/main/README.md">README.md</a></span>
+              </div>
+              <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3">
+                  <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
+                        <a data-pjax="true" title="Update code example for rebar3_ex_doc (#310)
+    Tally with the example with v0.2.9 release." class="Link--secondary" href="/erlef/rebar3_hex/commit/110f55affe28713f0208cf73cdcc22351f81b704">Update code example for rebar3_ex_doc (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1214871062" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/310" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/310/hovercard" href="https://github.com/erlef/rebar3_hex/pull/310">#310</a><a data-pjax="true" title="Update code example for rebar3_ex_doc (#310)
+    Tally with the example with v0.2.9 release." class="Link--secondary" href="/erlef/rebar3_hex/commit/110f55affe28713f0208cf73cdcc22351f81b704">)</a>
+                  </span>
+              </div>
+              <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
+                  <relative-time tense="past" datetime="2022-05-01T12:03:44-05:00" data-view-component="true" title="May 2, 2022, 12:03 AM GMT+7">May 1, 2022 12:03</relative-time>
+              </div>
+            </div>
+            <div role="row" class="Box-row Box-row--focus-gray py-2 d-flex position-relative js-navigation-item">
+              <div role="gridcell" class="mr-3 flex-shrink-0" style="width: 16px;">
+                  <svg aria-label="File" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file color-fg-muted">
+        <path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path>
+    </svg>
+              </div>
+              <div role="rowheader" class="flex-auto min-width-0 col-md-2 mr-3">
+                <span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title="rebar.config" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/blob/main/rebar.config">rebar.config</a></span>
+              </div>
+              <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3">
+                  <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
+                        <a data-pjax="true" title="Expect ok to be returned if there is no docs config in hex config (#297)
+    * Expect ok to be returned if there is no docs config in hex config
+    * Fix license type" class="Link--secondary" href="/erlef/rebar3_hex/commit/92bfda414954e205290afffe5c18e069398060b0">Expect ok to be returned if there is no docs config in hex config (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1091666445" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/297" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/297/hovercard" href="https://github.com/erlef/rebar3_hex/pull/297">#297</a><a data-pjax="true" title="Expect ok to be returned if there is no docs config in hex config (#297)
+    * Expect ok to be returned if there is no docs config in hex config
+    * Fix license type" class="Link--secondary" href="/erlef/rebar3_hex/commit/92bfda414954e205290afffe5c18e069398060b0">)</a>
+                  </span>
+              </div>
+              <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
+                  <relative-time tense="past" datetime="2021-12-31T15:02:41-06:00" data-view-component="true" title="Jan 1, 2022, 4:02 AM GMT+7">December 31, 2021 15:02</relative-time>
+              </div>
+            </div>
+            <div role="row" class="Box-row Box-row--focus-gray py-2 d-flex position-relative js-navigation-item navigation-focus">
+              <div role="gridcell" class="mr-3 flex-shrink-0" style="width: 16px;">
+                  <svg aria-label="File" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file color-fg-muted">
+        <path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path>
+    </svg>
+              </div>
+              <div role="rowheader" class="flex-auto min-width-0 col-md-2 mr-3">
+                <span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title="rebar.lock" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/blob/main/rebar.lock">rebar.lock</a></span>
+              </div>
+              <div role="gridcell" class="flex-auto min-width-0 d-none d-md-block col-5 mr-3">
+                  <span class="css-truncate css-truncate-target d-block width-fit markdown-title">
+                        <a data-pjax="true" title="Bump hex_core to 0.8.4 and support license identifier validation (#268)" class="Link--secondary" href="/erlef/rebar3_hex/commit/8b5fbf7719324a30f9d245f5b69d989637cfe6bb">Bump hex_core to 0.8.4 and support license identifier validation (</a><a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1085391515" data-permission-text="Title is private" data-url="https://github.com/erlef/rebar3_hex/issues/268" data-hovercard-type="pull_request" data-hovercard-url="/erlef/rebar3_hex/pull/268/hovercard" href="https://github.com/erlef/rebar3_hex/pull/268">#268</a><a data-pjax="true" title="Bump hex_core to 0.8.4 and support license identifier validation (#268)" class="Link--secondary" href="/erlef/rebar3_hex/commit/8b5fbf7719324a30f9d245f5b69d989637cfe6bb">)</a>
+                  </span>
+              </div>
+              <div role="gridcell" class="color-fg-muted text-right" style="width:100px;">
+                  <relative-time tense="past" datetime="2021-12-21T16:00:00-06:00" data-view-component="true" title="Dec 22, 2021, 5:00 AM GMT+7">December 21, 2021 16:00</relative-time>
+              </div>
+            </div>
+        </div>
+        <div class="Details-content--shown Box-footer d-md-none p-0">
+            <button aria-expanded="false" type="button" data-view-component="true" class="js-details-target btn-link d-block width-full px-3 py-2">    View code
+    </button>    </div>
+      </div>
+    </div>
+          <readme-toc data-catalyst="">
+          <div id="readme" class="Box md js-code-block-container js-code-nav-container js-tagsearch-file Box--responsive" data-tagsearch-path="README.md" data-tagsearch-lang="Markdown">
+            <div class="d-flex js-sticky js-position-sticky top-0 border-top-0 border-bottom p-2 flex-items-center flex-justify-between color-bg-default rounded-top-2" style="position: sticky; z-index: 30; top: 0px !important;" data-original-top="0px">
+              <div class="d-flex flex-items-center">
+                  <details data-target="readme-toc.trigger" data-menu-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;trigger&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-menu-hydro-click-hmac="3899ccd798b3f6f623c98e3ca93ace7aa1a4cbb2ba433927d3bc4a1d74cf30db" class="dropdown details-reset details-overlay">
+      <summary class="btn btn-octicon m-0 mr-2 p-2" aria-haspopup="menu" aria-label="Table of Contents" role="button">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-list-unordered">
+        <path d="M5.75 2.5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-6a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM2 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+    </svg>
+      </summary>
+      <details-menu class="SelectMenu" role="menu" data-focus-trap="active"><span class="sentinel" tabindex="0" aria-hidden="true"></span>
+        <div class="SelectMenu-modal rounded-3 mt-1" style="max-height:340px;">
+            <div class="SelectMenu-filter">
+              <input class="SelectMenu-input form-control js-filterable-field" id="toc-filter-field" type="text" autocomplete="off" spellcheck="false" autofocus="" placeholder="Filter headings" aria-label="Filter headings">
+            </div>
+          <div class="SelectMenu-list SelectMenu-list--borderless p-2" style="overscroll-behavior: contain;" data-filterable-for="toc-filter-field" data-filterable-type="substring">
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 text-emphasized" style="-moz-box-orient: vertical; padding-left: 12px; background-color: var(--color-accent-emphasis);" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#rebar3_hex" aria-current="page">rebar3_hex</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 24px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#setup">Setup</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#documentation">Documentation</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 24px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#basic-usage">Basic usage</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#authenticating-user">Authenticating User</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#building">Building</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#publishing">Publishing</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#managing-package-owners">Managing package owners</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#retiring-packages">Retiring packages</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#organizations">Organizations</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 48px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#read-only-repo-key-for-ci">Read-Only Repo Key for CI</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 " style="-moz-box-orient: vertical; padding-left: 36px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#searching-hexpm">Searching hexpm</a>
+              <a role="menuitem" class="filter-item SelectMenu-item ws-normal wb-break-word line-clamp-2 py-1 text-emphasized" style="-webkit-box-orient: vertical; padding-left: 12px;" data-action="click:readme-toc#blur" data-targets="readme-toc.entries" data-hydro-click="{&quot;event_type&quot;:&quot;repository_toc_menu.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;entry&quot;,&quot;repository_id&quot;:33827181,&quot;originating_url&quot;:&quot;https://github.com/erlef/rebar3_hex&quot;,&quot;user_id&quot;:69354716}}" data-hydro-click-hmac="66b97ff4a388f2a6ed21d754a288aba80b5a6dc55d7139630c12077c0eec34a5" href="#further-reading">Further reading</a>
+          </div>
+        </div>
+      <span class="sentinel" tabindex="0" aria-hidden="true"></span></details-menu>
+    </details>
+                <h2 class="Box-title">
+                  <a href="#readme" data-view-component="true" class="Link--primary">README.md</a>
+                </h2>
+              </div>
+            </div>
+              <div data-target="readme-toc.content" class="Box-body px-5 pb-5">
+                <article class="markdown-body entry-content container-lg" itemprop="text"><h1 tabindex="-1" dir="auto"><a id="user-content-rebar3_hex" class="anchor" aria-hidden="true" href="#rebar3_hex"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a>rebar3_hex</h1>
+                </article>
+              </div>
+          </div>
+      </readme-toc>
+    </div>
+      <div data-view-component="true" class="Layout-sidebar">      
+          <div class="BorderGrid BorderGrid--spacious" data-pjax="">
+            <div class="BorderGrid-row hide-sm hide-md">
+              <div class="BorderGrid-cell">
+                <h2 class="mb-3 h4">About</h2>
+        <p class="f4 my-3">
+          Rebar3 Hex library
+        </p>
+      <h3 class="sr-only">Resources</h3>
+      <div class="mt-2">
+        <a class="Link--muted" data-analytics-event="{&quot;category&quot;:&quot;Repository Overview&quot;,&quot;action&quot;:&quot;click&quot;,&quot;label&quot;:&quot;location:sidebar;file:readme&quot;}" href="#readme">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book mr-2">
+        <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path>
+    </svg>
+          Readme
+    </a>  </div>
+    <h3 class="sr-only">License</h3>
+      <div class="mt-2">
+        <a href="/erlef/rebar3_hex/blob/main/LICENSE" class="Link--muted" data-analytics-event="{&quot;category&quot;:&quot;Repository Overview&quot;,&quot;action&quot;:&quot;click&quot;,&quot;label&quot;:&quot;location:sidebar;file:license&quot;}">
+          <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-law mr-2">
+        <path d="M8.75.75V2h.985c.304 0 .603.08.867.231l1.29.736c.038.022.08.033.124.033h2.234a.75.75 0 0 1 0 1.5h-.427l2.111 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.006.005-.01.01-.045.04c-.21.176-.441.327-.686.45C14.556 10.78 13.88 11 13 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L12.178 4.5h-.162c-.305 0-.604-.079-.868-.231l-1.29-.736a.245.245 0 0 0-.124-.033H8.75V13h2.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5h2.5V3.5h-.984a.245.245 0 0 0-.124.033l-1.289.737c-.265.15-.564.23-.869.23h-.162l2.112 4.692a.75.75 0 0 1-.154.838l-.53-.53.529.531-.001.002-.002.002-.006.006-.016.015-.045.04c-.21.176-.441.327-.686.45C4.556 10.78 3.88 11 3 11a4.498 4.498 0 0 1-2.023-.454 3.544 3.544 0 0 1-.686-.45l-.045-.04-.016-.015-.006-.006-.004-.004v-.001a.75.75 0 0 1-.154-.838L2.178 4.5H1.75a.75.75 0 0 1 0-1.5h2.234a.249.249 0 0 0 .125-.033l1.288-.737c.265-.15.564-.23.869-.23h.984V.75a.75.75 0 0 1 1.5 0Zm2.945 8.477c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L13 6.327Zm-10 0c.285.135.718.273 1.305.273s1.02-.138 1.305-.273L3 6.327Z"></path>
+    </svg>
+         Apache-2.0 license
+        </a>
+      </div>
+    <include-fragment src="/erlef/rebar3_hex/hovercards/citation/sidebar_partial?tree_name=main" class="is-error">
+    </include-fragment>
+    <h3 class="sr-only">Stars</h3>
+    <div class="mt-2">
+      <a href="/erlef/rebar3_hex/stargazers" data-view-component="true" class="Link--muted">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star mr-2">
+        <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+    </svg>
+        <strong>91</strong>
+        stars
+    </a></div>
+    <h3 class="sr-only">Watchers</h3>
+    <div class="mt-2">
+      <a href="/erlef/rebar3_hex/watchers" data-view-component="true" class="Link--muted">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye mr-2">
+        <path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path>
+    </svg>
+        <strong>13</strong>
+        watching
+    </a></div>
+    <h3 class="sr-only">Forks</h3>
+    <div class="mt-2">
+      <a href="/erlef/rebar3_hex/forks" data-view-component="true" class="Link--muted">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2">
+        <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+    </svg>
+        <strong>51</strong>
+        forks
+    </a></div>
+              </div>
+            </div>
+                <div class="BorderGrid-row">
+                  <div class="BorderGrid-cell">
+                    <h2 class="h4 mb-3" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame">
+      <a href="/erlef/rebar3_hex/releases" data-view-component="true" class="Link--primary no-underline" data-turbo-frame="repo-content-turbo-frame">
+        Releases
+          <span title="25" data-view-component="true" class="Counter">25</span>
+    </a></h2>
+      <a class="Link--primary d-flex no-underline" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/releases/tag/v7.0.6">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-tag flex-shrink-0 mt-1 color-fg-success">
+        <path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path>
+    </svg>
+        <div class="ml-2 min-width-0">
+          <div class="d-flex">
+            <span class="css-truncate css-truncate-target text-bold mr-2" style="max-width: none;">v7.0.6</span>
+            <span title="Label: Latest" data-view-component="true" class="Label Label--success flex-shrink-0">
+              Latest
+    </span>      </div>
+          <div class="text-small color-fg-muted"><relative-time datetime="2023-03-10T15:53:26Z" class="no-wrap" title="Mar 10, 2023, 10:53 PM GMT+7">Mar 10, 2023</relative-time></div>
+        </div>
+    </a>    <div data-view-component="true" class="mt-3">
+          <a text="small" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/erlef/rebar3_hex/releases" data-view-component="true">
+            + 24 releases
+    </a></div>
+                  </div>
+                </div>
+                <div class="BorderGrid-row">
+                  <div class="BorderGrid-cell">
+                    <h2 class="h4 mb-3">
+      <a href="/orgs/erlef/packages?repo_name=rebar3_hex" data-view-component="true" class="Link--primary no-underline">
+        Packages <span title="0" data-view-component="true" class="Counter" hidden="hidden">0</span>
+    </a></h2>
+          <div class="text-small color-fg-muted">
+            No packages published <br>
+          </div>
+                  </div>
+                </div>
+                <div class="BorderGrid-row" hidden="">
+                  <div class="BorderGrid-cell">
+                  </div>
+                </div>
+                <div class="BorderGrid-row">
+                  <div class="BorderGrid-cell">
+                    <h2 class="h4 mb-3">
+      <a href="/erlef/rebar3_hex/graphs/contributors" data-view-component="true" class="Link--primary no-underline">
+        Contributors <span title="30" data-view-component="true" class="Counter">30</span>
+    </a></h2>
+      <ul class="list-style-none d-flex flex-wrap mb-n2">
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/tsloughter" class="" data-hovercard-type="user" data-hovercard-url="/users/tsloughter/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/36227?s=64&amp;v=4" alt="@tsloughter" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/starbelly" class="" data-hovercard-type="user" data-hovercard-url="/users/starbelly/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/39971740?s=64&amp;v=4" alt="@starbelly" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/paulo-ferraz-oliveira" class="" data-hovercard-type="user" data-hovercard-url="/users/paulo-ferraz-oliveira/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/7303768?s=64&amp;v=4" alt="@paulo-ferraz-oliveira" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/ferd" class="" data-hovercard-type="user" data-hovercard-url="/users/ferd/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/111141?s=64&amp;v=4" alt="@ferd" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/g-andrade" class="" data-hovercard-type="user" data-hovercard-url="/users/g-andrade/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/7349502?s=64&amp;v=4" alt="@g-andrade" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/Licenser" class="" data-hovercard-type="user" data-hovercard-url="/users/Licenser/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/119093?s=64&amp;v=4" alt="@Licenser" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/ericmj" class="" data-hovercard-type="user" data-hovercard-url="/users/ericmj/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/316890?s=64&amp;v=4" alt="@ericmj" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/jkrukoff" class="" data-hovercard-type="user" data-hovercard-url="/users/jkrukoff/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/484614?s=64&amp;v=4" alt="@jkrukoff" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/jfacorro" class="" data-hovercard-type="user" data-hovercard-url="/users/jfacorro/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/1522569?s=64&amp;v=4" alt="@jfacorro" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/filmor" class="" data-hovercard-type="user" data-hovercard-url="/users/filmor/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/30848?s=64&amp;v=4" alt="@filmor" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+        <li class="mb-2 mr-2">
+          <a href="https://github.com/gleber" class="" data-hovercard-type="user" data-hovercard-url="/users/gleber/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self">
+            <img src="https://avatars.githubusercontent.com/u/33185?s=64&amp;v=4" alt="@gleber" size="32" data-view-component="true" class="avatar circle" width="32" height="32">
+          </a>
+        </li>
+    </ul>
+      <div data-view-component="true" class="mt-3">
+        <a text="small" href="/erlef/rebar3_hex/graphs/contributors" data-view-component="true">
+          + 19 contributors
+    </a></div>
+                  </div>
+                </div>
+                <div class="BorderGrid-row">
+                  <div class="BorderGrid-cell">
+                    <h2 class="h4 mb-3">Languages</h2>
+    <div class="mb-2">
+      <span data-view-component="true" class="Progress">
+        <span style="background-color:#B83998 !important;;width: 100.0%;" itemprop="keywords" aria-label="Erlang 100.0" data-view-component="true" class="Progress-item color-bg-success-emphasis"></span>
+    </span></div>
+    <ul class="list-style-none">
+        <li class="d-inline">
+            <a class="d-inline-flex flex-items-center flex-nowrap Link--secondary no-underline text-small mr-3" href="/erlef/rebar3_hex/search?l=erlang" data-ga-click="Repository, language stats search click, location:repo overview">
+              <svg style="color:#B83998;" aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-dot-fill mr-2">
+        <path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path>
+    </svg>
+              <span class="color-fg-default text-bold mr-1">Erlang</span>
+              <span>100.0%</span>
+            </a>
+        </li>
+    </ul>
+                  </div>
+                </div>
+                  </div>
+    </div>
+    </div></div>
+      </div>
+      </div>
+      </turbo-frame>
+</main>
