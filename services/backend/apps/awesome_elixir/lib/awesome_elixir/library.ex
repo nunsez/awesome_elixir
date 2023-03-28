@@ -4,8 +4,8 @@ defmodule AwesomeElixir.Library do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias AwesomeElixir.Repo
   alias AwesomeElixir.Category
+  alias AwesomeElixir.Repo
 
   @type t :: %__MODULE__{}
 
