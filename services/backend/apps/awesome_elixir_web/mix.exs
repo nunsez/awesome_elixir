@@ -41,7 +41,7 @@ defmodule AwesomeElixirWeb.MixProject do
       {:phoenix_html, "~> 3.3"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.18.16"},
-      {:floki, "~> 0.34.2", only: :test},
+      {:floki, "~> 0.34.2"},
       {:phoenix_live_dashboard, "~> 0.7.2"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
