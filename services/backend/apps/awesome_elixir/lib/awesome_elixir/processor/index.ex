@@ -15,8 +15,9 @@ defmodule AwesomeElixir.Processor.Index do
           repos: [repo_item()]
         }
 
-  def call(body) do
-    body
+  @spec call(Html.document()) :: [category_item()]
+  def call(document) do
+    document
     |> Html.find("article.markdown-body > *")
     |> Enum.reduce([], fn node, acc -> process(node, acc) end)
     |> Enum.reverse()
