@@ -14,6 +14,7 @@ defmodule AwesomeElixir.Library do
     field :last_commit, :utc_datetime
     field :name, :string
     field :stars, :integer
+    field :url, :string
     belongs_to :category, Category
 
     timestamps()
@@ -22,8 +23,8 @@ defmodule AwesomeElixir.Library do
   @doc false
   def changeset(library, attrs) do
     library
-    |> cast(attrs, [:name, :description, :stars, :last_commit])
-    |> validate_required([:name, :description, :stars, :last_commit])
+    |> cast(attrs, [:name, :url, :description, :stars, :last_commit])
+    |> validate_required([:name, :url, :description, :stars, :last_commit])
   end
 
   def insert(attrs) do

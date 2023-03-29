@@ -4,6 +4,7 @@ defmodule AwesomeElixir.Repo.Migrations.CreateLibraries do
   def change do
     create table(:libraries) do
       add :name, :string
+      add :url, :string
       add :description, :string
       add :stars, :integer
       add :last_commit, :utc_datetime
