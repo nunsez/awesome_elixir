@@ -2,15 +2,13 @@ defmodule AwesomeElixir.Processor.GithubRepo do
   @moduledoc false
 
   alias AwesomeElixir.Html
-  alias AwesomeElixir.Processor.Index
 
-  @spec call(Html.document(), Index.repo_item()) :: map()
-  def call(document, item) do
+  def call(%{"pushed_at" => pushed_at, "stargazers_count" => stargazers_count}) do
+    {:ok, datetime, _utc_offset} = DateTime.from_iso8601(pushed_at)
+
     %{
-      name: item.name,
-      description: item.description,
-      stars: extract_stars(document),
-      last_commit: extract_last_commit(document)
+      stars: stargazers_count,
+      last_commit: datetime
     }
   end
 
@@ -30,5 +28,13 @@ defmodule AwesomeElixir.Processor.GithubRepo do
       |> DateTime.from_iso8601()
 
     datetime
+  end
+
+  # "https://github.com/antonmi/ALF"
+  # "https://api.github.com/repos/antonmi/ALF"
+  # TODO: handle https://github.com/elixir-lang/elixir/wiki <- nested path
+  # TODO: handle https://github.com/benjamintanweihao/elixir-cheatsheets/ <- slash
+  def url_to_api_url(url) do
+    String.replace(url, "github.com", "api.github.com/repos")
   end
 end

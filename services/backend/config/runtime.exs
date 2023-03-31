@@ -81,3 +81,5 @@ if config_env() == :prod do
   #
   # Check `Plug.SSL` for all available options in `force_ssl`.
 end
+
+config :awesome_elixir, :github_token, System.get_env("GITHUB_TOKEN", "github_pat_xxx")

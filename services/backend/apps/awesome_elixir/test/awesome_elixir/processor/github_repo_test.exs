@@ -8,18 +8,15 @@ defmodule AwesomeElixir.Processor.GithubRepoTest do
   alias AwesomeElixir.Processor.GithubRepo
   alias AwesomeElixir.TestHelper, as: H
 
-  describe "call/2" do
-    test "1" do
-      doc = H.doc("github_rebar3_hex.html")
-      item = %{
-        name: "rebar3_hex",
-        description: "Hex.pm plugin for rebar3."
+  describe "call/1" do
+    test "works" do
+      info = %{
+        "pushed_at" => "2023-03-12T16:51:13Z",
+        "stargazers_count" => 91
       }
-      result = GithubRepo.call(doc, item)
+      result = GithubRepo.call(info)
 
       assert result == %{
-               name: "rebar3_hex",
-               description: "Hex.pm plugin for rebar3.",
                stars: 91,
                last_commit: ~U[2023-03-12 16:51:13Z]
              }
