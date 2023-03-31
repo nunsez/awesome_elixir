@@ -23,8 +23,8 @@ defmodule AwesomeElixir.Library do
   @doc false
   def changeset(library, attrs) do
     library
-    |> cast(attrs, [:name, :url, :description, :stars, :last_commit])
-    |> validate_required([:name, :url, :description, :stars, :last_commit])
+    |> cast(attrs, [:name, :url, :description, :stars, :last_commit, :category_id])
+    |> validate_required([:name, :url, :description])
   end
 
   def insert(attrs) do
