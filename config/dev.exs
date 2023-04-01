@@ -58,7 +58,7 @@ config :awesome_elixir, AwesomeElixirWeb.Endpoint,
 config :awesome_elixir, AwesomeElixirWeb.Endpoint,
   live_reload: [
     patterns: [
-      # ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      # ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$", # managed by vite dev server
       ~r"priv/gettext/.*(po)$",
       ~r"lib/awesome_elixir_web/(controllers|live|components)/.*(ex|heex)$"
     ]
