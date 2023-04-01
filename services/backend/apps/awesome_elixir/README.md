@@ -1,3 +1,0 @@
-# AwesomeElixir
-
-**TODO: Add description**
