@@ -41,10 +41,15 @@ defmodule AwesomeElixir.Processor do
     query = from(l in Library, where: like(l.url, "https://github.com/%"))
     libraries = Repo.all(query)
 
-    Task.async_stream(libraries, fn library ->
-      result = GithubClient.repo_api(library.url)
-      handle_api_response(result, library)
-    end, max_concurrency: GithubClient.pools_size()) |> Stream.run()
+    Task.async_stream(
+      libraries,
+      fn library ->
+        result = GithubClient.repo_api(library.url)
+        handle_api_response(result, library)
+      end,
+      max_concurrency: GithubClient.pools_size()
+    )
+    |> Stream.run()
   end
 
   def handle_api_response({:ok, info}, library) do
@@ -56,12 +61,15 @@ defmodule AwesomeElixir.Processor do
   end
 
   def handle_api_response({:error, :not_found}, library) do
-    IO.puts("Deleting #{library.url}")
-    Repo.delete(library)
+    IO.puts("Library not found #{library.url}")
   end
 
   def handle_api_response({:error, :server_error}, library) do
     IO.puts("Server error on #{library.url}")
+  end
+
+  def handle_api_response({:error, :invalid_url}, library) do
+    IO.puts("Invalid url #{library.url}")
   end
 
   def handle_repo({:ok, _library}) do
@@ -82,7 +90,11 @@ defmodule AwesomeElixir.Processor do
           nil -> %Library{url: repo_item.url}
           repo -> repo
         end
-        |> Library.changeset(%{name: repo_item.name, description: repo_item.description, category_id: category.id})
+        |> Library.changeset(%{
+          name: repo_item.name,
+          description: repo_item.description,
+          category_id: category.id
+        })
         |> Repo.insert_or_update()
 
       handle_repo(update_result)
@@ -98,7 +110,7 @@ defmodule AwesomeElixir.Processor do
   def delete_stale_categories(category_items) do
     import Ecto.Query, only: [from: 2]
 
-    existing_category_names = Enum.map(category_items, &(&1.name))
+    existing_category_names = Enum.map(category_items, & &1.name)
     query = from(c in Category, where: c.name not in ^existing_category_names)
     Repo.delete_all(query)
   end
@@ -107,8 +119,14 @@ defmodule AwesomeElixir.Processor do
   def delete_stale_repos(category, repos) do
     import Ecto.Query, only: [from: 2]
 
-    existing_repo_urls = Enum.map(repos, &(&1.url))
-    query = from(l in Library, where: l.category_id == ^category.id, where: l.url not in ^existing_repo_urls)
+    existing_repo_urls = Enum.map(repos, & &1.url)
+
+    query =
+      from(l in Library,
+        where: l.category_id == ^category.id,
+        where: l.url not in ^existing_repo_urls
+      )
+
     Repo.delete_all(query)
   end
 end

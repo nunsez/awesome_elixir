@@ -2,6 +2,7 @@ defmodule AwesomeElixir.GithubClient do
   @moduledoc false
 
   alias AwesomeElixir.Html
+  alias AwesomeElixir.Processor.GithubRepo
 
   def child_spec(opts) do
     %{
@@ -43,8 +44,18 @@ defmodule AwesomeElixir.GithubClient do
     Html.parse(response.body)
   end
 
+  @spec repo_api(url :: String.t()) ::
+          {:ok, map()} | {:error, :invalid_url} | {:error, :not_found} | {:error, :server_error}
   def repo_api(url) do
-    api_url = String.replace(url, "github.com", "api.github.com/repos")
+    api_url_result = GithubRepo.url_to_api_url(url)
+
+    case api_url_result do
+      {:ok, api_url} -> repo_response(api_url)
+      {:error, _reason} -> {:error, :invalid_url}
+    end
+  end
+
+  def repo_response(api_url) do
     response = response!(api_url, api_headers())
     json = Jason.decode!(response.body)
 

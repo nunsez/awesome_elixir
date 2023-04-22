@@ -7,7 +7,7 @@ defmodule AwesomeElixir.Category do
   alias AwesomeElixir.Library
   alias AwesomeElixir.Repo
 
-  @type t :: %__MODULE__{}
+  @type t() :: %__MODULE__{}
 
   schema "categories" do
     field :description, :string
