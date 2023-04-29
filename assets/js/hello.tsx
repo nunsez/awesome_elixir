@@ -1,7 +1,7 @@
 import { Component, createSignal } from "solid-js";
 import { render as solidRender } from "solid-js/web";
 
-import '../css/style.css';
+// import '../css/style.css';
 import typescriptLogo from "/images/typescript.svg";
 import viteLogo from "/images/vite.svg";
 import { MountableElement } from "solid-js/web";

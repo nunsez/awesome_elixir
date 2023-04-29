@@ -41,6 +41,8 @@ liveSocket.connect();
 // @ts-expect-error extend window
 window.liveSocket = liveSocket;
 
+import '../css/app.css';
+
 import { render as renderHello } from "./hello";
 
 const root = document.querySelector<HTMLDivElement>("#app");
