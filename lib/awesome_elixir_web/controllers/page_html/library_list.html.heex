@@ -13,12 +13,11 @@
       <span class="italic"><%= library.description %></span>
       <br />
 
-      <.icon name="hero-star" />
-      Stars: <%= library.stars |> delimit() %>
+      <.icon name="hero-star" /> Stars: <%= library.stars |> delimit() %>
       <br />
 
-      <.icon name="hero-command-line" />
       <% count = library |> days_from_last_commit() %>
+      <.icon name="hero-command-line" />
       Last commit: <%= count |> delimit() %> <%= count |> days() %> ago
     </li>
   </ul>

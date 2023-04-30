@@ -3,10 +3,10 @@
 <ul>
   <li :for={category <- @categories} class="my-1">
     <.link navigate={category_anchor(category)}>
-            <span class="font-semibold">
-                <%= category.name %>
-            </span>
-        </.link>:
+      <span class="font-semibold">
+          <%= category.name %>
+      </span>
+    </.link>:
     <span class="italic">
       <%= category.description %>
     </span>
