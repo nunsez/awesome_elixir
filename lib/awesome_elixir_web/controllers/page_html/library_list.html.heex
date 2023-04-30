@@ -1,0 +1,25 @@
+<h2 class="font-bold text-lg mt-3">List of Libraries</h2>
+
+<%= for category <- @categories do %>
+  <h3 id={category_id(category)} class="font-semibold text-lg"><%= category.name %></h3>
+
+  <ul class="space-y-4 my-4">
+    <li :for={library <- category.libraries}>
+      <h4 class="font-semibold">
+        <.link navigate={library.url} target="_blank"><%= library.name %></.link>
+      </h4>
+
+      <.icon name="hero-information-circle" />
+      <span class="italic"><%= library.description %></span>
+      <br />
+
+      <.icon name="hero-star" />
+      Stars: <%= library.stars |> delimit() %>
+      <br />
+
+      <.icon name="hero-command-line" />
+      <% count = library |> days_from_last_commit() %>
+      Last commit: <%= count |> delimit() %> <%= count |> days() %> ago
+    </li>
+  </ul>
+<% end %>
