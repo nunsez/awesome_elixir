@@ -5,12 +5,15 @@ defmodule AwesomeElixirWeb.Layouts do
 
   embed_templates "layouts/*"
 
-  @dev Mix.env() == :dev
-  def dev?, do: @dev
+  def preamble_prod(assigns) do
+    ~H"""
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+    """
+  end
 
-  defp vite_origin, do: "https://localhost:5173"
-
-  def preamble(assigns, true) do
+  def preamble_dev(assigns) do
     ~H"""
     <script type="module" src={vite_origin() <> "/@vite/client"}>
     </script>
@@ -19,11 +22,5 @@ defmodule AwesomeElixirWeb.Layouts do
     """
   end
 
-  def preamble(assigns, false) do
-    ~H"""
-    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
-    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
-    </script>
-    """
-  end
+  defp vite_origin, do: "https://localhost:5173"
 end

@@ -7,7 +7,12 @@
     <.live_title suffix=" · Phoenix Framework">
       <%= assigns[:page_title] || "AwesomeElixir" %>
     </.live_title>
-    <%= preamble(assigns, dev?()) %>
+
+    <%= if Mix.env() == :dev do %>
+      <.preamble_dev />
+    <% else %>
+      <.preamble_prod />
+    <% end %>
   </head>
   <body class="bg-white antialiased">
     <%= @inner_content %>
