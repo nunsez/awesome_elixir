@@ -48,6 +48,7 @@ defmodule AwesomeElixir.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:finch, "~> 0.15.0"},
+      {:oban, "~> 2.15"},
 
       # dev and test
       {:dialyxir, "~> 1.2", only: [:dev, :test], runtime: false},
