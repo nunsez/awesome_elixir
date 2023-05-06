@@ -27,8 +27,13 @@ defmodule AwesomeElixirWeb.PageHTML do
 
   @spec days_from_last_commit(library :: Library.t()) :: integer()
   def days_from_last_commit(%Library{} = library) do
+    ceil(hours_from_last_commit(library) / 24)
+  end
+
+  @spec hours_from_last_commit(library :: Library.t()) :: integer()
+  def hours_from_last_commit(%Library{} = library) do
     DateTime.utc_now()
-    |> DateTime.diff(library.last_commit, :day)
+    |> DateTime.diff(library.last_commit, :hour)
   end
 
   @spec delimit(number :: integer()) :: String.t()
