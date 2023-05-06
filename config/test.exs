@@ -22,3 +22,6 @@ config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# To prevent Oban from running jobs and plugins during test runs, enable :testing mode in test.exs
+config :awesome_elixir, Oban, testing: :inline
