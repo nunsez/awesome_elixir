@@ -76,3 +76,13 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Config Oban - job processing library
+config :awesome_elixir, Oban,
+  plugins: [
+    {Oban.Plugins.Cron,
+      crontab: [
+        # At 00:00
+        {"0 0 * * *", AwesomeElixir.Jobs.SyncCategories}
+      ]}
+  ]
