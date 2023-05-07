@@ -4,7 +4,6 @@ defmodule AwesomeElixir.Processor.IndexTest do
   use ExUnit.Case, async: true
   doctest AwesomeElixir.Processor.Index
 
-  # alias AwesomeElixir.Html
   alias AwesomeElixir.Processor.Index
   alias AwesomeElixir.TestHelper, as: H
 

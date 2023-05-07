@@ -4,9 +4,7 @@ defmodule AwesomeElixir.Processor.GithubRepoTest do
   use ExUnit.Case, async: true
   doctest AwesomeElixir.Processor.GithubRepo
 
-  # alias AwesomeElixir.Html
   alias AwesomeElixir.Processor.GithubRepo
-  alias AwesomeElixir.TestHelper, as: H
 
   describe "call/1" do
     test "works" do
