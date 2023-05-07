@@ -79,6 +79,9 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Config Oban - job processing library
 config :awesome_elixir, Oban,
+  queues: [
+    synchronization: [limit: 1, paused: true]
+  ],
   plugins: [
     {Oban.Plugins.Cron,
      crontab: [

@@ -2,6 +2,7 @@ defmodule AwesomeElixir.Jobs.SyncCategories do
   @moduledoc false
 
   use Oban.Worker,
+    queue: :synchronization,
     max_attempts: 2,
     unique: [period: 12 * 60 * 60]
 
