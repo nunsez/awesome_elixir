@@ -8,6 +8,8 @@ defmodule AwesomeElixir.Processor do
   alias AwesomeElixir.Processor.Index
   alias AwesomeElixir.Repo
 
+  require Logger
+
   def sync_categories do
     document = GithubClient.index_doc()
     category_items = Index.call(document)
@@ -23,7 +25,7 @@ defmodule AwesomeElixir.Processor do
         |> Category.changeset(%{description: category_item.description})
         |> Repo.insert_or_update()
 
-      handle_repos(update_result, category_item.repos)
+      handle_update_libraries(update_result, category_item.repos)
     end
 
     sync_libraries()
@@ -60,29 +62,12 @@ defmodule AwesomeElixir.Processor do
     |> Repo.insert_or_update()
   end
 
-  def handle_api_response({:error, :not_found}, library) do
-    IO.puts("Library not found #{library.url}")
+  def handle_api_response({:error, reason}, library) do
+    Logger.error("#{reason} #{library.url}")
   end
 
-  def handle_api_response({:error, :server_error}, library) do
-    IO.puts("Server error on #{library.url}")
-  end
-
-  def handle_api_response({:error, :invalid_url}, library) do
-    IO.puts("Invalid url #{library.url}")
-  end
-
-  def handle_repo({:ok, _library}) do
-    # do nothing
-  end
-
-  def handle_repo({:error, changeset}) do
-    dd = Map.get(changeset.changes, :url) || Map.get(changeset.data, :url)
-    IO.inspect(dd)
-  end
-
-  def handle_repos({:ok, category}, repos) do
-    delete_stale_repos(category, repos)
+  def handle_update_libraries({:ok, category}, repos) do
+    delete_stale_libraries(category, repos)
 
     for repo_item <- repos do
       update_result =
@@ -97,13 +82,24 @@ defmodule AwesomeElixir.Processor do
         })
         |> Repo.insert_or_update()
 
-      handle_repo(update_result)
+      handle_update_library(update_result)
     end
   end
 
-  def handle_repos({:error, changeset}, _repos) do
-    dd = Map.get(changeset.changes, :name) || Map.get(changeset.data, :name)
-    IO.inspect(dd)
+  def handle_update_libraries({:error, changeset}, _repos) do
+    name = Map.get(changeset.changes, :name) || Map.get(changeset.data, :name)
+
+    Logger.error("Category sync error: #{name}")
+  end
+
+  def handle_update_library({:ok, _library}) do
+    # do nothing
+  end
+
+  def handle_update_library({:error, changeset}) do
+    repo_url = Map.get(changeset.changes, :url) || Map.get(changeset.data, :url)
+
+    Logger.error("Library update error: #{repo_url}")
   end
 
   @spec delete_stale_categories([Index.category_item()]) :: any()
@@ -115,8 +111,8 @@ defmodule AwesomeElixir.Processor do
     Repo.delete_all(query)
   end
 
-  @spec delete_stale_repos(Category.t(), [Index.repo_item()]) :: any()
-  def delete_stale_repos(category, repos) do
+  @spec delete_stale_libraries(Category.t(), [Index.repo_item()]) :: any()
+  def delete_stale_libraries(category, repos) do
     import Ecto.Query, only: [from: 2]
 
     existing_repo_urls = Enum.map(repos, & &1.url)

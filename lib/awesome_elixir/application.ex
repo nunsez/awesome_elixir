@@ -12,10 +12,8 @@ defmodule AwesomeElixir.Application do
       AwesomeElixirWeb.Telemetry,
       # Start the Ecto repository
       AwesomeElixir.Repo,
-
       AwesomeElixir.GithubClient,
       AwesomeElixir.JobSupervisor,
-
       # Start the PubSub system
       {Phoenix.PubSub, name: AwesomeElixir.PubSub},
       # Start the Endpoint (http/https)

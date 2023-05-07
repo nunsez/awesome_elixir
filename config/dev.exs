@@ -81,8 +81,8 @@ config :phoenix, :plug_init_mode, :runtime
 config :awesome_elixir, Oban,
   plugins: [
     {Oban.Plugins.Cron,
-      crontab: [
-        # At 00:00
-        {"0 0 * * *", AwesomeElixir.Jobs.SyncCategories}
-      ]}
+     crontab: [
+       # At 00:00
+       {"0 0 * * *", AwesomeElixir.Jobs.SyncCategories}
+     ]}
   ]

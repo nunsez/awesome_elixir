@@ -1,6 +1,8 @@
 defmodule AwesomeElixir.GithubClient do
   @moduledoc false
 
+  alias AwesomeElixir.GithubClient.JsonRequest
+  alias AwesomeElixir.GithubClient.Request
   alias AwesomeElixir.Html
   alias AwesomeElixir.Processor.GithubRepo
 
@@ -27,80 +29,26 @@ defmodule AwesomeElixir.GithubClient do
   def index_doc do
     url = "https://github.com/h4cc/awesome-elixir"
     headers = [{"content-type", "text/html"}]
-    response = response!(url, headers)
+    {:ok, response} = Request.get(url, headers)
 
     Html.parse(response.body)
   end
 
-  @spec repo_doc(String.t()) :: Html.document()
-  def repo_doc(url) do
-    headers = [{"content-type", "text/html"}]
-
-    {:ok, response} =
-      :get
-      |> Finch.build(url, headers)
-      |> Finch.request(__MODULE__)
-
-    Html.parse(response.body)
-  end
-
-  @spec repo_api(url :: String.t()) ::
-          {:ok, map()} | {:error, :invalid_url} | {:error, :not_found} | {:error, :server_error}
+  @spec repo_api(url :: String.t()) :: {:ok, map()} | {:error, any()}
   def repo_api(url) do
-    api_url_result = GithubRepo.url_to_api_url(url)
+    url_result = GithubRepo.url_to_api_url(url)
 
-    case api_url_result do
-      {:ok, api_url} -> repo_response(api_url)
-      {:error, _reason} -> {:error, :invalid_url}
+    case url_result do
+      {:ok, api_url} -> JsonRequest.get(api_url)
+      error -> error
     end
   end
 
-  def repo_response(api_url) do
-    response = response!(api_url, api_headers())
-    json = Jason.decode!(response.body)
-
-    case response.status do
-      status when status >= 300 and status < 400 ->
-        response2 = response!(json["url"], api_headers())
-        json = Jason.decode!(response2.body)
-        {:ok, json}
-
-      status when status >= 400 and status < 500 ->
-        {:error, :not_found}
-
-      status when status >= 500 and status < 600 ->
-        {:error, :server_error}
-
-      _ ->
-        {:ok, json}
-    end
-  end
-
-  @spec api_headers(String.t() | nil) :: [{String.t(), String.t()}]
-  def api_headers(_github_token \\ nil) do
-    github_token = Application.get_env(:awesome_elixir, :github_token)
-
-    [
-      {"Accept", "application/vnd.github+json"},
-      {"Authorization", "Bearer #{github_token}"},
-      {"X-GitHub-Api-Version", "2022-11-28", "ds"}
-    ]
-  end
-
+  @spec rate_limit() :: map()
   def rate_limit do
     url = "https://api.github.com/rate_limit"
-    response = response!(url, api_headers())
+    {:ok, response} = JsonRequest.get(url)
 
     Jason.decode!(response.body)
-  end
-
-  @spec response!(String.t(), [{String.t(), String.t()}], map() | nil) :: Finch.Response.t()
-  def response!(url, headers, body \\ nil) do
-    {:ok, response} =
-      :get
-      |> Finch.build(url, headers, body)
-      |> Finch.request(__MODULE__)
-
-    response
   end
 end
