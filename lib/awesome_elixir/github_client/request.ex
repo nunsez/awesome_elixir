@@ -2,8 +2,8 @@ defmodule AwesomeElixir.GithubClient.Request do
   @moduledoc false
 
   @spec api_headers(String.t() | nil) :: [{String.t(), String.t()}]
-  def api_headers(_github_token \\ nil) do
-    github_token = Application.get_env(:awesome_elixir, :github_token)
+  def api_headers(token \\ nil) do
+    github_token = token || Application.get_env(:awesome_elixir, :github_token)
 
     [
       {"Accept", "application/vnd.github+json"},
