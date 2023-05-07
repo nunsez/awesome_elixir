@@ -17,6 +17,6 @@ defmodule AwesomeElixir.GithubClient.Request do
   def get(url, headers, body \\ nil) do
     :get
     |> Finch.build(url, headers, body)
-    |> Finch.request(__MODULE__)
+    |> Finch.request(AwesomeElixir.GithubClient)
   end
 end

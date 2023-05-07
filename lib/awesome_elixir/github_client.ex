@@ -47,8 +47,8 @@ defmodule AwesomeElixir.GithubClient do
   @spec rate_limit() :: map()
   def rate_limit do
     url = "https://api.github.com/rate_limit"
-    {:ok, response} = JsonRequest.get(url)
+    {:ok, json} = JsonRequest.get(url)
 
-    Jason.decode!(response.body)
+    json
   end
 end
