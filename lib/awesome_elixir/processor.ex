@@ -1,32 +1,47 @@
 defmodule AwesomeElixir.Processor do
   @moduledoc false
 
-  alias AwesomeElixir.Category
+  alias AwesomeElixir.Context
+  alias AwesomeElixir.Context.Category
+  alias AwesomeElixir.Context.Library
   alias AwesomeElixir.GithubClient
-  alias AwesomeElixir.Library
   alias AwesomeElixir.Processor.GithubRepo
   alias AwesomeElixir.Processor.Index
   alias AwesomeElixir.Repo
 
   require Logger
 
+  def category_attributes(category_item) do
+    %{
+      name: category_item.name,
+      description: category_item.description
+    }
+  end
+
+  def sync_category(category_item) do
+    attrs = category_attributes(category_item)
+
+    update_result =
+      case Repo.get_by(Category, name: category_item.name) do
+        nil ->
+          Context.create_category(attrs)
+
+        category ->
+          Context.update_category(category, attrs)
+      end
+
+    handle_update_libraries(update_result, category_item.repos)
+  end
+
   def sync_categories do
     document = GithubClient.index_doc()
     category_items = Index.call(document)
 
-    delete_stale_categories(category_items)
+    category_items
+    |> Enum.map(& &1.name)
+    |> Context.delete_stale_categories()
 
-    for category_item <- category_items do
-      update_result =
-        case Repo.get_by(Category, name: category_item.name) do
-          nil -> %Category{name: category_item.name}
-          category -> category
-        end
-        |> Category.changeset(%{description: category_item.description})
-        |> Repo.insert_or_update()
-
-      handle_update_libraries(update_result, category_item.repos)
-    end
+    Enum.each(category_items, &sync_category/1)
 
     sync_libraries()
 
@@ -55,11 +70,9 @@ defmodule AwesomeElixir.Processor do
   end
 
   def handle_api_response({:ok, info}, library) do
-    %{stars: stars, last_commit: last_commit} = GithubRepo.call(info)
+    attrs = GithubRepo.call(info)
 
-    library
-    |> Library.changeset(%{stars: stars, last_commit: last_commit})
-    |> Repo.insert_or_update()
+    Context.update_library(library, attrs)
   end
 
   def handle_api_response({:error, reason}, library) do
@@ -100,15 +113,6 @@ defmodule AwesomeElixir.Processor do
     repo_url = Map.get(changeset.changes, :url) || Map.get(changeset.data, :url)
 
     Logger.error("Library update error: #{repo_url}")
-  end
-
-  @spec delete_stale_categories([Index.category_item()]) :: any()
-  def delete_stale_categories(category_items) do
-    import Ecto.Query, only: [from: 2]
-
-    existing_category_names = Enum.map(category_items, & &1.name)
-    query = from(c in Category, where: c.name not in ^existing_category_names)
-    Repo.delete_all(query)
   end
 
   @spec delete_stale_libraries(Category.t(), [Index.repo_item()]) :: any()
