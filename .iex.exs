@@ -1,6 +1,6 @@
 require Ecto.Query
 
+alias AwesomeElixir.Context.Category
+alias AwesomeElixir.Context.Library
 alias AwesomeElixir.GithubClient
-alias AwesomeElixir.Category
-alias AwesomeElixir.Library
 alias AwesomeElixir.Repo

@@ -1,10 +1,10 @@
-defmodule AwesomeElixir.Library do
+defmodule AwesomeElixir.Context.Library do
   @moduledoc false
 
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias AwesomeElixir.Category
+  alias AwesomeElixir.Context.Category
   alias AwesomeElixir.Repo
 
   @type t() :: %__MODULE__{}
@@ -25,6 +25,7 @@ defmodule AwesomeElixir.Library do
     library
     |> cast(attrs, [:name, :url, :description, :stars, :last_commit, :category_id])
     |> validate_required([:name, :url, :description])
+    |> assoc_constraint(:category)
   end
 
   def insert(attrs) do

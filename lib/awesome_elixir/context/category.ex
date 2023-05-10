@@ -1,10 +1,10 @@
-defmodule AwesomeElixir.Category do
+defmodule AwesomeElixir.Context.Category do
   @moduledoc false
 
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias AwesomeElixir.Library
+  alias AwesomeElixir.Context.Library
   alias AwesomeElixir.Repo
 
   @type t() :: %__MODULE__{}
