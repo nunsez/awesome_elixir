@@ -13,8 +13,26 @@ defmodule AwesomeElixir.ContextTest do
   describe "libraries" do
     @invalid_attrs %{name: nil, url: nil, description: nil}
 
+    test "get_library_by/1 returns category" do
+      library = ContextFixtures.create_library()
+
+      assert Context.get_library_by(url: library.url) == library
+    end
+
+    test "get_library_by/1 returns nil" do
+      refute Context.get_library_by(name: "non-existent")
+    end
+
+    test "get_library_by/1 throws when more than 1 category" do
+      ContextFixtures.create_library(url: "dup")
+      ContextFixtures.create_library(url: "dup")
+
+      assert_raise Ecto.MultipleResultsError, fn -> Context.get_library_by(url: "dup") end
+    end
+
     test "create_library/1 with valid data creates library" do
       category = ContextFixtures.create_category()
+
       valid_attrs = %{
         name: "some name",
         url: "https://example.com/acc/repo",
@@ -53,6 +71,23 @@ defmodule AwesomeElixir.ContextTest do
 
   describe "categories" do
     @invalid_attrs %{name: nil, description: nil}
+
+    test "get_category_by/1 returns category" do
+      category = ContextFixtures.create_category()
+
+      assert Context.get_category_by(name: category.name) == category
+    end
+
+    test "get_category_by/1 returns nil" do
+      refute Context.get_category_by(name: "non-existent")
+    end
+
+    test "get_category_by/1 throws when more than 1 category" do
+      ContextFixtures.create_category(name: "dup")
+      ContextFixtures.create_category(name: "dup")
+
+      assert_raise Ecto.MultipleResultsError, fn -> Context.get_category_by(name: "dup") end
+    end
 
     test "create_category/1 with valid data creates category" do
       valid_attrs = %{name: "some name", description: "some desc"}
@@ -109,6 +144,26 @@ defmodule AwesomeElixir.ContextTest do
       categories = Context.categories("foo")
 
       assert Enum.count(categories) == 2
+    end
+
+    test "delete_stale_categories/1 deletes categories with libraries" do
+      category = ContextFixtures.create_category_with_libraries(%{}, 2)
+      [library | _] = category.libraries
+
+      Context.delete_stale_categories(["require at least one name"])
+
+      refute Context.get_category_by(name: category.name)
+      refute Context.get_library_by(url: library.url)
+    end
+
+    test "delete_stale_categories/1 skip deleting when names are empty" do
+      category = ContextFixtures.create_category_with_libraries(%{}, 2)
+      [library | _] = category.libraries
+
+      Context.delete_stale_categories([])
+
+      assert %Category{} = Context.get_category_by(name: category.name)
+      assert %Library{} = Context.get_library_by(url: library.url)
     end
   end
 end

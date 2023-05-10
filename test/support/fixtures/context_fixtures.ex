@@ -51,8 +51,10 @@ defmodule AwesomeElixir.ContextFixtures do
 
   @spec category_attributes(overrides :: map() | none()) :: map()
   def category_attributes(overrides \\ %{}) do
+    name = "category-" <> secure_random(4)
+
     Enum.into(overrides, %{
-      name: "Category name",
+      name: name,
       description: "Awesome description"
     })
   end
@@ -69,12 +71,20 @@ defmodule AwesomeElixir.ContextFixtures do
 
   @spec library_attributes(overrides :: map() | none()) :: map()
   def library_attributes(overrides \\ %{}) do
+    name = "library-" <> secure_random(4)
+
     Enum.into(overrides, %{
       description: "Awesome description",
       last_commit: DateTime.add(DateTime.utc_now(), -7, :day),
-      name: "library_name",
+      name: name,
       stars: 50,
-      url: "https://example.com/account/library_name"
+      url: "https://example.com/account/#{name}"
     })
+  end
+
+  defp secure_random(n) do
+    :crypto.strong_rand_bytes(n)
+    |> Base.encode64()
+    |> Base.url_encode64(padding: false)
   end
 end

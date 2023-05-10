@@ -4,6 +4,7 @@ defmodule AwesomeElixir.Context do
   import Ecto.Query
 
   alias AwesomeElixir.Context.Category
+  alias AwesomeElixir.Context.CategoryQueries
   alias AwesomeElixir.Context.Library
   alias AwesomeElixir.Repo
 
@@ -86,5 +87,56 @@ defmodule AwesomeElixir.Context do
   @spec no_libraries?(category :: Category.t()) :: boolean()
   def no_libraries?(category) do
     Enum.empty?(category.libraries)
+  end
+
+  @spec delete_stale_categories(existing_category_names :: [String.t()]) :: :ok
+  def delete_stale_categories([]), do: :ok
+
+  def delete_stale_categories(existing_category_names) when is_list(existing_category_names) do
+    category_ids =
+      Category
+      |> CategoryQueries.stale_categories(existing_category_names)
+      |> select([c], {c.id})
+
+    categories_library_urls =
+      Library
+      |> where([l], l.category_id in subquery(category_ids))
+      |> select([l], {l.url})
+
+    Repo.transaction(fn ->
+      Repo.delete_all(categories_library_urls)
+      Repo.delete_all(category_ids)
+    end)
+
+    :ok
+  end
+
+  # TODO: write tests
+  @spec delete_stale_libraries(category_name :: String.t(), library_urls :: [String.t()]) :: :ok
+  def delete_stale_libraries(category_name, existing_library_urls)
+      when is_binary(category_name) and is_list(existing_library_urls) do
+    category_id =
+      Category
+      |> where([c], c.name == ^category_name)
+      |> select([l], {l.url})
+
+    libraries =
+      Library
+      |> where([l], l.category_id == subquery(category_id))
+      |> where([l], l.url not in ^existing_library_urls)
+
+    Repo.delete_all(libraries)
+
+    :ok
+  end
+
+  @spec get_category_by(clauses :: keyword()) :: Category.t() | nil
+  def get_category_by(clauses) when is_list(clauses) do
+    Repo.get_by(Category, clauses)
+  end
+
+  @spec get_library_by(clauses :: keyword()) :: Library.t() | nil
+  def get_library_by(clauses) when is_list(clauses) do
+    Repo.get_by(Library, clauses)
   end
 end
