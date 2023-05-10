@@ -1,9 +1,9 @@
 defmodule AwesomeElixirWeb.PageHTML do
   use AwesomeElixirWeb, :html
 
-  alias AwesomeElixir.Category
+  alias AwesomeElixir.Context.Category
+  alias AwesomeElixir.Context.Library
   alias AwesomeElixir.Delimiter
-  alias AwesomeElixir.Library
   alias AwesomeElixirWeb.Gettext
   alias Phoenix.LiveComponent
 
