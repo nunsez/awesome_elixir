@@ -20,7 +20,7 @@ defmodule AwesomeElixir.MixProject do
   def application do
     [
       mod: {AwesomeElixir.Application, []},
-      extra_applications: [:logger, :runtime_tools, :os_mon]
+      extra_applications: extra_applications(Mix.env())
     ]
   end
 
@@ -75,5 +75,13 @@ defmodule AwesomeElixir.MixProject do
     [
       plt_add_apps: [:mix, :ex_unit]
     ]
+  end
+
+  defp extra_applications(:test) do
+    [:logger]
+  end
+
+  defp extra_applications(_) do
+    [:logger, :runtime_tools, :os_mon]
   end
 end
