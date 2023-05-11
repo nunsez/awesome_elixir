@@ -1,4 +1,4 @@
-defmodule AwesomeElixir.Jobs.SyncCategories do
+defmodule AwesomeElixir.Jobs.SyncContent do
   @moduledoc false
 
   use Oban.Worker,
@@ -8,7 +8,7 @@ defmodule AwesomeElixir.Jobs.SyncCategories do
 
   @impl Oban.Worker
   def perform(%Oban.Job{}) do
-    AwesomeElixir.Processor.sync_categories()
+    AwesomeElixir.Processor.call()
 
     :ok
   end

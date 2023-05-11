@@ -86,6 +86,6 @@ config :awesome_elixir, Oban,
     {Oban.Plugins.Cron,
      crontab: [
        # At 00:00
-       {"0 0 * * *", AwesomeElixir.Jobs.SyncCategories}
+       {"0 0 * * *", AwesomeElixir.Jobs.SyncContent}
      ]}
   ]
