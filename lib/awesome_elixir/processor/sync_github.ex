@@ -35,10 +35,12 @@ defmodule AwesomeElixir.Processor.SyncGithub do
     |> Stream.run()
   end
 
+  @spec with_url_prefix(string :: String.t()) :: String.t()
   def with_url_prefix(string) when is_binary(string) do
     url_prefix() <> string
   end
 
+  @spec url_prefix() :: String.t()
   def url_prefix, do: "https://github.com/"
 
   @spec github_libraries() :: [Library.t()]
@@ -60,6 +62,10 @@ defmodule AwesomeElixir.Processor.SyncGithub do
     |> handle_api_response(library)
   end
 
+  @spec handle_api_response(
+          response :: {:ok, map()} | {:error, any()},
+          library :: Library.t()
+        ) :: {:ok, Library.t()} | {:error, any()}
   def handle_api_response({:ok, info}, library) do
     attrs = GithubRepo.call(info)
 
