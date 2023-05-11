@@ -10,17 +10,15 @@ defmodule AwesomeElixir.Processor do
   alias AwesomeElixir.Processor.SyncGithub
   alias AwesomeElixir.Repo
 
-  defstruct [
-    fetch_categories: &__MODULE__.fetch_categories/0,
-    delete_stale_categories: &Context.delete_stale_categories/1,
-    sync_category: &SyncCategory.call/1,
-  ]
+  defstruct fetch_categories: &__MODULE__.fetch_categories/0,
+            delete_stale_categories: &Context.delete_stale_categories/1,
+            sync_category: &SyncCategory.call/1
 
   @type t() :: %__MODULE__{
-    fetch_categories: (() -> [Index.category_item()]),
-    delete_stale_categories: (([String.t()]) -> :ok),
-    sync_category: ((Index.category_item()) -> :ok)
-  }
+          fetch_categories: (() -> [Index.category_item()]),
+          delete_stale_categories: ([String.t()] -> :ok),
+          sync_category: (Index.category_item() -> :ok)
+        }
 
   @spec new(overrides :: map()) :: t()
   def new(overrides \\ %{}) do
