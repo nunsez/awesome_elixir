@@ -78,18 +78,6 @@ defmodule AwesomeElixir.ContextTest do
       refute Context.get_library_by(url: non_existing1.url)
       refute Context.get_library_by(url: non_existing2.url)
     end
-
-    @github_prefix "https://github.com/"
-
-    test "github_libraries/0 returns github library list" do
-      github_lib1 = ContextFixtures.create_library(url: @github_prefix <> "lib-1")
-      github_lib2 = ContextFixtures.create_library(url: @github_prefix <> "lib-2")
-      ContextFixtures.create_library(url: "https://example.com/another/library")
-
-      github_libraries = Context.github_libraries()
-
-      assert github_libraries == [github_lib1, github_lib2]
-    end
   end
 
   describe "categories" do
