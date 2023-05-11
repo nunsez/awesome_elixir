@@ -9,11 +9,27 @@ defmodule AwesomeElixir.Processor.SyncGithub do
   alias AwesomeElixir.Processor.GithubRepo
   alias AwesomeElixir.Repo
 
+  defstruct github_libraries: &__MODULE__.github_libraries/0,
+            repo_api: &GithubClient.repo_api/1
+
+  @type t() :: %__MODULE__{
+          github_libraries: (() -> [Library.t()]),
+          repo_api: (String.t() -> {:ok, map()} | {:error, any()})
+        }
+
+  @spec new(overrides :: map()) :: t()
+  def new(overrides \\ %{}) do
+    struct(__MODULE__, overrides)
+  end
+
   @spec call() :: :ok
-  def call do
-    github_libraries()
+  def call, do: call(new())
+
+  @spec call(opts :: t()) :: :ok
+  def call(%__MODULE__{} = opts) do
+    opts.github_libraries.()
     |> Task.async_stream(
-      &sync_github_library(&1),
+      &sync_github_library(&1, opts),
       max_concurrency: GithubClient.pool_size()
     )
     |> Stream.run()
@@ -36,19 +52,12 @@ defmodule AwesomeElixir.Processor.SyncGithub do
     |> Repo.all()
   end
 
-  @spec sync_github_library(library :: Library.t()) ::
+  @spec sync_github_library(library :: Library.t(), opts :: t()) ::
           {:ok, Library.t()} | {:error, Ecto.Changeset.t(Library.t())}
-  def sync_github_library(library) do
-    sync_github_library(library, &GithubClient.repo_api/1)
-  end
-
-  @spec sync_github_library(
-          library :: Library.t(),
-          api_worker :: (url :: String.t() -> {:ok, map()} | {:error, any()})
-        ) :: {:ok, Library.t()} | {:error, Ecto.Changeset.t(Library.t())}
-  def sync_github_library(library, api_worker) do
-    api_response = api_worker.(library.url)
-    handle_api_response(api_response, library)
+  def sync_github_library(library, opts) do
+    library.url
+    |> opts.repo_api.()
+    |> handle_api_response(library)
   end
 
   def handle_api_response({:ok, info}, library) do

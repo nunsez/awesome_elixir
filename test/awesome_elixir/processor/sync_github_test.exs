@@ -29,8 +29,10 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
         "pushed_at" => "2023-01-01T08:00:00Z"
       }
 
-      api_worker = fn _ -> {:ok, data} end
-      sync_result = SyncGithub.sync_github_library(initial_lib, api_worker)
+      repo_api = fn _ -> {:ok, data} end
+      opts = SyncGithub.new(%{repo_api: repo_api})
+
+      sync_result = SyncGithub.sync_github_library(initial_lib, opts)
 
       assert {:ok, %Library{} = updated_lib} = sync_result
       assert updated_lib.stars == 321
@@ -39,8 +41,10 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
 
     @tag capture_log: true
     test "do nothing when error" do
-      api_worker = fn _ -> {:error, :test_reason} end
-      sync_result = SyncGithub.sync_github_library(%Library{}, api_worker)
+      repo_api = fn _ -> {:error, :test_reason} end
+      opts = SyncGithub.new(%{repo_api: repo_api})
+
+      sync_result = SyncGithub.sync_github_library(%Library{}, opts)
 
       assert {:error, :test_reason} = sync_result
     end
