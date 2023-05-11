@@ -10,11 +10,16 @@ defmodule AwesomeElixir.Processor.SyncGithub do
   alias AwesomeElixir.Repo
 
   defstruct github_libraries: &__MODULE__.github_libraries/0,
-            repo_api: &GithubClient.repo_api/1
+            repo_api: &GithubClient.repo_api/1,
+            update_library: &Context.update_library/2,
+            github_repo_call: &GithubRepo.call/1
 
   @type t() :: %__MODULE__{
           github_libraries: (() -> [Library.t()]),
-          repo_api: (String.t() -> {:ok, map()} | {:error, any()})
+          repo_api: (String.t() -> {:ok, map()} | {:error, any()}),
+          update_library:
+            (Library.t(), map() -> {:ok, Library.t()} | {:error, Ecto.Changeset.t(Library.t())}),
+          github_repo_call: (map() -> GithubRepo.call_return())
         }
 
   @spec new(overrides :: map()) :: t()
@@ -57,24 +62,18 @@ defmodule AwesomeElixir.Processor.SyncGithub do
   @spec sync_github_library(library :: Library.t(), opts :: t()) ::
           {:ok, Library.t()} | {:error, Ecto.Changeset.t(Library.t())}
   def sync_github_library(library, opts) do
-    library.url
-    |> opts.repo_api.()
-    |> handle_api_response(library)
-  end
+    response_result = opts.repo_api.(library.url)
 
-  @spec handle_api_response(
-          response :: {:ok, map()} | {:error, any()},
-          library :: Library.t()
-        ) :: {:ok, Library.t()} | {:error, any()}
-  def handle_api_response({:ok, info}, library) do
-    attrs = GithubRepo.call(info)
+    case response_result do
+      {:ok, info} ->
+        attrs = opts.github_repo_call.(info)
+        opts.update_library.(library, attrs)
 
-    Context.update_library(library, attrs)
-  end
+      {:error, reason} ->
+        Logger.error("#{reason} #{library.url}")
 
-  def handle_api_response({:error, reason} = response, library) do
-    Logger.error("#{reason} #{library.url}")
-
-    response
+      _ ->
+        Logger.error("#{response_result} #{library.url}")
+    end
   end
 end

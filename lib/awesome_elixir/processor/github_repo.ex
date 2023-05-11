@@ -6,6 +6,12 @@ defmodule AwesomeElixir.Processor.GithubRepo do
           repo: String.t()
         }
 
+  @type call_return() :: %{
+    stars: non_neg_integer(),
+    last_commit: DateTime.t()
+  }
+
+  @spec call(info :: map()) :: call_return()
   def call(%{"pushed_at" => pushed_at, "stargazers_count" => stargazers_count}) do
     {:ok, datetime, _utc_offset} = DateTime.from_iso8601(pushed_at)
 

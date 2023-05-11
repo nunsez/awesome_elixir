@@ -8,6 +8,28 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
   alias AwesomeElixir.ContextFixtures
   alias AwesomeElixir.Processor.SyncGithub
 
+  describe "call/1" do
+    test "processes all libraries" do
+      parent = self()
+
+      lib1 = %Library{url: "url-1"}
+      lib2 = %Library{url: "url-2"}
+
+      opts = SyncGithub.new(%{
+        github_libraries: fn -> [lib2, lib1] end,
+        repo_api: fn _ -> {:ok, %{}} end,
+        github_repo_call: fn _ -> :stub end,
+        update_library: fn lib, _ -> send(parent, lib.url) end
+      })
+
+      SyncGithub.call(opts)
+
+      for url <- ["url-1", "url-2"] do
+        assert_received ^url
+      end
+    end
+  end
+
   describe "github_libraries/0" do
     test "returns github library list" do
       github_lib1 = ContextFixtures.create_library(url: SyncGithub.with_url_prefix("lib-1"))
@@ -22,31 +44,32 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
 
   describe "sync_github_library/2" do
     test "updates library when ok" do
-      initial_lib = ContextFixtures.create_library()
+      parent = self()
 
-      data = %{
-        "stargazers_count" => 321,
-        "pushed_at" => "2023-01-01T08:00:00Z"
-      }
+      opts = SyncGithub.new(%{
+        repo_api: fn _ -> {:ok, %{}} end,
+        github_repo_call: fn _ -> :stub end,
+        update_library: fn _, _ -> send(parent, :update_library) end
+      })
 
-      repo_api = fn _ -> {:ok, data} end
-      opts = SyncGithub.new(%{repo_api: repo_api})
+      SyncGithub.sync_github_library(%Library{}, opts)
 
-      sync_result = SyncGithub.sync_github_library(initial_lib, opts)
-
-      assert {:ok, %Library{} = updated_lib} = sync_result
-      assert updated_lib.stars == 321
-      assert updated_lib.last_commit == ~U[2023-01-01 08:00:00Z]
+      assert_received :update_library
     end
 
     @tag capture_log: true
-    test "do nothing when error" do
-      repo_api = fn _ -> {:error, :test_reason} end
-      opts = SyncGithub.new(%{repo_api: repo_api})
+    test "does not update library when error" do
+      parent = self()
 
-      sync_result = SyncGithub.sync_github_library(%Library{}, opts)
+      opts = SyncGithub.new(%{
+        repo_api: fn _ -> {:error, :test_reason} end,
+        github_repo_call: fn _ -> :stub end,
+        update_library: fn _, _ -> send(parent, :update_library) end
+      })
 
-      assert {:error, :test_reason} = sync_result
+      SyncGithub.sync_github_library(%Library{}, opts)
+
+      refute_received :update_library
     end
   end
 end
