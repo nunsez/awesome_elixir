@@ -3,38 +3,20 @@ defmodule AwesomeElixir.Processor.SyncGithub do
 
   require Logger
 
-  alias AwesomeElixir.Context
   alias AwesomeElixir.Context.Library
   alias AwesomeElixir.GithubClient
-  alias AwesomeElixir.Processor.GithubRepo
+  alias AwesomeElixir.Processor.SyncGithubActions
+  alias AwesomeElixir.Processor.SyncGithubDependencies
   alias AwesomeElixir.Repo
 
-  defstruct github_libraries: &__MODULE__.github_libraries/0,
-            repo_api: &GithubClient.repo_api/1,
-            update_library: &Context.update_library/2,
-            github_repo_call: &GithubRepo.call/1
-
-  @type t() :: %__MODULE__{
-          github_libraries: (() -> [Library.t()]),
-          repo_api: (String.t() -> {:ok, map()} | {:error, any()}),
-          update_library:
-            (Library.t(), map() -> {:ok, Library.t()} | {:error, Ecto.Changeset.t(Library.t())}),
-          github_repo_call: (map() -> GithubRepo.call_return())
-        }
-
-  @spec new(overrides :: map()) :: t()
-  def new(overrides \\ %{}) do
-    struct(__MODULE__, overrides)
-  end
-
   @spec call() :: :ok
-  def call, do: call(new())
+  def call, do: call(%SyncGithubDependencies{})
 
-  @spec call(opts :: t()) :: :ok
-  def call(%__MODULE__{} = opts) do
-    opts.github_libraries.()
+  @spec call(deps :: SyncGithubActions.t()) :: :ok
+  def call(deps) do
+    SyncGithubActions.github_libraries(deps)
     |> Task.async_stream(
-      &sync_github_library(&1, opts),
+      &sync_github_library(&1, deps),
       max_concurrency: GithubClient.pool_size()
     )
     |> Stream.run()
@@ -59,15 +41,15 @@ defmodule AwesomeElixir.Processor.SyncGithub do
     |> Repo.all()
   end
 
-  @spec sync_github_library(library :: Library.t(), opts :: t()) ::
+  @spec sync_github_library(library :: Library.t(), deps :: SyncGithubActions.t()) ::
           {:ok, Library.t()} | {:error, Ecto.Changeset.t(Library.t())}
-  def sync_github_library(library, opts) do
-    response_result = opts.repo_api.(library.url)
+  def sync_github_library(library, deps) do
+    response_result = SyncGithubActions.repo_api(deps, library.url)
 
     case response_result do
       {:ok, info} ->
-        attrs = opts.github_repo_call.(info)
-        opts.update_library.(library, attrs)
+        attrs = SyncGithubActions.github_repo_call(deps, info)
+        SyncGithubActions.update_library(deps, library, attrs)
 
       {:error, reason} ->
         Logger.error("#{reason} #{library.url}")

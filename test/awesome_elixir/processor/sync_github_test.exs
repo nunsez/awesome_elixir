@@ -7,6 +7,7 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
   alias AwesomeElixir.Context.Library
   alias AwesomeElixir.ContextFixtures
   alias AwesomeElixir.Processor.SyncGithub
+  alias AwesomeElixir.Processor.SyncGithubFakeDependencies
 
   describe "call/1" do
     test "processes all libraries" do
@@ -15,14 +16,13 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
       lib1 = %Library{url: "url-1"}
       lib2 = %Library{url: "url-2"}
 
-      opts = SyncGithub.new(%{
-        github_libraries: fn -> [lib2, lib1] end,
-        repo_api: fn _ -> {:ok, %{}} end,
-        github_repo_call: fn _ -> :stub end,
-        update_library: fn lib, _ -> send(parent, lib.url) end
-      })
+      deps =
+        SyncGithubFakeDependencies.new(%{
+          github_libraries: fn -> [lib2, lib1] end,
+          update_library: fn lib, _ -> send(parent, lib.url) end
+        })
 
-      SyncGithub.call(opts)
+      SyncGithub.call(deps)
 
       for url <- ["url-1", "url-2"] do
         assert_received ^url
@@ -46,13 +46,12 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
     test "updates library when ok" do
       parent = self()
 
-      opts = SyncGithub.new(%{
-        repo_api: fn _ -> {:ok, %{}} end,
-        github_repo_call: fn _ -> :stub end,
-        update_library: fn _, _ -> send(parent, :update_library) end
-      })
+      deps =
+        SyncGithubFakeDependencies.new(%{
+          update_library: fn _, _ -> send(parent, :update_library) end
+        })
 
-      SyncGithub.sync_github_library(%Library{}, opts)
+      SyncGithub.sync_github_library(%Library{}, deps)
 
       assert_received :update_library
     end
@@ -61,13 +60,13 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
     test "does not update library when error" do
       parent = self()
 
-      opts = SyncGithub.new(%{
-        repo_api: fn _ -> {:error, :test_reason} end,
-        github_repo_call: fn _ -> :stub end,
-        update_library: fn _, _ -> send(parent, :update_library) end
-      })
+      deps =
+        SyncGithubFakeDependencies.new(%{
+          repo_api: fn _ -> {:error, :test_reason} end,
+          update_library: fn _, _ -> send(parent, :update_library) end
+        })
 
-      SyncGithub.sync_github_library(%Library{}, opts)
+      SyncGithub.sync_github_library(%Library{}, deps)
 
       refute_received :update_library
     end
