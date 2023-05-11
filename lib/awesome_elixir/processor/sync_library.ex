@@ -6,9 +6,12 @@ defmodule AwesomeElixir.Processor.SyncLibrary do
   alias AwesomeElixir.Context
   alias AwesomeElixir.Context.Category
   alias AwesomeElixir.Processor.Index
+  alias AwesomeElixir.Processor.LibrarySyncer
 
-  @spec call(Index.repo_item(), Category.t()) :: :ok
-  def call(repo_item, category) do
+  defstruct []
+
+  @spec call(t :: struct(), Index.repo_item(), Category.t()) :: :ok
+  def call(t, repo_item, category) do
     actual_attributes = %{
       url: repo_item.url,
       name: repo_item.name,
@@ -17,12 +20,12 @@ defmodule AwesomeElixir.Processor.SyncLibrary do
     }
 
     update_result =
-      case Context.get_library_by(url: repo_item.url) do
+      case LibrarySyncer.get_library_by(t, url: repo_item.url) do
         nil ->
-          Context.create_library(actual_attributes)
+          LibrarySyncer.create_library(t, actual_attributes)
 
         library ->
-          Context.update_library(library, actual_attributes)
+          LibrarySyncer.update_library(t, library, actual_attributes)
       end
 
     handle_update_library(update_result)
@@ -38,5 +41,21 @@ defmodule AwesomeElixir.Processor.SyncLibrary do
     repo_url = Map.get(changeset.changes, :url) || Map.get(changeset.data, :url)
 
     Logger.error("Library update error: #{repo_url}")
+  end
+end
+
+defimpl AwesomeElixir.Processor.LibrarySyncer, for: AwesomeElixir.Processor.SyncLibrary do
+  alias AwesomeElixir.Context
+
+  def get_library_by(_t, clauses) do
+    Context.get_library_by(clauses)
+  end
+
+  def create_library(_t, attrs) do
+    Context.create_library(attrs)
+  end
+
+  def update_library(_t, library, attrs) do
+    Context.update_library(library, attrs)
   end
 end

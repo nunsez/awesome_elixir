@@ -12,14 +12,14 @@ defmodule AwesomeElixir.Processor do
 
   @spec call() :: :ok
   def call do
-    sync_categories()
+    sync_categories(%SyncCategory{})
     sync_libraries_data()
 
     :ok
   end
 
-  @spec sync_categories() :: :ok
-  def sync_categories do
+  @spec sync_categories(t :: struct()) :: :ok
+  def sync_categories(t) do
     category_items = fetch_categories()
 
     category_items
@@ -28,7 +28,7 @@ defmodule AwesomeElixir.Processor do
 
     category_items
     |> Task.async_stream(
-      &SyncCategory.call/1,
+      fn item -> SyncCategory.call(t, item) end,
       max_concurrency: pool_size()
     )
     |> Stream.run()
