@@ -111,18 +111,12 @@ defmodule AwesomeElixir.Context do
     :ok
   end
 
-  # TODO: write tests
-  @spec delete_stale_libraries(category_name :: String.t(), library_urls :: [String.t()]) :: :ok
-  def delete_stale_libraries(category_name, existing_library_urls)
-      when is_binary(category_name) and is_list(existing_library_urls) do
-    category_id =
-      Category
-      |> where([c], c.name == ^category_name)
-      |> select([l], {l.url})
-
+  @spec delete_stale_libraries(category_id :: pos_integer(), library_urls :: [String.t()]) :: :ok
+  def delete_stale_libraries(category_id, existing_library_urls)
+      when is_integer(category_id) and is_list(existing_library_urls) do
     libraries =
       Library
-      |> where([l], l.category_id == subquery(category_id))
+      |> where([l], l.category_id == ^category_id)
       |> where([l], l.url not in ^existing_library_urls)
 
     Repo.delete_all(libraries)

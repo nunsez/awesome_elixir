@@ -67,6 +67,17 @@ defmodule AwesomeElixir.ContextTest do
 
       assert {:error, %Ecto.Changeset{}} = Context.update_library(library, @invalid_attrs)
     end
+
+    test "delete_stale_libraries/2 deletes libraries" do
+      category = ContextFixtures.create_category_with_libraries(%{}, 3)
+      [non_existing1, existing_lib, non_existing2] = category.libraries
+
+      :ok = Context.delete_stale_libraries(category.id, [existing_lib.url])
+
+      assert Context.get_library_by(url: existing_lib.url)
+      refute Context.get_library_by(url: non_existing1.url)
+      refute Context.get_library_by(url: non_existing2.url)
+    end
   end
 
   describe "categories" do
