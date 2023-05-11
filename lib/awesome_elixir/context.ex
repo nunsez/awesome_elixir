@@ -89,6 +89,15 @@ defmodule AwesomeElixir.Context do
     Enum.empty?(category.libraries)
   end
 
+  @github_url_prefix "https://github.com/%"
+
+  @spec github_libraries() :: [Library.t()]
+  def github_libraries do
+    Library
+    |> where([l], like(l.url, @github_url_prefix))
+    |> Repo.all()
+  end
+
   @spec delete_stale_categories(existing_category_names :: [String.t()]) :: :ok
   def delete_stale_categories([]), do: :ok
 
