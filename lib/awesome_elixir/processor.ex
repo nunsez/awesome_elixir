@@ -64,7 +64,7 @@ defmodule AwesomeElixir.Processor do
         result = GithubClient.repo_api(library.url)
         handle_api_response(result, library)
       end,
-      max_concurrency: GithubClient.pools_size()
+      max_concurrency: pool_size()
     )
     |> Stream.run()
   end

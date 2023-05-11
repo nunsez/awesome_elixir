@@ -18,12 +18,12 @@ defmodule AwesomeElixir.GithubClient do
       name: __MODULE__,
       pools: %{
         :default => [size: 10],
-        "https://github.com" => [size: pools_size()]
+        "https://github.com" => [size: pool_size()]
       }
     )
   end
 
-  def pools_size, do: 5
+  def pool_size, do: 5
 
   @spec index_doc() :: Html.document()
   def index_doc do
