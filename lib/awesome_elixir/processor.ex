@@ -10,6 +10,23 @@ defmodule AwesomeElixir.Processor do
   alias AwesomeElixir.Processor.SyncGithub
   alias AwesomeElixir.Repo
 
+  defstruct [
+    fetch_categories: &__MODULE__.fetch_categories/0,
+    delete_stale_categories: &Context.delete_stale_categories/1,
+    sync_category: &SyncCategory.call/1,
+  ]
+
+  @type t() :: %__MODULE__{
+    fetch_categories: (() -> [Index.category_item()]),
+    delete_stale_categories: (([String.t()]) -> :ok),
+    sync_category: ((Index.category_item()) -> :ok)
+  }
+
+  @spec new(overrides :: map()) :: t()
+  def new(overrides \\ %{}) do
+    struct(__MODULE__, overrides)
+  end
+
   @spec call() :: :ok
   def call do
     sync_categories()
@@ -20,15 +37,20 @@ defmodule AwesomeElixir.Processor do
 
   @spec sync_categories() :: :ok
   def sync_categories do
-    category_items = fetch_categories()
+    sync_categories(new())
+  end
+
+  @spec sync_categories(opts :: t()) :: :ok
+  def sync_categories(%__MODULE__{} = opts) do
+    category_items = opts.fetch_categories.()
 
     category_items
     |> Enum.map(& &1.name)
-    |> Context.delete_stale_categories()
+    |> opts.delete_stale_categories.()
 
     category_items
     |> Task.async_stream(
-      &SyncCategory.call/1,
+      opts.sync_category,
       max_concurrency: pool_size()
     )
     |> Stream.run()
