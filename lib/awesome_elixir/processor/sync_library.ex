@@ -3,12 +3,25 @@ defmodule AwesomeElixir.Processor.SyncLibrary do
 
   require Logger
 
-  alias AwesomeElixir.Context
   alias AwesomeElixir.Context.Category
   alias AwesomeElixir.Processor.Index
+  alias AwesomeElixir.Processor.SyncLibraryDeps
+  alias AwesomeElixir.ProductionDependencies
 
-  @spec call(Index.repo_item(), Category.t()) :: :ok
+  @spec call(
+          repo_item :: Index.repo_item(),
+          category :: Category.t()
+        ) :: :ok
   def call(repo_item, category) do
+    call(ProductionDependencies.new(), repo_item, category)
+  end
+
+  @spec call(
+          deps :: SyncLibraryDeps.t(),
+          repo_item :: Index.repo_item(),
+          category :: Category.t()
+        ) :: :ok
+  def call(deps, repo_item, category) do
     actual_attributes = %{
       url: repo_item.url,
       name: repo_item.name,
@@ -17,12 +30,12 @@ defmodule AwesomeElixir.Processor.SyncLibrary do
     }
 
     update_result =
-      case Context.get_library_by(url: repo_item.url) do
+      case SyncLibraryDeps.get_library_by(deps, url: repo_item.url) do
         nil ->
-          Context.create_library(actual_attributes)
+          SyncLibraryDeps.create_library(deps, actual_attributes)
 
         library ->
-          Context.update_library(library, actual_attributes)
+          SyncLibraryDeps.update_library(deps, library, actual_attributes)
       end
 
     handle_update_library(update_result)
