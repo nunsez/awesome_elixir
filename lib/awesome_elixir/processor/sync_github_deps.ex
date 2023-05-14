@@ -45,6 +45,8 @@ defimpl AwesomeElixir.Processor.SyncGithubDeps, for: AwesomeElixir.ProductionDep
 end
 
 defimpl AwesomeElixir.Processor.SyncGithubDeps, for: Map do
+  alias AwesomeElixir.Context
+
   def github_libraries(%{github_libraries: f}) do
     f.()
   end
@@ -66,7 +68,7 @@ defimpl AwesomeElixir.Processor.SyncGithubDeps, for: Map do
   end
 
   def update_library(_, library, attributes) do
-    {:ok, Enum.into(attributes, library)}
+    Context.change_library(library, attributes)
   end
 
   def github_repo_call(%{github_repo_call: f}, info) do
