@@ -32,6 +32,7 @@ defimpl AwesomeElixir.Processor.SyncLibraryDeps, for: AwesomeElixir.ProductionDe
 end
 
 defimpl AwesomeElixir.Processor.SyncLibraryDeps, for: Map do
+  alias AwesomeElixir.Context
   alias AwesomeElixir.Context.Library
 
   def get_library_by(%{get_library_by: f}, clauses) do
@@ -54,7 +55,7 @@ defimpl AwesomeElixir.Processor.SyncLibraryDeps, for: Map do
     f.(library, info)
   end
 
-  def update_library(_, library, info) do
-    {:ok, Enum.into(info, library)}
+  def update_library(_, library, attrs) do
+    Context.change_library(library, attrs)
   end
 end
