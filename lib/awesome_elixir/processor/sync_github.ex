@@ -53,9 +53,6 @@ defmodule AwesomeElixir.Processor.SyncGithub do
 
       {:error, reason} ->
         Logger.error("#{reason} #{library.url}")
-
-      _ ->
-        Logger.error("#{response_result} #{library.url}")
     end
   end
 end
