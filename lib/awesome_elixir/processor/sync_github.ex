@@ -5,16 +5,16 @@ defmodule AwesomeElixir.Processor.SyncGithub do
 
   alias AwesomeElixir.Context.Library
   alias AwesomeElixir.GithubClient
-  alias AwesomeElixir.Processor.SyncGithubActions
+  alias AwesomeElixir.Processor.SyncGithubDeps
   alias AwesomeElixir.ProductionDependencies
   alias AwesomeElixir.Repo
 
   @spec call() :: :ok
   def call, do: call(ProductionDependencies.new())
 
-  @spec call(deps :: SyncGithubActions.t()) :: :ok
+  @spec call(deps :: SyncGithubDeps.t()) :: :ok
   def call(deps) do
-    SyncGithubActions.github_libraries(deps)
+    SyncGithubDeps.github_libraries(deps)
     |> Task.async_stream(
       &sync_github_library(&1, deps),
       max_concurrency: GithubClient.pool_size()
@@ -41,15 +41,15 @@ defmodule AwesomeElixir.Processor.SyncGithub do
     |> Repo.all()
   end
 
-  @spec sync_github_library(library :: Library.t(), deps :: SyncGithubActions.t()) ::
+  @spec sync_github_library(library :: Library.t(), deps :: SyncGithubDeps.t()) ::
           {:ok, Library.t()} | {:error, Ecto.Changeset.t(Library.t())}
   def sync_github_library(library, deps) do
-    response_result = SyncGithubActions.repo_api(deps, library.url)
+    response_result = SyncGithubDeps.repo_api(deps, library.url)
 
     case response_result do
       {:ok, info} ->
-        attrs = SyncGithubActions.github_repo_call(deps, info)
-        SyncGithubActions.update_library(deps, library, attrs)
+        attrs = SyncGithubDeps.github_repo_call(deps, info)
+        SyncGithubDeps.update_library(deps, library, attrs)
 
       {:error, reason} ->
         Logger.error("#{reason} #{library.url}")
