@@ -7,7 +7,6 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
   alias AwesomeElixir.Context.Library
   alias AwesomeElixir.ContextFixtures
   alias AwesomeElixir.Processor.SyncGithub
-  alias AwesomeElixir.Processor.SyncGithubFakeDependencies
 
   describe "call/1" do
     test "processes all libraries" do
@@ -16,11 +15,10 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
       lib1 = %Library{url: "url-1"}
       lib2 = %Library{url: "url-2"}
 
-      deps =
-        SyncGithubFakeDependencies.new(%{
-          github_libraries: fn -> [lib2, lib1] end,
-          update_library: fn lib, _ -> send(parent, lib.url) end
-        })
+      deps = %{
+        github_libraries: fn -> [lib2, lib1] end,
+        update_library: fn lib, _ -> send(parent, lib.url) end
+      }
 
       SyncGithub.call(deps)
 
@@ -46,10 +44,9 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
     test "updates library when ok" do
       parent = self()
 
-      deps =
-        SyncGithubFakeDependencies.new(%{
-          update_library: fn _, _ -> send(parent, :update_library) end
-        })
+      deps = %{
+        update_library: fn _, _ -> send(parent, :update_library) end
+      }
 
       SyncGithub.sync_github_library(%Library{}, deps)
 
@@ -60,11 +57,10 @@ defmodule AwesomeElixir.Processor.SyncGithubTest do
     test "does not update library when error" do
       parent = self()
 
-      deps =
-        SyncGithubFakeDependencies.new(%{
-          repo_api: fn _ -> {:error, :test_reason} end,
-          update_library: fn _, _ -> send(parent, :update_library) end
-        })
+      deps = %{
+        repo_api: fn _ -> {:error, :test_reason} end,
+        update_library: fn _, _ -> send(parent, :update_library) end
+      }
 
       SyncGithub.sync_github_library(%Library{}, deps)
 

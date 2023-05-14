@@ -6,11 +6,11 @@ defmodule AwesomeElixir.Processor.SyncGithub do
   alias AwesomeElixir.Context.Library
   alias AwesomeElixir.GithubClient
   alias AwesomeElixir.Processor.SyncGithubActions
-  alias AwesomeElixir.Processor.SyncGithubDependencies
+  alias AwesomeElixir.ProductionDependencies
   alias AwesomeElixir.Repo
 
   @spec call() :: :ok
-  def call, do: call(%SyncGithubDependencies{})
+  def call, do: call(ProductionDependencies.new())
 
   @spec call(deps :: SyncGithubActions.t()) :: :ok
   def call(deps) do
