@@ -1,12 +1,15 @@
 defmodule AwesomeElixir.Delimiter do
   @moduledoc false
 
+  @spec call(number :: integer(), delimiter :: String.t()) :: String.t()
+  def call(number, delimiter \\ " ")
+
   def call(number, delimiter) when is_integer(number) and number >= 0 do
     delimit(number, delimiter)
   end
 
   def call(number, delimiter) when is_integer(number) and number < 0 do
-    "-" <> delimit(number, delimiter)
+    "-" <> delimit(abs(number), delimiter)
   end
 
   defp delimit(number, delimiter) do
