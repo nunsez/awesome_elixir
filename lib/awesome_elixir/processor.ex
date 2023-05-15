@@ -3,52 +3,40 @@ defmodule AwesomeElixir.Processor do
 
   require Logger
 
-  alias AwesomeElixir.Context
   alias AwesomeElixir.GithubClient
   alias AwesomeElixir.Processor.Index
-  alias AwesomeElixir.Processor.SyncCategory
-  alias AwesomeElixir.Processor.SyncGithub
+  alias AwesomeElixir.ProcessorDeps
+  alias AwesomeElixir.ProductionDependencies
   alias AwesomeElixir.Repo
-
-  defstruct fetch_categories: &__MODULE__.fetch_categories/0,
-            delete_stale_categories: &Context.delete_stale_categories/1,
-            sync_category: &SyncCategory.call/1
-
-  @type t() :: %__MODULE__{
-          fetch_categories: (() -> [Index.category_item()]),
-          delete_stale_categories: ([String.t()] -> :ok),
-          sync_category: (Index.category_item() -> :ok)
-        }
-
-  @spec new(overrides :: map()) :: t()
-  def new(overrides \\ %{}) do
-    struct(__MODULE__, overrides)
-  end
 
   @spec call() :: :ok
   def call do
-    sync_categories()
-    sync_libraries_data()
+    call(ProductionDependencies.new())
+  end
+
+  @spec call(deps :: ProcessorDeps.t()) :: :ok
+  def call(deps) do
+    sync_categories(deps)
+    sync_libraries_data(deps)
 
     :ok
   end
 
   @spec sync_categories() :: :ok
   def sync_categories do
-    sync_categories(new())
+    sync_categories(ProductionDependencies.new())
   end
 
-  @spec sync_categories(opts :: t()) :: :ok
-  def sync_categories(%__MODULE__{} = opts) do
-    category_items = opts.fetch_categories.()
+  @spec sync_categories(deps :: ProcessorDeps.t()) :: :ok
+  def sync_categories(deps) do
+    category_items = ProcessorDeps.fetch_categories(deps)
 
-    category_items
-    |> Enum.map(& &1.name)
-    |> opts.delete_stale_categories.()
+    existing_category_names = Enum.map(category_items, & &1.name)
+    ProcessorDeps.delete_stale_categories(deps, existing_category_names)
 
     category_items
     |> Task.async_stream(
-      opts.sync_category,
+      &ProcessorDeps.sync_category(deps, &1),
       max_concurrency: pool_size()
     )
     |> Stream.run()
@@ -73,9 +61,9 @@ defmodule AwesomeElixir.Processor do
     end
   end
 
-  @spec sync_libraries_data() :: :ok
-  def sync_libraries_data do
-    SyncGithub.call()
+  @spec sync_libraries_data(deps :: ProcessorDeps.t()) :: :ok
+  def sync_libraries_data(deps) do
+    ProcessorDeps.sync_github_libraries(deps)
 
     :ok
   end
