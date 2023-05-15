@@ -30,6 +30,8 @@ awesome_elixir-*.tar
 *.db-*
 
 # Vite
+/priv/static/*
+
 # Logs
 logs
 *.log
