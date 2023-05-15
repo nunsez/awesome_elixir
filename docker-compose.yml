@@ -1,0 +1,25 @@
+---
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    environment:
+      - "SECRET_KEY_BASE=${SECRET_KEY_BASE:-secret}"
+      - "DATABASE_PATH=/database/prod.db"
+    volumes:
+      - "db_data:/database:rw"
+    ports:
+      - "4000:4000"
+    networks:
+      - awesome_elixir
+
+volumes:
+  db_data:
+    driver: "local"
+
+networks:
+  awesome_elixir:
+    driver: "bridge"
