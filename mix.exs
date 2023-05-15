@@ -52,7 +52,10 @@ defmodule AwesomeElixir.MixProject do
 
       # dev and test
       {:dialyxir, "~> 1.2", only: [:dev, :test], runtime: false},
-      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+
+      # test
+      {:bypass, "~> 2.1", only: [:test]}
     ]
   end
 

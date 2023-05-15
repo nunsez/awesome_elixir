@@ -23,11 +23,19 @@ defmodule AwesomeElixir.GithubClient do
     )
   end
 
-  def pool_size, do: 5
+  @pool_size 5
+
+  def pool_size, do: @pool_size
+
+  @index_doc_url "https://github.com/h4cc/awesome-elixir"
 
   @spec index_doc() :: Html.document()
   def index_doc do
-    url = "https://github.com/h4cc/awesome-elixir"
+    index_doc(@index_doc_url)
+  end
+
+  @spec index_doc(url :: String.t()) :: Html.document()
+  def index_doc(url) do
     headers = [{"content-type", "text/html"}]
     {:ok, response} = Request.get(url, headers)
 
@@ -44,9 +52,15 @@ defmodule AwesomeElixir.GithubClient do
     end
   end
 
+  @rate_limit_url "https://api.github.com/rate_limit"
+
   @spec rate_limit() :: map()
   def rate_limit do
-    url = "https://api.github.com/rate_limit"
+    rate_limit(@rate_limit_url)
+  end
+
+  @spec rate_limit(url :: String.t()) :: map()
+  def rate_limit(url) do
     {:ok, json} = JsonRequest.get(url)
 
     json
