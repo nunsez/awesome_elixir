@@ -1,10 +1,10 @@
 defprotocol AwesomeElixir.ProcessorDeps do
   alias AwesomeElixir.Processor.Index
 
-  @spec fetch_categories(deps :: t()) :: [Index.category_item]
+  @spec fetch_categories(deps :: t()) :: [Index.category_item()]
   def fetch_categories(deps)
 
-  @spec delete_stale_categories(deps :: t(), existing_category_names :: [String.t]) :: :ok
+  @spec delete_stale_categories(deps :: t(), existing_category_names :: [String.t()]) :: :ok
   def delete_stale_categories(deps, existing_category_names)
 
   @spec sync_category(deps :: t(), category_item :: Index.category_item()) :: :ok
