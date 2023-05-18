@@ -93,6 +93,8 @@ defmodule AwesomeElixir.MixProject do
 
   @spec npm(command :: String.t()) :: integer()
   defp npm(command) do
-    Mix.shell().cmd("npm #{command}")
+    node_env = System.get_env("NODE_ENV", Mix.env() |> to_string())
+
+    Mix.shell().cmd("npm #{command}", env: [{"NODE_ENV", node_env}])
   end
 end
