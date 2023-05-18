@@ -71,9 +71,9 @@ defmodule AwesomeElixir.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["npm install"],
-      "assets.build": ["npm run build"],
-      "assets.deploy": ["npm run build", "phx.digest"]
+      "assets.setup": [fn _ -> npm("install") end],
+      "assets.build": [fn _ -> npm("run build") end],
+      "assets.deploy": ["assets.build", "phx.digest"]
     ]
   end
 
@@ -89,5 +89,10 @@ defmodule AwesomeElixir.MixProject do
 
   defp extra_applications(_) do
     [:logger, :runtime_tools, :os_mon]
+  end
+
+  @spec npm(command :: String.t()) :: integer()
+  defp npm(command) do
+    Mix.shell().cmd("npm #{command}")
   end
 end
