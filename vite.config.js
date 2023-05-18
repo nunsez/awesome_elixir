@@ -1,13 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-
-const certPath = (filename) => (
-    path.join(path.dirname(import.meta.url), 'priv', 'cert', filename).replace('file:', '')
-);
-
-const certData = (filename) => fs.readFileSync(certPath(filename));
 
 /** @param {import('vite').ConfigEnv} configEnv */
 const maybeCloseStdin = (configEnv) => {
@@ -27,11 +19,7 @@ export default defineConfig((command) => {
         server: {
             host: 'localhost',
             port: 5173,
-            strictPort: true,
-            https: {
-                cert: certData('selfsigned.pem'),
-                key: certData('selfsigned_key.pem')
-            }
+            strictPort: true
         },
         build: {
             assetsDir: 'assets/',

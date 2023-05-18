@@ -22,5 +22,5 @@ defmodule AwesomeElixirWeb.Layouts do
     """
   end
 
-  defp vite_origin, do: "https://localhost:5173"
+  defp vite_origin, do: "http://localhost:5173"
 end
