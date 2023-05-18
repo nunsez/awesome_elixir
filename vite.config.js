@@ -1,6 +1,10 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 
+const ENV = process.env.NODE_ENV || "development";
+const isDev = () => ENV === "development" || ENV === "dev";
+const isProd = () => ENV === "production" || ENV === "prod";
+
 /** @param {import('vite').ConfigEnv} configEnv */
 const maybeCloseStdin = (configEnv) => {
     if (configEnv.command === 'build') return;
@@ -16,7 +20,7 @@ export default defineConfig((command) => {
     const config = {
         plugins: [solidPlugin()],
         publicDir: 'assets/static/',
-        server: {
+        server: isDev() && {
             host: 'localhost',
             port: 5173,
             strictPort: true
@@ -24,9 +28,9 @@ export default defineConfig((command) => {
         build: {
             assetsDir: 'assets/',
             outDir: 'priv/static/',
-            emptyOutDir: true,
+            emptyOutDir: isDev(),
             manifest: false,
-            sourcemap: true,
+            sourcemap: isDev(),
             assetsInlineLimit: 0,
             rollupOptions: {
                 input: ['assets/js/app.ts'],
