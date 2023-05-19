@@ -5,6 +5,12 @@ defmodule AwesomeElixir.Release do
   """
   @app :awesome_elixir
 
+  def sync do
+    Application.ensure_all_started(@app)
+
+    AwesomeElixir.Processor.call()
+  end
+
   def migrate do
     load_app()
 

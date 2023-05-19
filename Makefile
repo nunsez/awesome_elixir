@@ -12,3 +12,7 @@ down:
 
 logs:
 	docker compose logs --follow
+
+sync:
+	docker compose run -e GITHUB_TOKEN=$(GITHUB_TOKEN) --rm app /app/bin/sync
+
