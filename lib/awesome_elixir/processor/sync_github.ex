@@ -52,7 +52,7 @@ defmodule AwesomeElixir.Processor.SyncGithub do
         SyncGithubDeps.update_library(deps, library, attrs)
 
       {:error, reason} ->
-        Logger.error("#{reason} #{library.url}")
+        Logger.error("#{inspect(reason)} #{library.url}")
     end
   end
 end
