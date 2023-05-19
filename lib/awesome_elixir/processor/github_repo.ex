@@ -1,6 +1,8 @@
 defmodule AwesomeElixir.Processor.GithubRepo do
   @moduledoc false
 
+  alias AwesomeElixir.Html
+
   @type id() :: %{
           user: String.t(),
           repo: String.t()
@@ -54,5 +56,21 @@ defmodule AwesomeElixir.Processor.GithubRepo do
 
   defp id_to_api_url(result) do
     result
+  end
+
+  @spec stars(doc :: Html.document()) :: integer()
+  def stars(doc) do
+    node_list = Html.find(doc, "#repo-stars-counter-star")
+
+    with [node | _] <- node_list,
+         value <- Html.text(node),
+         value <- String.trim(value),
+         {integer, _remainder} <- Integer.parse(value, 10) do
+      {:ok, integer}
+    else
+      [] -> {:error, :not_found}
+      :error -> {:error, :not_a_number}
+      other -> {:error, other}
+    end
   end
 end

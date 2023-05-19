@@ -5,6 +5,7 @@ defmodule AwesomeElixir.Processor.GithubRepoTest do
   doctest AwesomeElixir.Processor.GithubRepo
 
   alias AwesomeElixir.Processor.GithubRepo
+  alias AwesomeElixir.TestHelper, as: H
 
   describe "call/1" do
     test "works" do
@@ -52,6 +53,14 @@ defmodule AwesomeElixir.Processor.GithubRepoTest do
       result = GithubRepo.url_to_api_url(url)
 
       assert {:error, _} = result
+    end
+  end
+
+  describe "stars/1" do
+    test "works" do
+      doc = H.doc("commits_page.html")
+
+      assert {:ok, 133} = GithubRepo.stars(doc)
     end
   end
 end
