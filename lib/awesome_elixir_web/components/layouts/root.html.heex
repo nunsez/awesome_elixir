@@ -8,7 +8,7 @@
       <%= assigns[:page_title] || "AwesomeElixir" %>
     </.live_title>
 
-    <%= if Mix.env() == :dev do %>
+    <%= if dev?() do %>
       <.preamble_dev />
     <% else %>
       <.preamble_prod />

@@ -4,5 +4,11 @@ build:
 migrate:
 	docker compose run --rm app /app/bin/migrate
 
-start: migrate
-	docker-compose run --rm app /app/bin/server
+up: migrate
+	docker compose up --detach --remove-orphans
+
+down:
+	docker compose down --remove-orphans
+
+logs:
+	docker compose logs --follow

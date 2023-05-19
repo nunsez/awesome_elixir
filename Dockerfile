@@ -27,7 +27,12 @@ WORKDIR /app
 
 COPY . .
 
+# Install all packages, not only production
+ENV NODE_ENV="development"
 RUN npm install
+
+# Build in production mode
+ENV NODE_ENV="production"
 RUN npm run build
 
 # Compile elixir app

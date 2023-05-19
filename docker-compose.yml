@@ -7,19 +7,13 @@ services:
       context: "."
       dockerfile: "Dockerfile"
     environment:
-      - "SECRET_KEY_BASE=${SECRET_KEY_BASE:-secret}"
+      - "SECRET_KEY_BASE=${SECRET_KEY_BASE:-VSDYRbS1hDoivHm/e+9s0CSwJZKPIAL0UddZnYSuPShCnyHXdvETZg5Qu5QWZxzV}"
       - "DATABASE_PATH=/database/prod.db"
     volumes:
       - "db_data:/database:rw"
     ports:
       - "4000:4000"
-    networks:
-      - awesome_elixir
 
 volumes:
   db_data:
     driver: "local"
-
-networks:
-  awesome_elixir:
-    driver: "bridge"

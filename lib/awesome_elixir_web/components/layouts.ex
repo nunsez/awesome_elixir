@@ -23,4 +23,8 @@ defmodule AwesomeElixirWeb.Layouts do
   end
 
   defp vite_origin, do: "http://localhost:5173"
+
+  @dev? Mix.env() == :dev
+
+  def dev?, do: @dev?
 end
