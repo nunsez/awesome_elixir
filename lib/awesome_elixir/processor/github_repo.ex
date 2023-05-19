@@ -60,9 +60,9 @@ defmodule AwesomeElixir.Processor.GithubRepo do
 
   @spec stars(doc :: Html.document()) :: integer()
   def stars(doc) do
-    node_list = Html.find(doc, "#repo-stars-counter-star")
+    nodes = Html.find(doc, "#repo-stars-counter-star")
 
-    with [node | _] <- node_list,
+    with [node | _] <- nodes,
          value <- Html.text(node),
          value <- String.trim(value),
          {integer, _remainder} <- Integer.parse(value, 10) do
@@ -71,6 +71,19 @@ defmodule AwesomeElixir.Processor.GithubRepo do
       [] -> {:error, :not_found}
       :error -> {:error, :not_a_number}
       other -> {:error, other}
+    end
+  end
+
+  @spec last_commit(doc :: Html.document()) :: Date.t()
+  def last_commit(doc) do
+    value = Html.attribute(doc, ".TimelineItem relative-time", "datetime")
+
+    with value when not is_nil(value) <- value,
+         {:ok, datetime, _utc_offset} <- DateTime.from_iso8601(value) do
+      {:ok, datetime}
+    else
+      nil -> {:error, :not_found}
+      error -> error
     end
   end
 end
