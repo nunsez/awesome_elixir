@@ -9,6 +9,7 @@ services:
     environment:
       - "SECRET_KEY_BASE=${SECRET_KEY_BASE:-VSDYRbS1hDoivHm/e+9s0CSwJZKPIAL0UddZnYSuPShCnyHXdvETZg5Qu5QWZxzV}"
       - "DATABASE_PATH=/database/prod.db"
+      - "GITHUB_TOKEN=${GITHUB_TOKEN}"
     volumes:
       - "db_data:/database:rw"
     ports:

@@ -14,5 +14,4 @@ logs:
 	docker compose logs --follow
 
 sync:
-	docker compose run -e GITHUB_TOKEN=$(GITHUB_TOKEN) --rm app /app/bin/sync
-
+	docker compose run --rm app /app/bin/sync
