@@ -34,20 +34,7 @@ defmodule AwesomeElixir.GithubClient.JsonRequest do
     end
   end
 
-  # handle 40x
-  def handle(%{status: status}, _)
-      when status >= 400 and status < 500 do
-    {:error, :not_found}
-  end
-
-  # handle 50x
-  def handle(%{status: status}, _)
-      when status >= 500 and status < 600 do
-    {:error, :server_error}
-  end
-
-  # handle rest
-  def handle(_, _) do
-    {:error, :unknown}
+  def handle(%{status: status}, _) do
+    {:error, "Status: #{status}"}
   end
 end
