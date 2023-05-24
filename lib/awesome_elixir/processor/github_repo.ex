@@ -8,27 +8,10 @@ defmodule AwesomeElixir.Processor.GithubRepo do
           repo: String.t()
         }
 
-  @type call_return() :: %{
+  @type info() :: %{
           stars: non_neg_integer(),
           last_commit: DateTime.t()
         }
-
-  @spec call(info :: map()) :: call_return()
-  def call(%{"pushed_at" => pushed_at, "stargazers_count" => stargazers_count}) do
-    {:ok, datetime, _utc_offset} = DateTime.from_iso8601(pushed_at)
-
-    %{
-      stars: stargazers_count,
-      last_commit: datetime
-    }
-  end
-
-  @spec url_to_api_url(url :: String.t()) :: {:ok, String.t()} | {:error, String.t()}
-  def url_to_api_url(url) do
-    url
-    |> url_to_id()
-    |> id_to_api_url()
-  end
 
   @spec url_to_id(url :: String.t()) :: {:ok, id()} | {:error, String.t()}
   defp url_to_id(url) do
@@ -47,17 +30,6 @@ defmodule AwesomeElixir.Processor.GithubRepo do
     {:error, "invalid id"}
   end
 
-  @spec id_to_api_url(result :: {:ok, id()} | {:error, String.t()}) ::
-          {:ok, String.t()} | {:error, String.t()}
-  defp id_to_api_url({:ok, id}) do
-    url = "https://api.github.com/repos/" <> id.user <> "/" <> id.repo
-    {:ok, url}
-  end
-
-  defp id_to_api_url(result) do
-    result
-  end
-
   @spec stars(doc :: Html.document()) :: {:ok, integer()} | {:error, any()}
   def stars(doc) do
     nodes = Html.find(doc, "#repo-stars-counter-star")
@@ -74,7 +46,7 @@ defmodule AwesomeElixir.Processor.GithubRepo do
     end
   end
 
-  @spec last_commit(doc :: Html.document()) :: {:ok, Date.t()} | {:error, any()}
+  @spec last_commit(doc :: Html.document()) :: {:ok, DateTime.t()} | {:error, any()}
   def last_commit(doc) do
     value = Html.attribute(doc, ".TimelineItem relative-time", "datetime")
 
@@ -83,6 +55,17 @@ defmodule AwesomeElixir.Processor.GithubRepo do
       {:ok, datetime}
     else
       nil -> {:error, :not_found}
+      error -> error
+    end
+  end
+
+  @default_host "https://github.com"
+
+  @spec commits_url(url :: String.t(), host :: String.t() | none()) ::
+          {:ok, String.t()} | {:error, any()}
+  def commits_url(url, host \\ @default_host) do
+    case url_to_id(url) do
+      {:ok, id} -> {:ok, "#{host}/#{id.user}/#{id.repo}/commits/"}
       error -> error
     end
   end

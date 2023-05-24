@@ -5,42 +5,34 @@ defprotocol AwesomeElixir.Processor.SyncGithubDeps do
   @spec github_libraries(deps :: any()) :: [Library.t()]
   def github_libraries(_)
 
-  @spec repo_api(deps :: any(), url :: String.t()) :: {:ok, map()} | {:error, any()}
-  def repo_api(_, url)
+  @spec repo_info(deps :: any(), url :: String.t()) :: {:ok, GithubRepo.info()} | {:error, any()}
+  def repo_info(_, url)
 
   @spec update_library(
           deps :: any(),
           library :: Library.t(),
-          attrs :: map() | none()
+          attrs :: GithubRepo.info()
         ) ::
           {:ok, Library.t()}
           | {:error, Ecto.Changeset.t(Library.t())}
   def update_library(_, library, attributes)
-
-  @spec github_repo_call(deps :: any(), info :: map()) :: GithubRepo.call_return()
-  def github_repo_call(_, info)
 end
 
 defimpl AwesomeElixir.Processor.SyncGithubDeps, for: AwesomeElixir.ProductionDependencies do
   alias AwesomeElixir.Context
   alias AwesomeElixir.GithubClient
-  alias AwesomeElixir.Processor.GithubRepo
   alias AwesomeElixir.Processor.SyncGithub
 
   def github_libraries(_) do
     SyncGithub.github_libraries()
   end
 
-  def repo_api(_, url) do
-    GithubClient.repo_api(url)
+  def repo_info(_, url) do
+    GithubClient.repo_info(url)
   end
 
   def update_library(_, library, attributes) do
     Context.update_library(library, attributes)
-  end
-
-  def github_repo_call(_, info) do
-    GithubRepo.call(info)
   end
 end
 
@@ -55,11 +47,11 @@ defimpl AwesomeElixir.Processor.SyncGithubDeps, for: Map do
     []
   end
 
-  def repo_api(%{repo_api: f}, url) do
+  def repo_info(%{repo_api: f}, url) do
     f.(url)
   end
 
-  def repo_api(_, url) do
+  def repo_info(_, url) do
     {:ok, %{url: url}}
   end
 
@@ -69,13 +61,5 @@ defimpl AwesomeElixir.Processor.SyncGithubDeps, for: Map do
 
   def update_library(_, library, attributes) do
     Context.change_library(library, attributes)
-  end
-
-  def github_repo_call(%{github_repo_call: f}, info) do
-    f.(info)
-  end
-
-  def github_repo_call(_, info) do
-    info
   end
 end

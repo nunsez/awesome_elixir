@@ -17,7 +17,8 @@ defmodule AwesomeElixir.Processor.SyncGithub do
     SyncGithubDeps.github_libraries(deps)
     |> Task.async_stream(
       &sync_github_library(&1, deps),
-      max_concurrency: GithubClient.pool_size()
+      max_concurrency: GithubClient.pool_size(),
+      timeout: 10_000
     )
     |> Stream.run()
   end
@@ -44,12 +45,11 @@ defmodule AwesomeElixir.Processor.SyncGithub do
   @spec sync_github_library(library :: Library.t(), deps :: SyncGithubDeps.t()) ::
           {:ok, Library.t()} | {:error, Ecto.Changeset.t(Library.t())}
   def sync_github_library(library, deps) do
-    response_result = SyncGithubDeps.repo_api(deps, library.url)
+    response_result = SyncGithubDeps.repo_info(deps, library.url)
 
     case response_result do
       {:ok, info} ->
-        attrs = SyncGithubDeps.github_repo_call(deps, info)
-        SyncGithubDeps.update_library(deps, library, attrs)
+        SyncGithubDeps.update_library(deps, library, info)
 
       {:error, reason} ->
         Logger.error("#{inspect(reason)} #{library.url}")

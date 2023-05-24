@@ -25,17 +25,4 @@ defmodule AwesomeElixir.GithubClientTest do
       assert Html.text(doc) =~ "test response"
     end
   end
-
-  describe "rate_limit/1" do
-    test "works", %{bypass: bypass} do
-      Bypass.expect_once(bypass, "GET", "/rate_limit", fn conn ->
-        Plug.Conn.resp(conn, 200, ~s<{"rate":42}>)
-      end)
-
-      url = "http://localhost:#{bypass.port}/rate_limit"
-      json = GithubClient.rate_limit(url)
-
-      assert json["rate"] == 42
-    end
-  end
 end

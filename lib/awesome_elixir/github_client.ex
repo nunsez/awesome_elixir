@@ -1,10 +1,14 @@
 defmodule AwesomeElixir.GithubClient do
   @moduledoc false
 
-  alias AwesomeElixir.GithubClient.JsonRequest
-  alias AwesomeElixir.GithubClient.Request
   alias AwesomeElixir.Html
   alias AwesomeElixir.Processor.GithubRepo
+
+  use Tesla,
+    only: [:get],
+    adapter: {Tesla.Adapter.Finch, name: __MODULE__}
+
+  plug Tesla.Middleware.FollowRedirects
 
   def child_spec(opts) do
     %{
@@ -29,40 +33,28 @@ defmodule AwesomeElixir.GithubClient do
 
   @index_doc_url "https://github.com/h4cc/awesome-elixir"
 
-  @spec index_doc() :: Html.document()
-  def index_doc do
-    index_doc(@index_doc_url)
-  end
-
   @spec index_doc(url :: String.t()) :: Html.document()
-  def index_doc(url) do
-    headers = [{"content-type", "text/html"}]
-    {:ok, response} = Request.get(url, headers)
+  def index_doc(url \\ @index_doc_url) do
+    {:ok, response} = get(url)
 
     Html.parse(response.body)
   end
 
-  @spec repo_api(url :: String.t()) :: {:ok, map()} | {:error, any()}
-  def repo_api(url) do
-    url_result = GithubRepo.url_to_api_url(url)
+  @spec repo_info(url :: String.t()) :: {:ok, map()} | {:error, any()}
+  def repo_info(url) do
+    with {:ok, commits_url} <- GithubRepo.commits_url(url),
+         {:ok, response} <- get(commits_url),
+         doc <- Html.parse(response.body),
+         {:ok, last_commit} <- GithubRepo.last_commit(doc),
+         {:ok, stars} <- GithubRepo.stars(doc) do
+      data = %{
+        stars: stars,
+        last_commit: last_commit
+      }
 
-    case url_result do
-      {:ok, api_url} -> JsonRequest.get(api_url)
+      {:ok, data}
+    else
       error -> error
     end
-  end
-
-  @rate_limit_url "https://api.github.com/rate_limit"
-
-  @spec rate_limit() :: map()
-  def rate_limit do
-    rate_limit(@rate_limit_url)
-  end
-
-  @spec rate_limit(url :: String.t()) :: map()
-  def rate_limit(url) do
-    {:ok, json} = JsonRequest.get(url)
-
-    json
   end
 end
