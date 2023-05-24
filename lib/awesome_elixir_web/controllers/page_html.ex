@@ -3,8 +3,8 @@ defmodule AwesomeElixirWeb.PageHTML do
 
   alias AwesomeElixir.Context.Category
   alias AwesomeElixir.Context.Library
-  alias AwesomeElixir.Delimiter
   alias AwesomeElixirWeb.Gettext
+  alias AwesomeElixirWeb.Helpers.Delimiter
   alias Phoenix.LiveComponent
 
   embed_templates "page_html/*"

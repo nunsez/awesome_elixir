@@ -1,10 +1,10 @@
-defmodule AwesomeElixir.DelimiterTest do
+defmodule AwesomeElixirWeb.Helpers.DelimiterTest do
   @moduledoc false
 
   use ExUnit.Case, async: true
-  doctest AwesomeElixir.Delimiter
+  doctest AwesomeElixirWeb.Helpers.Delimiter
 
-  alias AwesomeElixir.Delimiter
+  alias AwesomeElixirWeb.Helpers.Delimiter
 
   describe "call/2" do
     test "positive lower than 1000" do

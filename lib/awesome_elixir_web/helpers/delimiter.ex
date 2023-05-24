@@ -1,4 +1,4 @@
-defmodule AwesomeElixir.Delimiter do
+defmodule AwesomeElixirWeb.Helpers.Delimiter do
   @moduledoc false
 
   @spec call(number :: integer(), delimiter :: String.t()) :: String.t()
