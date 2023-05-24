@@ -58,7 +58,7 @@ defmodule AwesomeElixir.Processor.GithubRepo do
     result
   end
 
-  @spec stars(doc :: Html.document()) :: integer()
+  @spec stars(doc :: Html.document()) :: {:ok, integer()} | {:error, any()}
   def stars(doc) do
     nodes = Html.find(doc, "#repo-stars-counter-star")
 
@@ -74,7 +74,7 @@ defmodule AwesomeElixir.Processor.GithubRepo do
     end
   end
 
-  @spec last_commit(doc :: Html.document()) :: Date.t()
+  @spec last_commit(doc :: Html.document()) :: {:ok, Date.t()} | {:error, any()}
   def last_commit(doc) do
     value = Html.attribute(doc, ".TimelineItem relative-time", "datetime")
 
