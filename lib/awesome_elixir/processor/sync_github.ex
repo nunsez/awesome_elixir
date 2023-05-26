@@ -14,13 +14,17 @@ defmodule AwesomeElixir.Processor.SyncGithub do
 
   @spec call(deps :: SyncGithubDeps.t()) :: :ok
   def call(deps) do
-    SyncGithubDeps.github_libraries(deps)
-    |> Task.async_stream(
+    github_libraries = SyncGithubDeps.github_libraries(deps)
+
+    stream = Task.Supervisor.async_stream_nolink(
+      AwesomeElixir.TaskSupervisor,
+      github_libraries,
       &sync_github_library(&1, deps),
       max_concurrency: GithubClient.pool_size(),
-      timeout: 10_000
+      timeout: 30_000
     )
-    |> Stream.run()
+
+    Stream.run(stream)
   end
 
   @spec with_url_prefix(string :: String.t()) :: String.t()
