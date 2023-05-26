@@ -13,6 +13,7 @@ defmodule AwesomeElixir.Application do
       # Start the Ecto repository
       AwesomeElixir.Repo,
       AwesomeElixir.GithubClient,
+      AwesomeElixir.TaskSupervisor,
       AwesomeElixir.JobSupervisor,
       # Start the PubSub system
       {Phoenix.PubSub, name: AwesomeElixir.PubSub},
