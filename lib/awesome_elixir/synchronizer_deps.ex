@@ -1,5 +1,5 @@
-defprotocol AwesomeElixir.ProcessorDeps do
-  alias AwesomeElixir.Processor.Index
+defprotocol AwesomeElixir.SynchronizerDeps do
+  alias AwesomeElixir.Synchronizer.Index
 
   @spec fetch_categories(deps :: t()) :: [Index.category_item()]
   def fetch_categories(deps)
@@ -14,14 +14,14 @@ defprotocol AwesomeElixir.ProcessorDeps do
   def sync_github_libraries(deps)
 end
 
-defimpl AwesomeElixir.ProcessorDeps, for: AwesomeElixir.ProductionDependencies do
+defimpl AwesomeElixir.SynchronizerDeps, for: AwesomeElixir.ProductionDependencies do
   alias AwesomeElixir.Context
-  alias AwesomeElixir.Processor
-  alias AwesomeElixir.Processor.SyncCategory
-  alias AwesomeElixir.Processor.SyncGithub
+  alias AwesomeElixir.Synchronizer
+  alias AwesomeElixir.Synchronizer.SyncCategory
+  alias AwesomeElixir.Synchronizer.SyncGithub
 
   def fetch_categories(_) do
-    Processor.fetch_categories()
+    Synchronizer.fetch_categories()
   end
 
   def delete_stale_categories(_, existing_category_names) do
@@ -37,7 +37,7 @@ defimpl AwesomeElixir.ProcessorDeps, for: AwesomeElixir.ProductionDependencies d
   end
 end
 
-defimpl AwesomeElixir.ProcessorDeps, for: Map do
+defimpl AwesomeElixir.SynchronizerDeps, for: Map do
   def fetch_categories(%{fetch_categories: f}) do
     f.()
   end

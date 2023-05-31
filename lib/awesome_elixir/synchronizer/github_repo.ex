@@ -1,4 +1,4 @@
-defmodule AwesomeElixir.Processor.GithubRepo do
+defmodule AwesomeElixir.Synchronizer.GithubRepo do
   @moduledoc false
 
   alias AwesomeElixir.Html

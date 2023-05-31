@@ -1,11 +1,11 @@
-defmodule AwesomeElixir.Processor.SyncCategory do
+defmodule AwesomeElixir.Synchronizer.SyncCategory do
   @moduledoc false
 
   require Logger
 
-  alias AwesomeElixir.Processor.Index
-  alias AwesomeElixir.Processor.SyncCategoryDeps
-  alias AwesomeElixir.Processor.SyncLibrary
+  alias AwesomeElixir.Synchronizer.Index
+  alias AwesomeElixir.Synchronizer.SyncCategoryDeps
+  alias AwesomeElixir.Synchronizer.SyncLibrary
   alias AwesomeElixir.ProductionDependencies
 
   @spec call(category_item :: Index.category_item()) :: :ok

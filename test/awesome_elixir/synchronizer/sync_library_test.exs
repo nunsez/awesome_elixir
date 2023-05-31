@@ -1,13 +1,13 @@
-defmodule AwesomeElixir.Processor.SyncLibraryTest do
+defmodule AwesomeElixir.Synchronizer.SyncLibraryTest do
   @moduledoc false
 
   use ExUnit.Case, async: true
-  doctest AwesomeElixir.Processor.SyncLibrary
+  doctest AwesomeElixir.Synchronizer.SyncLibrary
 
   alias AwesomeElixir.Context
   alias AwesomeElixir.Context.Category
   alias AwesomeElixir.Context.Library
-  alias AwesomeElixir.Processor.SyncLibrary
+  alias AwesomeElixir.Synchronizer.SyncLibrary
 
   import ExUnit.CaptureLog
 

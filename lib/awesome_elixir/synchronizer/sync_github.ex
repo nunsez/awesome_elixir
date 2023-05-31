@@ -1,11 +1,11 @@
-defmodule AwesomeElixir.Processor.SyncGithub do
+defmodule AwesomeElixir.Synchronizer.SyncGithub do
   @moduledoc false
 
   require Logger
 
   alias AwesomeElixir.Context.Library
   alias AwesomeElixir.GithubClient
-  alias AwesomeElixir.Processor.SyncGithubDeps
+  alias AwesomeElixir.Synchronizer.SyncGithubDeps
   alias AwesomeElixir.ProductionDependencies
   alias AwesomeElixir.Repo
 

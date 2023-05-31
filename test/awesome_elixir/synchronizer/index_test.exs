@@ -1,10 +1,10 @@
-defmodule AwesomeElixir.Processor.IndexTest do
+defmodule AwesomeElixir.Synchronizer.IndexTest do
   @moduledoc false
 
   use ExUnit.Case, async: true
-  doctest AwesomeElixir.Processor.Index
+  doctest AwesomeElixir.Synchronizer.Index
 
-  alias AwesomeElixir.Processor.Index
+  alias AwesomeElixir.Synchronizer.Index
   alias AwesomeElixir.TestHelper, as: H
 
   test "call/1" do

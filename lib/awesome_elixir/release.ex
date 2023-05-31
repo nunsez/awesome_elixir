@@ -8,7 +8,7 @@ defmodule AwesomeElixir.Release do
   def sync do
     Application.ensure_all_started(@app)
 
-    AwesomeElixir.Processor.call()
+    AwesomeElixir.Synchronizer.call()
   end
 
   def migrate do

@@ -2,7 +2,7 @@ defmodule AwesomeElixir.GithubClient do
   @moduledoc false
 
   alias AwesomeElixir.Html
-  alias AwesomeElixir.Processor.GithubRepo
+  alias AwesomeElixir.Synchronizer.GithubRepo
 
   use Tesla,
     only: [:get],

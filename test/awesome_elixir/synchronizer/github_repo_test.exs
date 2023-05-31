@@ -1,10 +1,10 @@
-defmodule AwesomeElixir.Processor.GithubRepoTest do
+defmodule AwesomeElixir.Synchronizer.GithubRepoTest do
   @moduledoc false
 
   use ExUnit.Case, async: true
-  doctest AwesomeElixir.Processor.GithubRepo
+  doctest AwesomeElixir.Synchronizer.GithubRepo
 
-  alias AwesomeElixir.Processor.GithubRepo
+  alias AwesomeElixir.Synchronizer.GithubRepo
   alias AwesomeElixir.TestHelper, as: H
 
   describe "stars/1" do

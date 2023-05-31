@@ -8,7 +8,7 @@ defmodule AwesomeElixir.Jobs.SyncContent do
 
   @impl Oban.Worker
   def perform(%Oban.Job{}) do
-    AwesomeElixir.Processor.call()
+    AwesomeElixir.Synchronizer.call()
 
     :ok
   end

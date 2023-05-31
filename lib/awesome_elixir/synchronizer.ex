@@ -1,11 +1,11 @@
-defmodule AwesomeElixir.Processor do
+defmodule AwesomeElixir.Synchronizer do
   @moduledoc false
 
   require Logger
 
   alias AwesomeElixir.GithubClient
-  alias AwesomeElixir.Processor.Index
-  alias AwesomeElixir.ProcessorDeps
+  alias AwesomeElixir.Synchronizer.Index
+  alias AwesomeElixir.SynchronizerDeps
   alias AwesomeElixir.ProductionDependencies
   alias AwesomeElixir.Repo
 
@@ -14,7 +14,7 @@ defmodule AwesomeElixir.Processor do
     call(ProductionDependencies.new())
   end
 
-  @spec call(deps :: ProcessorDeps.t()) :: :ok
+  @spec call(deps :: SynchronizerDeps.t()) :: :ok
   def call(deps) do
     sync_categories(deps)
     sync_libraries_data(deps)
@@ -27,16 +27,16 @@ defmodule AwesomeElixir.Processor do
     sync_categories(ProductionDependencies.new())
   end
 
-  @spec sync_categories(deps :: ProcessorDeps.t()) :: :ok
+  @spec sync_categories(deps :: SynchronizerDeps.t()) :: :ok
   def sync_categories(deps) do
-    category_items = ProcessorDeps.fetch_categories(deps)
+    category_items = SynchronizerDeps.fetch_categories(deps)
 
     existing_category_names = Enum.map(category_items, & &1.name)
-    ProcessorDeps.delete_stale_categories(deps, existing_category_names)
+    SynchronizerDeps.delete_stale_categories(deps, existing_category_names)
 
     category_items
     |> Task.async_stream(
-      &ProcessorDeps.sync_category(deps, &1),
+      &SynchronizerDeps.sync_category(deps, &1),
       max_concurrency: pool_size()
     )
     |> Stream.run()
@@ -61,9 +61,9 @@ defmodule AwesomeElixir.Processor do
     end
   end
 
-  @spec sync_libraries_data(deps :: ProcessorDeps.t()) :: :ok
+  @spec sync_libraries_data(deps :: SynchronizerDeps.t()) :: :ok
   def sync_libraries_data(deps) do
-    ProcessorDeps.sync_github_libraries(deps)
+    SynchronizerDeps.sync_github_libraries(deps)
 
     :ok
   end

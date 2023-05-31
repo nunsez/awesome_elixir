@@ -1,6 +1,6 @@
-defprotocol AwesomeElixir.Processor.SyncCategoryDeps do
+defprotocol AwesomeElixir.Synchronizer.SyncCategoryDeps do
   alias AwesomeElixir.Context.Category
-  alias AwesomeElixir.Processor.Index
+  alias AwesomeElixir.Synchronizer.Index
 
   @spec get_category_by(
           deps :: any(),
@@ -42,9 +42,9 @@ defprotocol AwesomeElixir.Processor.SyncCategoryDeps do
   def delete_stale_libraries(deps, category_id, existing_library_urls)
 end
 
-defimpl AwesomeElixir.Processor.SyncCategoryDeps, for: AwesomeElixir.ProductionDependencies do
+defimpl AwesomeElixir.Synchronizer.SyncCategoryDeps, for: AwesomeElixir.ProductionDependencies do
   alias AwesomeElixir.Context
-  alias AwesomeElixir.Processor.SyncCategory
+  alias AwesomeElixir.Synchronizer.SyncCategory
 
   def get_category_by(_, clauses) do
     Context.get_category_by(clauses)
@@ -67,10 +67,10 @@ defimpl AwesomeElixir.Processor.SyncCategoryDeps, for: AwesomeElixir.ProductionD
   end
 end
 
-defimpl AwesomeElixir.Processor.SyncCategoryDeps, for: Map do
+defimpl AwesomeElixir.Synchronizer.SyncCategoryDeps, for: Map do
   alias AwesomeElixir.Context
   alias AwesomeElixir.Context.Category
-  alias AwesomeElixir.Processor.SyncCategory
+  alias AwesomeElixir.Synchronizer.SyncCategory
 
   def get_category_by(%{get_category_by: f}, clauses) do
     f.(clauses)

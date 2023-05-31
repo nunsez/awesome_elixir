@@ -1,11 +1,11 @@
-defmodule AwesomeElixir.ProcessorTest do
+defmodule AwesomeElixir.SynchronizerTest do
   @moduledoc false
 
   use ExUnit.Case, async: true
-  doctest AwesomeElixir.Processor
+  doctest AwesomeElixir.Synchronizer
 
   alias AwesomeElixir.AssertOrdered
-  alias AwesomeElixir.Processor
+  alias AwesomeElixir.Synchronizer
 
   def category_items_data do
     [
@@ -52,7 +52,7 @@ defmodule AwesomeElixir.ProcessorTest do
         end
       }
 
-      Processor.call(deps)
+      Synchronizer.call(deps)
 
       expected_messages = [
         :fetch_categories,

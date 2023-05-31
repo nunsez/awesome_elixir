@@ -1,11 +1,11 @@
-defmodule AwesomeElixir.Processor.SyncCategoryTest do
+defmodule AwesomeElixir.Synchronizer.SyncCategoryTest do
   @moduledoc false
 
   use ExUnit.Case, async: true
-  doctest AwesomeElixir.Processor.SyncCategory
+  doctest AwesomeElixir.Synchronizer.SyncCategory
 
   alias AwesomeElixir.Context.Category
-  alias AwesomeElixir.Processor.SyncCategory
+  alias AwesomeElixir.Synchronizer.SyncCategory
 
   def category_item_data(overrides \\ %{}) do
     Enum.into(overrides, %{

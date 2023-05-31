@@ -1,6 +1,6 @@
-defprotocol AwesomeElixir.Processor.SyncGithubDeps do
+defprotocol AwesomeElixir.Synchronizer.SyncGithubDeps do
   alias AwesomeElixir.Context.Library
-  alias AwesomeElixir.Processor.GithubRepo
+  alias AwesomeElixir.Synchronizer.GithubRepo
 
   @spec github_libraries(deps :: any()) :: [Library.t()]
   def github_libraries(_)
@@ -18,10 +18,10 @@ defprotocol AwesomeElixir.Processor.SyncGithubDeps do
   def update_library(_, library, attributes)
 end
 
-defimpl AwesomeElixir.Processor.SyncGithubDeps, for: AwesomeElixir.ProductionDependencies do
+defimpl AwesomeElixir.Synchronizer.SyncGithubDeps, for: AwesomeElixir.ProductionDependencies do
   alias AwesomeElixir.Context
   alias AwesomeElixir.GithubClient
-  alias AwesomeElixir.Processor.SyncGithub
+  alias AwesomeElixir.Synchronizer.SyncGithub
 
   def github_libraries(_) do
     SyncGithub.github_libraries()
@@ -36,7 +36,7 @@ defimpl AwesomeElixir.Processor.SyncGithubDeps, for: AwesomeElixir.ProductionDep
   end
 end
 
-defimpl AwesomeElixir.Processor.SyncGithubDeps, for: Map do
+defimpl AwesomeElixir.Synchronizer.SyncGithubDeps, for: Map do
   alias AwesomeElixir.Context
 
   def github_libraries(%{github_libraries: f}) do

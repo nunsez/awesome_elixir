@@ -1,12 +1,12 @@
-defmodule AwesomeElixir.Processor.SyncGithubTest do
+defmodule AwesomeElixir.Synchronizer.SyncGithubTest do
   @moduledoc false
 
   use AwesomeElixir.DataCase, async: true
-  doctest AwesomeElixir.Processor.SyncGithub
+  doctest AwesomeElixir.Synchronizer.SyncGithub
 
   alias AwesomeElixir.Context.Library
   alias AwesomeElixir.ContextFixtures
-  alias AwesomeElixir.Processor.SyncGithub
+  alias AwesomeElixir.Synchronizer.SyncGithub
 
   describe "call/1" do
     test "processes all libraries" do

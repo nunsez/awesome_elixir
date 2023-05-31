@@ -1,4 +1,4 @@
-defprotocol AwesomeElixir.Processor.SyncLibraryDeps do
+defprotocol AwesomeElixir.Synchronizer.SyncLibraryDeps do
   alias AwesomeElixir.Context.Library
 
   @spec get_library_by(deps :: any(), clauses :: keyword()) :: Library.t() | nil
@@ -15,7 +15,7 @@ defprotocol AwesomeElixir.Processor.SyncLibraryDeps do
   def update_library(_, library, attrs)
 end
 
-defimpl AwesomeElixir.Processor.SyncLibraryDeps, for: AwesomeElixir.ProductionDependencies do
+defimpl AwesomeElixir.Synchronizer.SyncLibraryDeps, for: AwesomeElixir.ProductionDependencies do
   alias AwesomeElixir.Context
 
   def get_library_by(_, clauses) do
@@ -31,7 +31,7 @@ defimpl AwesomeElixir.Processor.SyncLibraryDeps, for: AwesomeElixir.ProductionDe
   end
 end
 
-defimpl AwesomeElixir.Processor.SyncLibraryDeps, for: Map do
+defimpl AwesomeElixir.Synchronizer.SyncLibraryDeps, for: Map do
   alias AwesomeElixir.Context
   alias AwesomeElixir.Context.Library
 

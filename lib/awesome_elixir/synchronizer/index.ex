@@ -1,4 +1,4 @@
-defmodule AwesomeElixir.Processor.Index do
+defmodule AwesomeElixir.Synchronizer.Index do
   @moduledoc false
 
   alias AwesomeElixir.Html
