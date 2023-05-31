@@ -1,18 +1,38 @@
 # AwesomeElixir
 
-To start your Phoenix server:
+List of awesome Elixir and Erlang libraries
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## Requirements
+- Git
+- GNU Make
+- Docker >= 20.0
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Installation
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+```bash
+$ git clone https://github.com/nunsez/awesome_elixir.git
+$ cd awesome_elixir
+$ make build
+```
 
-## Learn more
+## Usage
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+### Start
+
+```bash
+$ make up
+
+# then visit http://localhost:4000/
+```
+
+### Stop
+
+```bash
+$ make down
+```
+
+### Force sync
+
+```bash
+$ make sync
+```
